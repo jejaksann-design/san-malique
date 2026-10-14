@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Book Bundle: Slow Living Haramain & Portable Income | San Malique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --accent-gold: #d4af37;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --border-color: #262626;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* BREADCRUMB / BACK LINK */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .bundle-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .bundle-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* BANNER UTAMA COVER BUNDLE */
+    .bundle-cover-img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      display: block;
+    }
+
+    /* SWIPER GALLERY SLIDER */
+    .swiper-container-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      position: relative;
+      background: var(--card-bg);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--accent-gold) !important;
+      background: rgba(10, 10, 10, 0.6);
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-color);
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+      font-size: 16px !important;
+      font-weight: bold;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--text-muted) !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent-gold) !important;
+    }
+
+    /* DETAIL ISI BUNDLE (STORY CARD) */
+    .details-box {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .details-box > p {
+      font-size: 1rem;
+      color: var(--text-main);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .item-block {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .item-block:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .item-block h4 {
+      font-size: 1.15rem;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .item-block p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* KOTAK HARGA BUNDLE UTAMA (PRICE BOX) */
+    .price-box {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .price-current {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 8px 0 12px 0;
+    }
+
+    .cta-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 24px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      transition: opacity 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-buy:hover {
+      opacity: 0.9;
+    }
+
+    /* STYLING KARTU TERPISAH STANDALONE E-BOOK */
+    .standalone-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .card-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.1);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .card-image-wrapper {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-color);
+    }
+
+    .card-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .card-price-current {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .btn-card-action {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-card-action:hover {
+      opacity: 0.9;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- BREADCRUMB -->
+    <a href="portable-income-landing.html" class="back-link">&larr; Kembali ke Portable Income & Work</a>
+
+    <br>
+    <span class="bundle-tag">E-Book Bundle</span>
+    <h1>Slow Living Haramain & Portable Income</h1>
+    <p class="bundle-subtitle">
+      Dua e-book dalam satu bundle untuk kamu yang ingin melihat kehidupan dari dua sisi: di mana kita ingin menjalani hidup, dan bagaimana kita bisa tetap menghasilkan dari sana.
+    </p>
+
+    <!-- BANNER UTAMA COVER BUNDLE -->
+    <img src="images/haramain-income-cover.jpg" alt="E-Book Bundle Slow Living Haramain & Portable Income" class="bundle-cover-img">
+
+    <!-- PREVIEW SWIPER GALLERY -->
+    <div class="swiper swiper-container-box">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/haramain-slide2.jpg" alt="Preview Slow Living Haramain">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/income-slide3.jpg" alt="Preview Nyari Cuan Dari Negara Mana Aja">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/haramain-income-slide4.jpg" alt="Preview Ringkasan Bundle">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- DETAIL ISI BUNDLE -->
+    <div class="details-box">
+      <p>Di dalam bundle ini kamu mendapatkan:</p>
+
+      <div class="item-block">
+        <h4>1. Panduan Tinggal Lebih Lama di Makkah & Madinah</h4>
+        <p>Panduan berbasis pengalaman tinggal langsung selama satu tahun di Haramain, membahas Iqamah Saudi, biaya hidup, tempat tinggal, daily life, dan berbagai hal yang perlu diketahui jika ingin mengenal kehidupan di Haramain lebih jauh.</p>
+      </div>
+
+      <div class="item-block">
+        <h4>2. Nyari Cuan dari Negara Mana Aja</h4>
+        <p>Panduan untuk mulai melihat peluang penghasilan yang lebih fleksibel dan tidak selalu terikat pada satu tempat.</p>
+      </div>
+    </div>
+
+    <!-- AREA PEMBELIAN HARGA BUNDLE UTAMA -->
+    <div class="price-box">
+      <p class="price-old">Rp98.000</p>
+      <p class="price-current">Rp79.000</p>
+      <p class="cta-note">
+        Dua e-book. Satu bundle.<br>
+        Untuk kamu yang sedang membangun kehidupan yang lebih fleksibel dan portable.
+      </p>
+      <a href="https://san-malique.myr.id/ebook/e-book-bundle-nyari-cuan-dari-negara-mana-aja-x-slow-living-haramain" class="btn-buy" target="_blank">
+        DAPATKAN BUNDLE – Rp79.000 &rarr;
+      </a>
+    </div>
+
+    <!-- KARTU 1: E-BOOK SLOW LIVING DI HARAMAIN -->
+    <div class="standalone-card">
+      <span class="card-badge">E-Book Standalone</span>
+      <h2 class="card-title">Ingin E-Book Slow Living di Haramain Saja?</h2>
+      <p class="card-subtitle">
+        Panduan Tinggal Lebih Lama & Membangun Kehidupan di Makkah & Madinah
+      </p>
+
+      <div class="card-image-wrapper">
+        <img src="images/haramain/haramain1.JPG" alt="Cover E-Book Slow Living di Haramain">
+      </div>
+
+      <div class="card-price-row">
+        <span class="card-price-current">Rp49.000</span>
+      </div>
+
+      <a href="slow-living-landing.html" class="btn-card-action">
+        Lihat Detail E-Book &rarr;
+      </a>
+    </div>
+
+    <!-- KARTU 2: E-BOOK NYARI CUAN -->
+    <div class="standalone-card">
+      <span class="card-badge">E-Book Standalone</span>
+      <h2 class="card-title">Ingin E-Book Nyari Cuan Saja?</h2>
+      <p class="card-subtitle">
+        Panduan Membangun Penghasilan Digital Tanpa Terikat Satu Tempat
+      </p>
+
+      <div class="card-image-wrapper">
+        <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan">
+      </div>
+
+      <div class="card-price-row">
+        <span class="card-price-current">Rp49.000</span>
+      </div>
+
+      <a href="nyari-cuan.html" class="btn-card-action">
+        Lihat Detail E-Book &rarr;
+      </a>
+    </div>
+
+    <div class="footer">
+      &copy; 2026 SAN MALIQUE. All rights reserved.
+    </div>
+
+  </div>
+
+  <!-- Swiper JS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container-box', {
+      loop: true,
+      grabCursor: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</body>
+</html>

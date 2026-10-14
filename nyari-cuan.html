@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Book Nyari Cuan dari Negara Mana Aja | San Malique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Swiper CSS Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --accent-gold: #d4af37;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --border-color: #262626;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* Styling Swiper Gallery */
+    .swiper-container-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      position: relative;
+      background: var(--card-bg);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--accent-gold) !important;
+      background: rgba(10, 10, 10, 0.6);
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-color);
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+      font-size: 16px !important;
+      font-weight: bold;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--text-muted) !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent-gold) !important;
+    }
+
+    .story-card {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .story-card p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .learn-box {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 35px;
+    }
+
+    .learn-box h2 {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .learn-list {
+      list-style: none;
+    }
+
+    .learn-list li {
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 28px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .learn-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: bold;
+    }
+
+    .price-box {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .price-current {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 8px 0 20px 0;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 24px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      transition: opacity 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-buy:hover {
+      opacity: 0.9;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <span class="badge">E-Book Eksklusif</span>
+    <h1>Nyari Cuan dari Negara Mana Aja</h1>
+    <p class="subtitle">Panduan membangun penghasilan digital tanpa terikat satu tempat.</p>
+
+    <!-- Slider Gambar Produk & Daftar Isi -->
+    <div class="swiper swiper-container-box">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/daftar-isi-nyari-cuan.jpeg" alt="Daftar Isi E-Book Nyari Cuan">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Bagian Pengantar / Storytelling -->
+    <div class="story-card">
+      <p>Aku sudah lebih dari 10 tahun membangun berbagai sumber income dari skill, pengalaman, karya, dan internet.</p>
+      <p>Selama bertahun-tahun, aku belajar bahwa income tidak selalu harus datang dari satu pekerjaan, satu perusahaan, atau satu tempat. Skill yang kita punya bisa membuka lebih dari satu pintu.</p>
+      <p>Dan internet membuat pintu-pintu itu semakin terbuka.</p>
+    </div>
+
+    <!-- Bagian Materi Pembelajaran -->
+    <div class="learn-box">
+      <h2>Di Dalam E-Book Ini, Kamu Akan Belajar:</h2>
+      <ul class="learn-list">
+        <li><strong>Melihat Value Skill:</strong> Bagaimana melihat skill dan pengalamanmu sebagai sesuatu yang punya nilai jual tinggi.</li>
+        <li><strong>Content Creation & Monetisasi:</strong> Menentukan niche, hook, storytelling, CTA, sampai bagaimana konten bisa diarahkan langsung ke penjualan.</li>
+        <li><strong>Digital Product:</strong> Mengubah knowledge dan pengalaman menjadi produk digital yang bisa dijual berkali-kali secara otomatis.</li>
+        <li><strong>Monetisasi Expertise:</strong> Menjadikan skill sebagai service, consulting, private session, webinar, atau kelas online.</li>
+        <li><strong>Remote Work System:</strong> Memahami alur kerja remote dari pemetaan skill, memilih role & market, membuat portofolio, pendaftaran, hingga menerima income.</li>
+        <li><strong>Mesin Pemasaran Bisnis:</strong> Memanfaatkan gabungan skill dan konten sebagai mesin pemasaran utama saat membangun bisnis.</li>
+        <li><strong>Multi-Income Streams:</strong> Memahami beberapa jalur income dan memilih mana yang paling sesuai dengan starting point-mu sekarang.</li>
+      </ul>
+
+      <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;">
+        Kamu juga akan melihat bagaimana semua jalur tersebut sebenarnya bisa saling terhubung:
+      </p>
+      <p style="font-weight: 600; text-align: center; margin: 15px 0; color: var(--accent-gold);">
+        Content → Digital Product → Service → Remote Work → Business
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">
+        Kamu tidak harus menjalankan semuanya sekaligus. Yang penting kamu tahu apa yang sudah kamu punya, apa yang bisa kamu tawarkan, siapa yang bisa kamu bantu, dan dari mana kamu bisa mulai.
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">
+        Di bagian akhir, kamu juga akan membuat <strong style="color: var(--text-main);">My Personal Roadmap</strong> untuk menentukan jalur dan langkah pertamamu.
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">
+        E-book ini cocok untuk kamu yang punya skill, pengalaman, knowledge, atau karya tetapi masih bingung bagaimana mengubahnya menjadi income.
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">
+        Tidak ada janji kaya dalam semalam. Yang ada adalah berbagai pintu yang bisa kamu pelajari, pilih, dan bangun sesuai dengan kondisi dan kemampuanmu.
+      </p>
+      <p style="font-style: italic; color: var(--text-muted); font-size: 0.95rem; margin-top: 15px;">
+        Karena pada akhirnya, kamu tidak harus menunggu punya semuanya untuk mulai. Satu capability bisa membuka banyak pintu.
+      </p>
+    </div>
+
+    <!-- 1. Area Pembelian E-Book Utama -->
+    <div class="price-box">
+      <p class="price-old">Rp150.000</p>
+      <p class="price-current">Rp49.000</p>
+      <a href="https://san-malique.myr.id/ebook/e-book-nyari-cuan-dari-negara-mana-aja" class="btn-buy" target="_blank">Beli E-Book Sekarang</a>
+    </div>
+
+    <!-- 2. Section E-Book Bundle -->
+    <div style="border: 1px solid var(--accent-gold); border-radius: 16px; padding: 24px; margin-bottom: 30px; background: rgba(212, 175, 55, 0.05);">
+        <div style="display: inline-block; border: 1px solid var(--accent-gold); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--accent-gold); margin-bottom: 12px;">
+            PAKET BUNDLE HEMAT
+        </div>
+        
+        <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 8px;">
+            Mau Dapet Kedua E-Book Sekaligus?
+        </h3>
+        
+        <p style="color: #ccc; font-size: 0.95rem; margin-bottom: 16px;">
+            Dapatkan E-Book <strong>"Nyari Cuan dari Negara Mana Aja"</strong> + <strong>"Slow Living di Haramain"</strong> dengan harga paket bundle yang jauh lebih hemat!
+        </p>
+
+        <!-- Banner Cover Bundle -->
+        <img src="images/haramain-income-cover.jpg" alt="E-Book Bundle" style="width: 100%; border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-color); object-fit: cover;">
+
+        <p class="price-current" style="font-size: 1.8rem; margin: 10px 0 15px 0; color: var(--accent-gold);">
+            <span style="text-decoration: line-through; color: #888; font-size: 1.1rem; margin-right: 8px;">Rp98.000</span>
+            Rp79.000
+        </p>
+
+        <!-- Tombol Ke Landing Page Bundle -->
+        <a href="haramain-income-bundle.html" class="btn-buy" style="display: block; width: 100%; padding: 14px; background-color: var(--accent-gold); color: #000;">
+            Lihat Detail Paket Bundle &rarr;
+        </a>
+    </div>
+
+    <!-- 3. Banner Cross-Selling Live Session -->
+    <div class="story-card" style="border: 1px solid var(--accent-gold); text-align: center;">
+      <span class="badge">Live Session Eksklusif</span>
+      <h3 style="font-size: 1.3rem; color: var(--text-main); margin-top: 10px; margin-bottom: 10px;">
+        Mau Akselerasi Diskusi via Live Session?
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+        Membangun income yang bisa dibawa ke mana aja. Sesi interaktif & bedah strategi langsung bersama San Malique.
+      </p>
+
+      <!-- Gambar Banner Live Session -->
+      <a href="live-session-nyari-cuan.html" style="text-decoration: none; display: block; margin-bottom: 20px;">
+        <img src="images/live nyari cuan/live-nyari-cuan1.jpeg" alt="Live Session Nyari Cuan" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); object-fit: cover;">
+      </a>
+
+      <p class="price-current" style="font-size: 1.8rem; margin: 10px 0 15px 0;">Rp199.000</p>
+      
+      <a href="live-session-nyari-cuan.html" class="btn-buy" style="background-color: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold); margin-bottom: 12px; display: block;">
+        Lihat Detail Live Session &rarr;
+      </a>
+
+      <a href="https://san-malique.myr.id/live-session/live-session-nyari-cuan-dari-negara-mana-aja" class="btn-buy" target="_blank" style="display: block;">
+        Ikut Live Sessionnya sekarang
+      </a>
+    </div>
+
+    <!-- 4. Section Cross-Selling Remote Work -->
+    <div class="story-card" style="border: 1px solid var(--border-color); text-align: center; margin-top: 30px;">
+      <span class="badge" style="background-color: rgba(255, 255, 255, 0.05); color: var(--text-muted); border-color: var(--border-color);">
+        TOPIK TERKAIT
+      </span>
+      
+      <h3 style="font-size: 1.3rem; color: var(--text-main); margin-top: 10px; margin-bottom: 10px;">
+        Ingin Fokus Membangun Karir Remote Work?
+      </h3>
+      
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+        Pelajari sistem kerja remote dari pemetaan skill, pembuatan portofolio, hingga mendapatkan penawaran income global.
+      </p>
+
+      <!-- Banner Remote Work -->
+      <a href="remote-work.html" style="text-decoration: none; display: block; margin-bottom: 20px;">
+        <img src="images/remote work/remote-work1.jpeg" alt="Remote Work Guide" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); object-fit: cover;">
+      </a>
+
+      <!-- Harga Remote Work -->
+      <p class="price-current" style="font-size: 1.8rem; margin: 10px 0 15px 0; color: var(--accent-gold);">
+        <span style="text-decoration: line-through; color: #888; font-size: 1.1rem; margin-right: 8px;">Rp1.499.000</span>
+        Rp299.000
+      </p>
+
+      <!-- Tombol Ke Landing Page Remote Work -->
+      <a href="remote-work-private-lab.html" class="btn-buy" style="background-color: var(--accent-gold); color: #000000; font-weight: bold; border: none; display: block; text-align: center;">
+        Lihat Panduan Remote Work &rarr;
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      &copy; San Malique. All rights reserved. Automated Delivery by Mayar.id.
+    </div>
+
+  </div>
+
+  <!-- Swiper JS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container-box', {
+      loop: true,
+      grabCursor: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</body>
+</html>

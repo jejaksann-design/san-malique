@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slow Living | San Malique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #fcfbf7;
+      --card-bg: #ffffff;
+      --text-main: #111111;
+      --text-muted: #555555;
+      --border-color: #e5e5e0;
+      --btn-green: #2d4030;
+      --accent-gold: #b58d3d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #fcfbf7;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo {
+      font-family: 'Newsreader', serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .btn-subscribe-head {
+      background: var(--btn-green);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    /* BREADCRUMB & PAGE TITLE */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .page-num {
+      font-family: 'Newsreader', serif;
+      font-size: 1.8rem;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .page-title {
+      font-family: 'Newsreader', serif;
+      font-size: 3rem;
+      font-weight: 500;
+      margin-bottom: 15px;
+      line-height: 1.15;
+    }
+
+    .page-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin-bottom: 50px;
+      line-height: 1.7;
+    }
+
+    /* SUB-SECTION TITLES */
+    .inventory-section-title {
+      font-family: 'Newsreader', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin: 40px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    /* RESOURCE CARDS IN LANDING */
+    .inventory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .inventory-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      max-width: 450px;
+    }
+
+    .inventory-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .inventory-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .inventory-card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .inventory-tag {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .inventory-card-title {
+      font-family: 'Newsreader', serif;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .inventory-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .btn-inventory-cta {
+      display: inline-block;
+      align-self: flex-start;
+      background-color: var(--btn-green);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-inventory-cta:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <a href="index.html" class="logo">San Malique</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#resources">The Resources</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <a href="index.html#subscribe" class="btn-subscribe-head">Subscribe</a>
+  </header>
+
+  <div class="container">
+
+    <!-- BREADCRUMB -->
+    <a href="index.html#resources" class="back-link">&larr; Kembali ke The Resources</a>
+
+    <!-- PAGE HEADER -->
+    <span class="page-num">02</span>
+    <h1 class="page-title">Portable Life & Slow Living</h1>
+    <p class="page-subtitle">
+      Produk Digital - Buat kamu yang ingin menjalani slow living dan tinggal lebih lama di berbagai negara.
+    </p>
+
+    <!-- SUB-SECTION 1: E-BOOKS & PANDUAN -->
+    <h2 class="inventory-section-title">E-Book & Panduan Digital</h2>
+    <div class="inventory-grid">
+
+      <!-- ITEM 1: E-BOOK SLOW LIVING HARAMAIN (STANDALONE) -->
+      <div class="inventory-card">
+        <a href="haramain">
+          <img src="images/haramain/haramain1.JPG" alt="E-Book Slow Living Haramain">
+        </a>
+        <div class="inventory-card-content">
+          <span class="inventory-tag">E-BOOK PANDUAN</span>
+          <h3 class="inventory-card-title">Panduan Tinggal Lebih Lama di Makkah & Madinah</h3>
+          <p class="inventory-card-desc">
+            Panduan praktis tinggal satu tahun di Haramain: membahas Iqamah Saudi, estimasi biaya hidup, tempat tinggal, dan daily life.
+          </p>
+          <a href="haramain" class="btn-inventory-cta">Lihat Detail Ebook &rarr;</a>
+        </div>
+</div>
+
+      <!-- ITEM 2: E-BOOK BUNDLE (HARAMAIN & PORTABLE INCOME) -->
+      <div class="inventory-card">
+        <a href="haramain-income-bundle.html">
+          <img src="images/haramain-income-cover.jpg" alt="E-Book Bundle Slow Living Haramain & Portable Income">
+        </a>
+        <div class="inventory-card-content">
+          <span class="inventory-tag">E-BOOK BUNDLE</span>
+          <h3 class="inventory-card-title">Slow Living Haramain & Portable Income</h3>
+          <p class="inventory-card-desc">
+            Dua e-book dalam satu bundle: panduan tinggal lebih lama di Makkah & Madinah serta cara membangun penghasilan fleksibel dari mana saja.
+          </p>
+          <a href="haramain-income-bundle.html" class="btn-inventory-cta">Lihat Bundle &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 SAN MALIQUE. All rights reserved.
+  </footer>
+
+</body>
+</html>
