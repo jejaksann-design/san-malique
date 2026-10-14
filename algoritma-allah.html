@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritma Allah — SAN MALIQUE</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fbf9f5;
+            color: #2b332c;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .site-header {
+            background-color: #fbf9f5;
+            border-bottom: 1px solid #e8e2d8;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wordmark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #1b2e23;
+            text-decoration: none;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #556056;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #1b2e23;
+        }
+
+        /* Article Styles */
+        .article-container {
+            max-width: 720px;
+            margin: 60px auto 100px auto;
+            padding: 0 24px;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .article-category {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            color: #3f5445;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: #1b2e23;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .article-meta {
+            font-size: 14px;
+            color: #88948a;
+        }
+
+        .article-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 48px;
+            border: 1px solid #eae4d9;
+        }
+
+        .article-body {
+            font-size: 17px;
+            color: #333d35;
+        }
+
+        .article-body p {
+            margin-bottom: 24px;
+        }
+
+        .article-body blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: #2c3e32;
+            border-left: 3px solid #3f5445;
+            padding-left: 20px;
+            margin: 36px 0;
+            line-height: 1.6;
+        }
+
+        /* Footer Newsletter Box */
+        .article-footer-box {
+            background-color: #2c3e32;
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .article-footer-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .article-footer-box p {
+            font-size: 14px;
+            color: #d1dad3;
+            margin-bottom: 24px;
+        }
+
+        .article-newsletter-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        .article-newsletter-form input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .article-newsletter-form input::placeholder {
+            color: #d1dad3;
+        }
+
+        .article-newsletter-form button {
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: none;
+            background-color: #3f5445;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .article-newsletter-form button:hover {
+            background-color: #1b2e23;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #e8e2d8;
+            color: #88948a;
+            font-size: 13px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .article-title { font-size: 36px; }
+            .article-hero-image { height: 260px; }
+            .article-newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="wordmark">SAN MALIQUE</a>
+            <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <article>
+            <header class="article-header">
+                <span class="article-category">Faith & Renungan</span>
+                <h1 class="article-title">Algoritma Allah</h1>
+                <div class="article-meta">Oleh <strong>San Malique</strong></div>
+            </header>
+
+            <img src="images/faith.jpeg" alt="Algoritma Allah" class="article-hero-image">
+
+            <div class="article-body">
+                <p>Ada masa ketika seseorang sudah melakukan hampir semua yang bisa dilakukan.</p>
+
+                <p>Ikhtiar bumi sudah ditempuh. Mencari jalan, mencoba berbagai cara, memperbaiki strategi, mengetuk pintu yang mungkin bisa dibuka.</p>
+
+                <p>Ikhtiar langit juga tidak ditinggalkan. Berdoa, salat, istighfar, meminta pertolongan Allah, dan terus berharap.</p>
+
+                <p>Tetapi hasilnya belum juga datang.</p>
+
+                <p>Di titik seperti ini, kita sering bertanya: kurang apa lagi?</p>
+
+                <p>Padahal bisa jadi bukan soal kurangnya usaha. Bisa jadi memang belum waktunya Allah memberikan apa yang sedang kita minta.</p>
+
+                <blockquote>
+                    Karena ikhtiar dan doa bukan rumus matematika.
+                </blockquote>
+
+                <p>Kita kadang membayangkan, kalau sudah melakukan A dan B, maka hasilnya harus C.</p>
+
+                <p>Padahal tidak sesederhana itu.</p>
+
+                <p>Allah tidak bekerja dengan rumus yang bisa kita tebak. Kalau boleh memakai istilah sederhana, mungkin kita bisa menyebutnya sebagai “algoritma Allah”. Kita tahu apa yang kita minta, tetapi kita tidak tahu bagaimana Allah akan menjawabnya.</p>
+
+                <p>Bisa jadi diberikan segera.<br>
+                Bisa jadi ditangguhkan.<br>
+                Bisa jadi diberikan dalam bentuk yang berbeda.</p>
+
+                <p>Dan sebagaimana dijelaskan dalam hadis tentang doa, jawaban doa juga bisa berupa disimpannya pahala untuk akhirat atau dihindarkannya seseorang dari keburukan yang sepadan dengan doanya.</p>
+
+                <p>Karena itu, jangan berhenti berharap hanya karena sesuatu belum datang.</p>
+
+                <p>Tetap berdoa.<br>
+                Tetap berusaha.<br>
+                Tetap mencari jalan.</p>
+
+                <p>Tetapi pada saat yang sama, sisakan ruang di dalam hati untuk sabar, ikhlas, ridha, dan tenang.</p>
+
+                <p>Kita boleh berharap sesuatu terjadi. Tetapi jangan sampai harapan itu berubah menjadi keharusan bahwa Allah harus memberikan hasil sesuai dengan waktu, bentuk, dan cara yang kita inginkan.</p>
+
+                <p>Sebab semakin kita memaksa sebuah hasil harus terjadi seperti yang kita bayangkan, semakin besar pula rasa sakit ketika kenyataan berjalan berbeda.</p>
+
+                <p>Mungkin yang perlu kita pelajari bukan bagaimana membuat Allah mengikuti rencana kita, tetapi bagaimana tetap tenang ketika rencana kita belum juga menjadi kenyataan.</p>
+
+                <p>Bukan berarti berhenti berharap.<br>
+                Bukan pula berhenti berikhtiar.</p>
+
+                <p>Hanya saja, kita belajar memahami bahwa ada bagian dari hidup yang memang tidak berada dalam kendali kita.</p>
+
+                <p>Kita tidak tahu kapan jawabannya datang.<br>
+                Kita tidak tahu bagaimana jalannya.<br>
+                Kita bahkan tidak selalu tahu mengapa sesuatu harus tertunda.</p>
+
+                <p>Dan memang berat.</p>
+
+                <p>Tetapi kita tetap berjalan.<br>
+                Tetap ikhtiar di bumi.<br>
+                Tetap mengetuk di langit.</p>
+
+                <p>Sambil belajar menerima bahwa hasil akhirnya bukan wilayah kita.</p>
+
+                <blockquote>
+                    Mungkin itu salah satu bentuk tawakal: melakukan bagian kita dengan sungguh-sungguh, tanpa memaksa Allah menentukan hasil sesuai dengan rumus yang kita buat sendiri.
+                </blockquote>
+
+                <p>Karena kita tidak tahu algoritma Allah.</p>
+
+                <p>Dan mungkin memang bukan tugas kita untuk mengetahuinya.</p>
+            </div>
+        </article>
+
+        <!-- Newsletter Subscription Box -->
+        <div class="article-footer-box">
+            <h3>Nikmati tulisan seperti ini di email kamu</h3>
+            <p>Berlangganan newsletter SAN MALIQUE untuk mendapatkan catatan rutin tentang Faith, Quran, & Portable Life.</p>
+            <form 
+                action="https://buttondown.com/api/emails/embed-subscribe/jejak" 
+                method="post" 
+                target="popupwindow" 
+                onsubmit="window.open('https://buttondown.com/jejak', 'popupwindow')"
+                class="article-newsletter-form"
+            >
+                <input type="email" name="email" placeholder="Alamat email kamu..." required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 SAN MALIQUE. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

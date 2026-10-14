@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slow Living di Haramain | San Malique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --accent-gold: #d4af37;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --border-color: #262626;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* BREADCRUMB / BACK LINK */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .product-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .product-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* SWIPER GALLERY SLIDER */
+    .swiper-container-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      position: relative;
+      background: var(--card-bg);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--accent-gold) !important;
+      background: rgba(10, 10, 10, 0.6);
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-color);
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+      font-size: 16px !important;
+      font-weight: bold;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--text-muted) !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent-gold) !important;
+    }
+
+    /* DETAILS SECTION (STORY CARD) */
+    .details-box {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .section-heading {
+      font-size: 1.3rem;
+      color: var(--text-main);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .section-heading:first-child {
+      margin-top: 0;
+    }
+
+    .details-box p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .feature-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: bold;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* KOTAK HARGA UTAMA (PRICE BOX) */
+    .price-box {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .price-current {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 8px 0 12px 0;
+    }
+
+    .cta-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 24px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      transition: opacity 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-buy:hover {
+      opacity: 0.9;
+    }
+
+    .author-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* STYLING KARTU TERPISAH STANDALONE / REKOMENDASI */
+    .standalone-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .card-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.1);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .card-image-wrapper {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-color);
+    }
+
+    .card-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .card-price-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .card-price-current {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .btn-card-action {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-card-action:hover {
+      opacity: 0.9;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- BREADCRUMB -->
+    <a href="slow-living-landing.html" class="back-link">&larr; Kembali ke Slow Living</a>
+
+    <br>
+    <span class="product-tag">E-Book & Panduan Digital</span>
+    <h1>Slow Living di Haramain</h1>
+    <p class="product-subtitle">
+      Panduan tinggal lebih lama di Makkah & Madinah berdasarkan pengalaman langsung selama satu tahun lebih. Merangkum hal praktis mengenai Iqamah Saudi, biaya hidup, hingga aktivitas keseharian.
+    </p>
+
+    <!-- PREVIEW SWIPER GALLERY -->
+    <div class="swiper swiper-container-box">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/haramain/haramain1.JPG" alt="Slow Living di Haramain Cover">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/haramain/haramain2.jpeg" alt="Daftar Isi E-Book Slow Living di Haramain">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- DETAIL ISI E-BOOK -->
+    <div class="details-box">
+      <h3 class="section-heading">Bukan Hanya Tempat Singgah</h3>
+      <p>
+        Banyak orang datang ke Makkah dan Madinah hanya beberapa hari. Umrah, ibadah, lalu pulang kembali ke negaranya masing-masing.
+      </p>
+      <p>
+        Tapi ada juga yang setelah pulang justru terus kepikiran Haramain. Ingin kembali, ingin tinggal lebih lama, ingin merasakan kehidupan di sana bukan hanya sebagai jamaah yang datang untuk beberapa hari.
+      </p>
+      <p>
+        Berjalan kaki ke masjid, duduk lama selepas Subuh, menikmati suasana malam, mendengar azan lima kali sehari—ada sisi kehidupan di Haramain yang baru benar-benar terasa ketika kita tinggal lebih lama.
+      </p>
+
+      <h3 class="section-heading">Di Dalam E-Book Ini Membahas</h3>
+      <ul class="feature-list">
+        <li>Kenapa banyak orang ingin tinggal lebih lama di Haramain</li>
+        <li>Apa itu Iqamah Saudi</li>
+        <li>Jalur dan proses pengurusan Iqamah</li>
+        <li>Keuntungan memiliki Iqamah Saudi</li>
+        <li>Estimasi budget tinggal di Makkah & Madinah</li>
+        <li>Cara mencari penginapan yang nyaman dan aman</li>
+        <li>Daily life di Makkah & Madinah</li>
+        <li>Hal-hal yang jarang dibahas orang</li>
+        <li>Haramain bukan sekadar tempat singgah</li>
+        <li>Refleksi dan gambaran tentang keinginan tinggal lebih lama di Haramain</li>
+      </ul>
+
+      <h3 class="section-heading">Cocok Untuk Kamu Yang</h3>
+      <ul class="feature-list">
+        <li>Ingin suatu hari tinggal lebih lama di Makkah atau Madinah</li>
+        <li>Pernah Umrah/Haji dan masih merindukan kehidupan di Haramain</li>
+        <li>Ingin mengetahui gambaran kehidupan sehari-hari di sana</li>
+        <li>Sedang mencari informasi awal tentang biaya hidup, tempat tinggal, dan Iqamah Saudi</li>
+      </ul>
+
+      <h3 class="section-heading">Pertanyaan Umum (FAQ)</h3>
+      
+      <div class="faq-item">
+        <div class="faq-q">Apakah e-book ini cocok untuk yang belum pernah tinggal di Haramain?</div>
+        <div class="faq-a">Ya. E-book ini bisa menjadi gambaran awal untuk memahami kehidupan di Makkah dan Madinah jika ingin tinggal lebih lama.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Apakah hanya membahas Iqamah?</div>
+        <div class="faq-a">Tidak. Iqamah hanya salah satu bagian. Ada juga pembahasan mengenai biaya hidup, tempat tinggal, daily life, dan hal-hal lain tentang kehidupan di Haramain.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Apakah ini panduan resmi pengurusan Iqamah Saudi?</div>
+        <div class="faq-a">Bukan. E-book ini merupakan panduan berbasis pengalaman dan informasi yang dibahas di dalamnya.</div>
+      </div>
+    </div>
+
+    <!-- AREA PEMBELIAN UTAMA -->
+    <div class="price-box">
+      <p class="price-old">Rp150.000</p>
+      <p class="price-current">Rp49.000</p>
+      <p class="cta-note">
+        Dapatkan akses instant e-book PDF (Daftar Isi lengkap, Panduan Iqamah, Estimasi Budget, dan Refleksi).
+      </p>
+      <a href="https://san-malique.myr.id/ebook/e-book-panduan-slow-living-lama-di-haramain" class="btn-buy" target="_blank">
+        BELI E-BOOK — Rp49.000 &rarr;
+      </a>
+      <p class="author-note">
+        Ditulis berdasarkan pengalaman tinggal langsung selama satu tahun lebih di Haramain.<br>
+        <em>With San Malique</em>
+      </p>
+    </div>
+
+    <!-- KARTU 1: E-BOOK NYARI CUAN -->
+    <div class="standalone-card">
+      <span class="card-badge">E-Book Standalone</span>
+      <h2 class="card-title">Ingin Panduan Membangun Income Digital Juga?</h2>
+      <p class="card-subtitle">
+        Panduan Membangun Penghasilan Digital Tanpa Terikat Satu Tempat
+      </p>
+
+      <div class="card-image-wrapper">
+        <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan">
+      </div>
+
+      <div class="card-price-row">
+        <span class="card-price-current">Rp49.000</span>
+      </div>
+
+      <a href="nyari-cuan.html" class="btn-card-action">
+        Lihat Detail E-Book &rarr;
+      </a>
+    </div>
+
+    <!-- KARTU 2: PAKET BUNDLE HEMAT -->
+    <div class="standalone-card">
+      <span class="card-badge">PAKET BUNDLE HEMAT</span>
+      <h2 class="card-title">Mau Dapet Kedua E-Book Sekaligus?</h2>
+      <p class="card-subtitle">
+        Dapatkan E-Book "Nyari Cuan dari Negara Mana Aja" + "Slow Living di Haramain" dengan harga paket bundle yang jauh lebih hemat!
+      </p>
+
+      <div class="card-image-wrapper">
+        <img src="images/haramain-income-cover.jpg" alt="Cover Bundle Slow Living Haramain & Portable Income">
+      </div>
+
+      <div class="card-price-row">
+        <span class="card-price-old">Rp98.000</span>
+        <span class="card-price-current">Rp79.000</span>
+      </div>
+
+      <a href="haramain-income-bundle.html" class="btn-card-action">
+        Lihat Detail Paket Bundle &rarr;
+      </a>
+    </div>
+
+    <div class="footer">
+      &copy; 2026 SAN MALIQUE. All rights reserved.
+    </div>
+
+  </div>
+
+  <!-- Swiper JS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container-box', {
+      loop: true,
+      grabCursor: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</body>
+</html>

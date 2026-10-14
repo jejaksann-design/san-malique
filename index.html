@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAN MALIQUE | Notes on Faith, Quran, Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #fcfbf7;
+      --card-bg: #ffffff;
+      --text-main: #111111;
+      --text-muted: #555555;
+      --border-color: #e5e5e0;
+      --btn-green: #2d4030;
+      --accent-gold: #b58d3d;
+      --btn-gold: #a37c3f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #fcfbf7;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo {
+      font-family: 'Newsreader', serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .btn-subscribe-head {
+      background: var(--btn-green);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* HERO NEWSLETTER */
+    .hero-newsletter {
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/hero.jpg') center/cover no-repeat;
+      color: #ffffff;
+      text-align: center;
+      padding: 100px 20px;
+      border-radius: 16px;
+      margin-bottom: 60px;
+    }
+
+    .hero-label {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: 'Newsreader', serif;
+      font-size: 3.5rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .hero-desc {
+      max-width: 650px;
+      margin: 0 auto 30px auto;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+
+    .subscribe-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .subscribe-form input {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      backdrop-filter: blur(5px);
+      outline: none;
+    }
+
+    .subscribe-form input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .subscribe-form button {
+      background: var(--btn-green);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* TITLES */
+    .section-main-title {
+      font-family: 'Newsreader', serif;
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin: 60px 0 25px 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: -15px;
+      margin-bottom: 35px;
+    }
+
+    /* GRID FOR KARYA & CATATAN REFLEKTIF */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .cat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .cat-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cat-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .cat-tag {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .cat-title {
+      font-family: 'Newsreader', serif;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .cat-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* THE RESOURCES - ROW LIST STYLE */
+    .resources-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: 70px;
+    }
+
+    .resource-row {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 35px;
+      align-items: center;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .resource-row:last-child {
+      border-bottom: none;
+    }
+
+    .resource-img-wrap {
+      display: block;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .resource-img-wrap img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .resource-row:hover .resource-img-wrap img {
+      transform: scale(1.02);
+    }
+
+    .resource-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .resource-num {
+      font-family: 'Newsreader', serif;
+      font-size: 1.6rem;
+      color: var(--accent-gold);
+      position: relative;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+    }
+
+    .resource-num::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 30px;
+      height: 1px;
+      background-color: var(--accent-gold);
+    }
+
+    .resource-title {
+      font-family: 'Newsreader', serif;
+      font-size: 2.1rem;
+      font-weight: 500;
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .resource-subhead {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .resource-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .btn-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--btn-gold);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-read-more:hover {
+      opacity: 0.9;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .resource-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* WHO IS SAN MALIQUE */
+    .about-section {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .about-section h2 {
+      font-family: 'Newsreader', serif;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 30px;
+    }
+
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+    }
+
+    .about-list {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+
+    .about-list li {
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">San Malique</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#resources">The Resources</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="#subscribe" class="btn-subscribe-head">Subscribe</a>
+  </header>
+
+  <div class="container">
+
+    <!-- HERO NEWSLETTER -->
+    <div class="hero-newsletter" id="subscribe">
+      <div class="hero-label">Newsletter</div>
+      <h1 class="hero-title">SAN MALIQUE</h1>
+      <p class="hero-subtitle">Notes on Faith, Quran, Life, and Building a Portable Life.</p>
+      <p class="hero-desc">
+        Catatan, refleksi, dan pengalaman tentang iman, Al-Qur'an, kehidupan, pekerjaan, perjalanan, dan hal-hal yang sedang kupelajari sepanjang membangun kehidupan yang portable.
+      </p>
+      <form class="subscribe-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Alamat email kamu...">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- SECTION 1: KARYA & CATATAN REFLEKTIF (GRID 6 KATEGORI TULISAN) -->
+    <div id="categories">
+      <h2 class="section-main-title">Karya & Catatan Reflektif</h2>
+      <p class="section-subtitle">Eksplorasi tulisan berdasarkan topik pembahasannya</p>
+      <div class="categories-grid">
+
+        <a href="algoritma-allah.html" class="cat-card">
+          <img src="images/faith.jpeg" alt="Faith & Renungan">
+          <div class="cat-content">
+            <span class="cat-tag">FAITH</span>
+            <h3 class="cat-title">Faith & Renungan</h3>
+            <p class="cat-desc">Catatan spiritual, refleksi hikmah, dan pencarian makna hidup.</p>
+          </div>
+        </a>
+
+        <a href="#" class="cat-card">
+          <img src="images/quran.JPG" alt="Quran & Tadabbur">
+          <div class="cat-content">
+            <span class="cat-tag">QURAN</span>
+            <h3 class="cat-title">Quran & Tadabbur</h3>
+            <p class="cat-desc">Tadabbur ayat-ayat Al-Qur'an, hafalan, dan petunjuk hidup.</p>
+          </div>
+        </a>
+
+        <a href="#" class="cat-card">
+          <img src="images/work.jpg" alt="Work & Portable Life">
+          <div class="cat-content">
+            <span class="cat-tag">WORK</span>
+            <h3 class="cat-title">Work & Portable Life</h3>
+            <p class="cat-desc">Membangun karir, bisnis, dan sistem kerja yang fleksibel.</p>
+          </div>
+        </a>
+
+        <a href="#" class="cat-card">
+          <img src="images/haramain.jpg" alt="Haramain Journey">
+          <div class="cat-content">
+            <span class="cat-tag">SAFAR</span>
+            <h3 class="cat-title">Haramain Journey</h3>
+            <p class="cat-desc">Catatan Slow Living dan pengalaman hidup di Makkah & Madinah.</p>
+          </div>
+        </a>
+
+        <a href="#" class="cat-card">
+          <img src="images/lifeabroad.jpg" alt="Life Abroad">
+          <div class="cat-content">
+            <span class="cat-tag">SLOW LIVING</span>
+            <h3 class="cat-title">Life Abroad</h3>
+            <p class="cat-desc">Pengalaman tinggal, belajar, dan Slow Living lama di berbagai negara.</p>
+          </div>
+        </a>
+
+        <a href="#" class="cat-card">
+          <img src="images/architecture.jpg" alt="Life Architecture">
+          <div class="cat-content">
+            <span class="cat-tag">DESIGN</span>
+            <h3 class="cat-title">Life Architecture</h3>
+            <p class="cat-desc">Tentang merancang kehidupan- menata iman, work digital, habit dan pilihan hidup.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: THE RESOURCES SECTION -->
+    <div id="resources">
+      <h2 class="section-main-title">The Resources</h2>
+      <p class="section-subtitle">Etalase Karya, Digital Product (E-Book), Live Session.</p>
+
+      <div class="resources-container">
+
+        <!-- POSTER 01: PORTABLE INCOME & WORK -->
+        <div class="resource-row">
+          <a href="portable-income-landing.html" class="resource-img-wrap">
+            <img src="images/the sources/income-work.jpeg" alt="Portable Income & Work">
+          </a>
+          <div class="resource-content">
+            <span class="resource-num">01</span>
+            <h3 class="resource-title">Portable Income & Work</h3>
+            <p class="resource-subhead">Untuk kamu yang ingin membangun penghasilan dan pekerjaan fleksibel dari mana saja.</p>
+            <p class="resource-desc">
+              Koleksi panduan remote work, produk digital, monetisasi keahlian, strategi membangun sumber penghasilan yang tidak terikat satu lokasi, serta tools dan template yang mendukung perjalananmu.
+            </p>
+            <a href="portable-income-landing.html" class="btn-read-more">Read More &rarr;</a>
+          </div>
+        </div>
+
+        <!-- POSTER 02: PORTABLE LIFE & SLOW LIVING -->
+        <div class="resource-row">
+          <a href="portable-life-landing.html" class="resource-img-wrap">
+            <img src="images/the sources/slow-living.jpeg" alt="Portable Life & Slow Living">
+          </a>
+          <div class="resource-content">
+            <span class="resource-num">02</span>
+            <h3 class="resource-title">Portable Life & Slow Living</h3>
+            <p class="resource-subhead">Untuk kamu yang ingin menjalani slow living dan tinggal lebih lama di berbagai negara.</p>
+            <p class="resource-desc">
+              Koleksi panduan slow living di Haramain dan Eropa, pengalaman hidup lintas negara, tempat tinggal, biaya hidup, serta tips praktis untuk membangun kehidupan yang lebih fleksibel dan bermakna.
+            </p>
+            <a href="slow-living-landing.html" class="btn-read-more">Read More &rarr;</a>
+          </div>
+        </div>
+
+        <!-- POSTER 03: FAITH, QURAN & LEARNING -->
+        <div class="resource-row">
+          <a href="faith-quran-landing.html" class="resource-img-wrap">
+            <img src="images/the sources/faith-quran.jpeg" alt="Faith, Quran & Learning">
+          </a>
+          <div class="resource-content">
+            <span class="resource-num">03</span>
+            <h3 class="resource-title">Faith, Quran & Learning</h3>
+            <p class="resource-subhead">Untuk kamu yang ingin mendekat kepada Allah melalui karya, pembelajaran, dan kehidupan yang lebih bermakna.</p>
+            <p class="resource-desc">
+              Koleksi program Tahfidz Online Academy, e-book dan materi pembelajaran, karya ATHAR, serta renungan, dan Islamic lifestyle untuk menemani perjalanan kehidupan sehari-hari.
+            </p>
+            <a href="faith-quran-landing.html" class="btn-read-more">Read More &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WHO IS SAN MALIQUE -->
+    <div class="about-section" id="about">
+      <h2>Who is San Malique?</h2>
+      <img src="images/hero.jpg" alt="San Malique" class="about-img">
+      
+      <div class="about-text">
+        <h3 style="font-family: 'Newsreader', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 10px;">Assalamu 'alaikum.</h3>
+        <p><strong>I'm San Malique.</strong></p>
+        <p>Entrepreneur, strategist, and founder — building businesses, products, and communities around faith, the Qur'an, and a more portable way of life.</p>
+        <p>Lebih dari 10 tahun, saya banyak <em>slow living</em> dan tinggal lama di berbagai negara, menjalani berbagai <em>digital work</em>, belajar dan mengajar Al-Qur'an, menulis buku, dan menjalani berbagai fase kehidupan yang ikut membentuk cara saya melihat dunia.</p>
+        <p>Saya pernah tinggal lama di Haramain, Eropa, Central Asia, Oman, Jordan, Turki, dan beberapa negara lainnya. Selama perjalanan itu, saya membangun bisnis, membuat produk digital, mengajar Al-Qur'an, menulis buku, dan terus belajar bagaimana membawa iman dan Al-Qur'an ke berbagai negara yang saya tinggali.</p>
+        <p>Saya ingin menjalani kehidupan yang saya desain sendiri dan Allah izinkan. Alhamdulillah.</p>
+        <p>Perjalanan itu kemudian melahirkan beberapa karya, brand, dan project yang dari dulu sampai sekarang terus Allah titipkan kepada saya, termasuk Tahfidz Online Academy, Yalla Hajj, Isya Indonesia, ATHAR, sebuah project untuk Muslim creatives, dan San Malique.</p>
+        <p>Masing-masing lahir dari bagian perjalanan yang berbeda.</p>
+        <p>Dan perjalanan ini masih terus berkembang.</p>
+        <p>Ada beberapa hal baru yang sedang saya bangun, termasuk sebuah project tentang <em>portable income</em> — tentang bagaimana membangun sumber penghasilan yang bisa ikut bergerak bersama kehidupan kita, tanpa harus selalu terikat pada satu tempat.</p>
+        <p>San Malique adalah tempat saya menyimpan catatan dari semuanya:</p>
+        <ul class="about-list">
+          <li>Tentang iman.</li>
+          <li>Tentang Al-Qur'an.</li>
+          <li>Tentang kehidupan.</li>
+          <li>Tentang ma'isyah.</li>
+          <li>Tentang pekerjaan dan membangun sesuatu.</li>
+          <li>Tentang perjalanan.</li>
+          <li>Dan tentang bagaimana membangun kehidupan yang bisa terus berjalan, di mana pun kita berada.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 SAN MALIQUE. All rights reserved.
+  </footer>
+
+</body>
+</html>
