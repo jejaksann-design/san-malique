@@ -188,6 +188,35 @@
       flex-grow: 1;
     }
 
+    .card-price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card-price-strike {
+      text-decoration: line-through;
+      color: #999999;
+      font-size: 0.85rem;
+    }
+
+    .card-price-current {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-main);
+    }
+
+    .badge-quota {
+      background: #a31c1c;
+      color: #ffffff;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      margin-left: auto;
+    }
+
     .btn-inventory-cta {
       display: inline-block;
       align-self: flex-start;
@@ -203,6 +232,11 @@
 
     .btn-inventory-cta:hover {
       opacity: 0.9;
+    }
+
+    .btn-vip-gold {
+      background-color: var(--accent-gold);
+      color: #ffffff;
     }
 
     footer {
@@ -295,18 +329,42 @@
         </div>
       </div>
 
-      <!-- ITEM 4: LIVE SESSION NYARI CUAN -->
+      <!-- ITEM 4: LIVE SESSION NYARI CUAN - REGULER -->
       <div class="inventory-card">
-        <a href="live-session-nyari-cuan.html">
-          <img src="images/live nyari cuan/live-nyari-cuan1.jpeg" alt="Live Session Nyari Cuan">
+        <a href="https://lynk.id/jejaksan/jk4myq201q5j" target="_blank" rel="noopener">
+          <img src="images/live-nyari-cuan.jpeg" alt="Live Session Nyari Cuan Reguler">
         </a>
         <div class="inventory-card-content">
-          <span class="inventory-tag">LIVE MENTORING</span>
-          <h3 class="inventory-card-title">Live Session: Nyari Cuan dari Negara Mana Aja</h3>
+          <span class="inventory-tag">LIVE SESSION &middot; REGULER</span>
+          <h3 class="inventory-card-title">Nyari Cuan dari Negara Mana Aja</h3>
           <p class="inventory-card-desc">
-            Sesi mentoring interaktif, bedah strategi langsung, dan penyusunan peta jalan (roadmap) portable income bersama San Malique.
+            Live session 5 modul untuk membangun penghasilan digital portable: Content Creation, Writing, Digital Product, Monetization, dan Remote Work.
           </p>
-          <a href="live-session-nyari-cuan.html" class="btn-inventory-cta">Ikuti Live Session &rarr;</a>
+          <div class="card-price-row">
+            <span class="card-price-strike">Rp149.000</span>
+            <span class="card-price-current">Rp99.000</span>
+          </div>
+          <a href="https://lynk.id/jejaksan/jk4myq201q5j" target="_blank" rel="noopener" class="btn-inventory-cta">Daftar Reguler &rarr;</a>
+        </div>
+      </div>
+
+      <!-- ITEM 5: LIVE SESSION NYARI CUAN - VIP -->
+      <div class="inventory-card" style="border: 1px solid var(--accent-gold);">
+        <a href="live-session-vip.html">
+          <img src="images/live-nyari-cuan-vip.jpeg" alt="Live Session Nyari Cuan VIP">
+        </a>
+        <div class="inventory-card-content">
+          <span class="inventory-tag" style="color: var(--accent-gold);">LIVE SESSION &amp; MENTORING &middot; VIP</span>
+          <h3 class="inventory-card-title">Program Pendampingan VIP (5 Pekan)</h3>
+          <p class="inventory-card-desc">
+            Materi live session + mentoring 5 pekan di grup WA, feedback voice note langsung, workbook, dan pendampingan sampai ada hasil.
+          </p>
+          <div class="card-price-row">
+            <span class="card-price-strike">Rp799.000</span>
+            <span class="card-price-current" style="color: var(--accent-gold);">Rp599.000</span>
+            <span class="badge-quota">Kuota Terbatas</span>
+          </div>
+          <a href="live-session-vip.html" class="btn-inventory-cta btn-vip-gold">Lihat Detail &amp; Daftar VIP &rarr;</a>
         </div>
       </div>
 
