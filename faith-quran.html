@@ -119,6 +119,27 @@
       padding-bottom: 0;
     }
 
+    /* FEATURED (produk unggulan di dalam brand) */
+    .featured {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1.6rem;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: #ffffff;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .featured:hover { border-color: var(--accent-gold); transform: translateY(-2px); }
+    .featured img { width: 72px; height: 102px; object-fit: cover; border-radius: 6px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .featured .f-tag { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; }
+    .featured .f-title { font-family: 'Newsreader', serif; font-size: 1.3rem; line-height: 1.2; margin: 0.15rem 0 0.25rem; }
+    .featured .f-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.45; }
+    .featured .f-link { font-size: 0.85rem; color: var(--btn-gold); font-weight: 600; margin-top: 0.35rem; display: inline-block; }
+
     @media (max-width: 768px) {
       .item-row {
         grid-template-columns: 1fr;
@@ -220,6 +241,16 @@
         <h2>ATHAR</h2>
         <p>Koleksi produk karya ATHAR, materi pembelajaran bermakna, serta islamic lifestyle items yang dikurasi khusus untuk menemani perjalanan harimu.</p>
         <a href="https://lynk.id/theathar" target="_blank" rel="noopener" class="item-btn">Kunjungi Etalase ATHAR →</a>
+
+        <a href="daily-muslim-journal.html" class="featured">
+          <img src="daily-muslim-journal.jpg" alt="Daily Muslim Journal">
+          <div>
+            <div class="f-tag">Baru dari ATHAR</div>
+            <div class="f-title">Daily Muslim Journal</div>
+            <div class="f-desc">30 hari renungan, doa &amp; amalan harian, plus Daily Tracker di HP.</div>
+            <span class="f-link">Lihat detail →</span>
+          </div>
+        </a>
       </div>
     </article>
 
