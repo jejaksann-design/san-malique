@@ -132,6 +132,23 @@ nav.tabs button.on{color:var(--ink);font-weight:600}
 .jgrid button small{display:block;font-weight:400;font-size:10.5px;color:var(--muted);margin-top:2px}
 .jgrid button.done{background:#f1f5ef;border-color:#bfd1bf;color:var(--green)}
 nav.tabs button{font-size:11px}
+.gi{padding:14px 0;border-bottom:1px solid var(--line)}
+.gi:last-child{border-bottom:0}
+.gi b{font-size:15.5px}
+.gi .meta{font-size:12.5px;color:var(--muted);margin-top:2px}
+.gbar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin:10px 0 8px}
+.gbar i{display:block;height:100%;background:var(--green)}
+.gact{display:flex;gap:8px;flex-wrap:wrap}
+.gact button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 12px;font:inherit;font-size:12.5px;color:var(--ink)}
+.vb{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.vc{position:relative;border-radius:16px;overflow:hidden;background:var(--soft);border:1px solid var(--line);aspect-ratio:3/4;cursor:pointer}
+.vc img{width:100%;height:100%;object-fit:cover;display:block}
+.vc .ph{display:flex;align-items:center;justify-content:center;height:100%;font-size:34px;color:var(--gold)}
+.vc .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 10px;background:linear-gradient(transparent,rgba(20,28,20,.82));color:#fff}
+.vc .cap b{display:block;font-size:14px;line-height:1.3}
+.vc .cap span{font-size:11px;opacity:.85}
+.vc.ok::after{content:"✓ Alhamdulillah";position:absolute;top:10px;left:10px;background:var(--green);color:#fff;font-size:11px;padding:4px 9px;border-radius:99px}
+.prev{width:100%;max-height:260px;object-fit:cover;border-radius:14px;margin-top:10px;display:block}
 footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
 </style>
 </head>
@@ -174,9 +191,24 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
     <div class="src" id="afS"></div>
   </div>
 </section>
+<section class="view" id="v-goal">
+  <div class="eyebrow">ATHAR · Goal</div>
+  <h1 style="margin-bottom:6px">Goal & Impian</h1>
+  <div class="tagline">Tulis targetmu, sertakan doa, lalu jalani ikhtiarnya. Hasilnya kita serahkan ke Allah.</div>
+  <div class="card">
+    <div class="row"><h2>Goal Ibadah</h2><button class="pill" id="gAddI">+ Tambah</button></div>
+    <div class="hint" style="margin-top:6px">Contoh: Istiqamah tahajjud 30 hari. Hubungkan ke amalan di tracker supaya progresnya terhitung otomatis.</div>
+    <div id="gIb"></div>
+  </div>
+  <div class="card">
+    <div class="row"><h2>Goal Hidup</h2><button class="pill" id="gAddH">+ Tambah</button></div>
+    <div class="hint" style="margin-top:6px">Impian yang kamu doakan dan ikhtiarkan. Tambahkan foto supaya selalu teringat, misalnya umrah bareng keluarga.</div>
+    <div class="vb" id="gHd"></div>
+  </div>
+</section>
 <section class="view" id="v-cal">
-  <div class="eyebrow">ATHAR · Kalender</div>
-  <h1 style="margin-bottom:6px">Jejak Bulan Ini</h1>
+  <div class="eyebrow">ATHAR · Jejak</div>
+  <h1 style="margin-bottom:6px">Jejak Ibadahmu</h1>
 
   <div class="tagline">Warna makin tua, makin lengkap amalan hari itu. Tap tanggal untuk membukanya.</div>
   <div class="card">
@@ -188,12 +220,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
     </div>
     <div class="cal" id="cal"></div>
   </div>
-</section>
-<section class="view" id="v-rekap">
-  <div class="eyebrow">ATHAR · Rekap</div>
-  <h1 style="margin-bottom:6px">Lihat Perjalananmu</h1>
-
-  <div class="tagline">Bukan untuk menghakimi diri, tapi untuk tahu mana yang perlu dijaga.</div>
   <div class="card">
     <h2>Rekap</h2>
     <div class="seg" id="seg"><button data-r="7">7 hari</button><button data-r="30" class="on">30 hari</button><button data-r="90">90 hari</button></div>
@@ -205,6 +231,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
     <div id="per" style="margin-top:14px"></div>
   </div>
 </section>
+
 <section class="view" id="v-quran">
   <div class="eyebrow">ATHAR · Al-Qur'an</div>
   <h1 style="margin-bottom:6px" id="qTitle">Al-Qur'an 30 Juz</h1>
@@ -226,8 +253,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
 </div>
 <nav class="tabs">
   <button class="on" data-v="today"><b>◉</b>Hari Ini</button>
-  <button data-v="cal"><b>▦</b>Kalender</button>
-  <button data-v="rekap"><b>◔</b>Rekap</button>
+  <button data-v="goal"><b>✦</b>Goal</button>
+  <button data-v="cal"><b>▦</b>Jejak</button>
   <button data-v="quran"><b>۞</b>Qur'an</button>
   <button data-v="more"><b>☰</b>Lainnya</button>
 </nav>
@@ -312,12 +339,12 @@ function load(){
   var d=null;try{d=JSON.parse(localStorage.getItem(KEY));}catch(e){}
   if(!d||typeof d!=="object")d={};
   d.days=d.days||{};d.juz=d.juz||{};d.khatam=d.khatam||0;d.start=d.start||"";d.name=d.name||"";
-  d.target=d.target||0;d.on=d.on||{};d.custom=Array.isArray(d.custom)?d.custom:[];
+  d.target=d.target||0;d.goals=d.goals||{ib:[],hd:[]};d.on=d.on||{};d.custom=Array.isArray(d.custom)?d.custom:[];
   ORDER.forEach(function(id){if(typeof d.on[id]!=="boolean")d.on[id]=!!BYID[id].on;});
   return d;
 }
 var S=load();
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){toast("Gagal menyimpan. Coba Backup.");}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){toast("Penyimpanan HP penuh. Hapus beberapa foto impian, lalu Backup.");}}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function pad(n){return (n<10?"0":"")+n;}
 function ymd(t){return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());}
@@ -557,9 +584,68 @@ function openJuz(n){
     };});
   }).catch(function(){box.innerHTML='<button class="pill" id="qBack">‹ Semua juz</button><div class="card">Juz belum bisa dimuat. Pastikan HP terhubung ke internet, lalu coba lagi.</div>';qBackBtn();});
 }
+
+/* ---------- GOAL ---------- */
+function gid(){return "g"+Date.now()+Math.floor(Math.random()*1000);}
+function goalProgress(g){
+  if(!g.link)return g.count||0;
+  var st=parse(g.start),n=0;
+  for(var d=new Date(st);d<=today;d=add(d,1)){var dd=S.days[ymd(d)];if(dd&&dd.a){var v=dd.a[g.link];var it=BYID[g.link];if(it&&it.type==="count"?(v||0)>=it.max:v===1)n++;}}
+  return n;
+}
+function renderGoals(){
+  S.goals=S.goals||{ib:[],hd:[]};
+  var b=document.getElementById("gIb");
+  if(!S.goals.ib.length)b.innerHTML='<div class="hint" style="margin-top:12px">Belum ada goal ibadah.</div>';
+  else{b.innerHTML="";S.goals.ib.forEach(function(g,ix){
+    var p=goalProgress(g),pc=Math.min(100,Math.round(p/g.target*100)),el=document.createElement("div");el.className="gi";
+    el.innerHTML='<b>'+esc(g.title)+'</b><div class="meta">'+p+' / '+g.target+' hari'+(g.link&&BYID[g.link]?' · otomatis dari "'+esc(BYID[g.link].n)+'"':'')+(pc>=100?' · Alhamdulillah, tercapai!':'')+'</div><div class="gbar"><i style="width:'+pc+'%"></i></div><div class="gact">'+(g.link?'':'<button data-a="plus">+1 hari</button><button data-a="minus">−1</button>')+'<button data-a="edit">Ubah</button><button data-a="del">Hapus</button></div>';
+    [].forEach.call(el.querySelectorAll("[data-a]"),function(btn){btn.onclick=function(){var a=btn.dataset.a;
+      if(a==="plus"){g.count=(g.count||0)+1;}else if(a==="minus"){g.count=Math.max(0,(g.count||0)-1);}
+      else if(a==="del"){if(!confirm('Hapus goal "'+g.title+'"?'))return;S.goals.ib.splice(ix,1);}
+      else if(a==="edit"){goalIbForm(g);return;}
+      save();renderGoals();};});
+    b.appendChild(el);});}
+  var h=document.getElementById("gHd");h.innerHTML="";
+
+  S.goals.hd.forEach(function(g){var c=document.createElement("div");c.className="vc"+(g.done?" ok":"");
+    c.innerHTML=(g.img?'<img src="'+g.img+'" alt="">':'<div class="ph">✦</div>')+'<div class="cap"><b>'+esc(g.title)+'</b><span>'+esc(g.when||"")+'</span></div>';
+    c.onclick=function(){goalHdForm(g);};h.appendChild(c);});
+  var add2=document.createElement("div");add2.className="vc";add2.innerHTML='<div class="ph">＋</div><div class="cap"><b>Tambah impian</b><span>Foto + doa</span></div>';add2.onclick=function(){goalHdForm(null);};h.appendChild(add2);
+}
+function goalIbForm(g){
+  var isNew=!g;g=g||{title:"",target:30,link:"",start:ymd(today),count:0};
+  var opts='<option value="">Hitung manual (+1 hari)</option>';ORDER.forEach(function(id){var it=BYID[id];opts+='<option value="'+id+'"'+(g.link===id?" selected":"")+'>'+esc(it.n)+(id==="shalawat1k"?" 1000x":"")+'</option>';});
+  openSheet('<h2>'+(isNew?"Goal Ibadah Baru":"Ubah Goal Ibadah")+'</h2><label>Nama goal</label><input type="text" id="gT" placeholder="Istiqamah tahajjud" value="'+esc(g.title)+'"><label>Target (hari)</label><input type="number" id="gN" inputmode="numeric" value="'+g.target+'"><label>Hubungkan ke amalan</label><select id="gL">'+opts+'</select><label>Mulai tanggal</label><input type="date" id="gS" value="'+esc(g.start)+'"><div class="two" style="margin-top:16px"><button class="btn ghost" id="gX">Batal</button><button class="btn" id="gOk">Simpan</button></div>');
+  document.getElementById("gX").onclick=closeSheet;
+  document.getElementById("gOk").onclick=function(){var tt=document.getElementById("gT").value.trim();if(!tt){toast("Isi nama goal dulu");return;}
+    g.title=tt;g.target=Math.max(1,+document.getElementById("gN").value||30);g.link=document.getElementById("gL").value;g.start=document.getElementById("gS").value||ymd(today);
+    if(g.link&&!S.on[g.link]){S.on[g.link]=true;toast("Amalan “"+BYID[g.link].n+"” dinyalakan di tracker");}
+    if(isNew){g.id=gid();S.goals.ib.push(g);}save();closeSheet();renderGoals();renderDay();};
+}
+function shrink(file,cb){
+  var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var m=900,w=im.width,h=im.height,s=Math.min(1,m/Math.max(w,h));var c=document.createElement("canvas");c.width=Math.round(w*s);c.height=Math.round(h*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",0.72));};im.onerror=function(){toast("Gambar tidak bisa dibaca");};im.src=r.result;};r.readAsDataURL(file);
+}
+function goalHdForm(g){
+  var isNew=!g;g=g||{title:"",when:"",doa:"",img:"",done:false};var img=g.img;
+  openSheet('<h2>'+(isNew?"Impian Baru":"Impianku")+'</h2>'+(img?'<img class="prev" id="gP" src="'+img+'">':'<img class="prev" id="gP" style="display:none">')+'<div class="two" style="margin-top:10px"><button class="btn ghost" id="gUp">'+(img?"Ganti foto":"Upload foto")+'</button><button class="btn ghost" id="gRm"'+(img?'':' style="display:none"')+'>Hapus foto</button></div><input type="file" id="gF" accept="image/*" hidden><label>Impian</label><input type="text" id="gT" placeholder="Umrah bareng keluarga" value="'+esc(g.title)+'"><label>Target waktu</label><input type="text" id="gW" placeholder="2027" value="'+esc(g.when)+'"><label>Doa & ikhtiar</label><textarea id="gD" placeholder="Doaku untuk impian ini, dan langkah kecil yang aku mulai...">'+esc(g.doa||"")+'</textarea><div class="tg" style="border:0"><div class="x"><b>Sudah tercapai</b><span>Alhamdulillah</span></div><button class="sw'+(g.done?" on":"")+'" id="gDone" aria-label="Sudah tercapai"></button></div><div class="two" style="margin-top:12px">'+(isNew?'<button class="btn ghost" id="gX">Batal</button>':'<button class="btn ghost" id="gDel">Hapus</button>')+'<button class="btn" id="gOk">Simpan</button></div>');
+  var done=!!g.done;
+  document.getElementById("gDone").onclick=function(){done=!done;this.classList.toggle("on",done);};
+  document.getElementById("gUp").onclick=function(){document.getElementById("gF").click();};
+  document.getElementById("gF").onchange=function(e){var f=e.target.files[0];if(!f)return;shrink(f,function(d){img=d;var pv=document.getElementById("gP");pv.src=d;pv.style.display="block";document.getElementById("gRm").style.display="";});};
+  document.getElementById("gRm").onclick=function(){img="";document.getElementById("gP").style.display="none";this.style.display="none";};
+  var x=document.getElementById("gX");if(x)x.onclick=closeSheet;
+  var dl=document.getElementById("gDel");if(dl)dl.onclick=function(){if(!confirm('Hapus impian "'+g.title+'"?'))return;S.goals.hd.splice(S.goals.hd.indexOf(g),1);save();closeSheet();renderGoals();};
+  document.getElementById("gOk").onclick=function(){var tt=document.getElementById("gT").value.trim();if(!tt){toast("Tulis impianmu dulu");return;}
+    g.title=tt;g.when=document.getElementById("gW").value.trim();g.doa=document.getElementById("gD").value;g.img=img;g.done=done;
+    if(isNew){if(S.goals.hd.length>=24){toast("Maksimal 24 impian");return;}g.id=gid();S.goals.hd.push(g);}
+    save();closeSheet();renderGoals();};
+}
+document.getElementById("gAddI").onclick=function(){goalIbForm(null);};
+document.getElementById("gAddH").onclick=function(){goalHdForm(null);};
 var tt;function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on");},2300);}
 function renderAll(){renderDay();renderCal();renderRekap();if(document.getElementById("v-more").classList.contains("on"))renderSettings();}
-function show(v){[].forEach.call(document.querySelectorAll(".view"),function(s){s.classList.toggle("on",s.id==="v-"+v);});[].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.classList.toggle("on",b.dataset.v===v);});if(v==="today")renderDay();if(v==="cal")renderCal();if(v==="rekap")renderRekap();if(v==="more"){renderJuz();renderSettings();}if(v==="quran")renderQuranHome();window.scrollTo(0,0);}
+function show(v){[].forEach.call(document.querySelectorAll(".view"),function(s){s.classList.toggle("on",s.id==="v-"+v);});[].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.classList.toggle("on",b.dataset.v===v);});if(v==="today")renderDay();if(v==="cal"){renderCal();renderRekap();}if(v==="goal")renderGoals();if(v==="more"){renderJuz();renderSettings();}if(v==="quran")renderQuranHome();window.scrollTo(0,0);}
 [].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.onclick=function(){show(b.dataset.v);};});
 document.addEventListener("visibilitychange",function(){if(document.hidden)return;var n=new Date();n.setHours(0,0,0,0);if(n.getTime()!==today.getTime()){var w=ymd(cur)===ymd(today);today=n;if(w)cur=new Date(n);renderAll();}});
 renderAll();
