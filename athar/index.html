@@ -649,6 +649,26 @@ function show(v){[].forEach.call(document.querySelectorAll(".view"),function(s){
 [].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.onclick=function(){show(b.dataset.v);};});
 document.addEventListener("visibilitychange",function(){if(document.hidden)return;var n=new Date();n.setHours(0,0,0,0);if(n.getTime()!==today.getTime()){var w=ymd(cur)===ymd(today);today=n;if(w)cur=new Date(n);renderAll();}});
 renderAll();
+/* ---------- SAMBUTAN PERTAMA ---------- */
+(function(){
+  var q=new URLSearchParams(location.search),qn=(q.get("nama")||q.get("name")||"").trim().slice(0,40);
+  if(qn&&!S.name){S.name=qn;save();renderDay();}
+  if(S.name||S.welcomed)return;
+  var bg=document.getElementById("bg");
+  openSheet('<div class="eyebrow" style="margin-top:0">ATHAR · Daily Muslim Journal</div>'
+    +'<h1 style="font-size:28px;margin:10px 0 6px">Assalamu\'alaikum 🤍</h1>'
+    +'<div class="tagline" style="margin-bottom:6px">Selamat datang di ATHAR Daily Tracker. Biar sapaannya lebih personal, siapa namamu?</div>'
+    +'<label>Nama panggilan</label><input type="text" id="wName" maxlength="40" placeholder="Nama kamu" autocomplete="given-name">'
+    +'<div class="tg" style="border:0;margin-top:8px"><div class="x"><b>Mulai 30 Hari hari ini</b><span>Prompt journal mengikuti urutan e-book</span></div><button class="sw on" id="wStart" aria-label="Mulai 30 hari hari ini"></button></div>'
+    +'<button class="btn" id="wGo" style="margin-top:14px">Bismillah, mulai</button>'
+    +'<div class="hint" style="text-align:center;margin-top:12px">Semua datamu tersimpan di HP ini saja.</div>');
+  var st=true,sw=document.getElementById("wStart");
+  sw.onclick=function(){st=!st;sw.classList.toggle("on",st);};
+  bg.onclick=null;
+  function go(){var v=document.getElementById("wName").value.trim();S.name=v;S.welcomed=true;if(st&&!S.start)S.start=ymd(today);save();bg.onclick=closeSheet;closeSheet();renderAll();toast(v?"Ahlan, "+v+". Bismillah.":"Bismillah, selamat memulai.");}
+  document.getElementById("wGo").onclick=go;
+  document.getElementById("wName").addEventListener("keydown",function(e){if(e.key==="Enter")go();});
+})();
 })();
 </script>
 </body>
