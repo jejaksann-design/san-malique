@@ -191,6 +191,22 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
     <div class="src" id="afS"></div>
   </div>
 </section>
+<section class="view" id="v-lock">
+  <div class="eyebrow">ATHAR · Fitur Pembeli</div>
+  <h1 style="margin-bottom:6px" id="lkTitle">Fitur ini untuk pembeli</h1>
+  <div class="tagline" id="lkSub"></div>
+  <div class="card">
+    <h2>Masukkan kode akses</h2>
+    <div class="hint" style="margin-top:6px">Kode akses ada di halaman Bonus e-book Daily Muslim Journal.</div>
+    <input type="text" id="lkCode" placeholder="Contoh: ATHAR-XXX-0000" autocapitalize="characters" autocomplete="off" style="margin-top:12px">
+    <button class="btn" id="lkGo" style="margin-top:12px">Buka fitur lengkap</button>
+  </div>
+  <div class="card">
+    <h2>Belum punya kodenya?</h2>
+    <div class="hint" style="margin-top:6px">Dapatkan e-book Daily Muslim Journal: 30 hari renungan, doa & amalan harian, plus akses penuh ke Goal & Impian, Jejak ibadah, dan Al-Qur'an 30 juz dengan tafsir.</div>
+    <a class="btn ghost" href="/daily-muslim-journal.html" style="display:block;text-align:center;text-decoration:none;margin-top:12px">Lihat Daily Muslim Journal →</a>
+  </div>
+</section>
 <section class="view" id="v-goal">
   <div class="eyebrow">ATHAR · Goal</div>
   <h1 style="margin-bottom:6px">Goal & Impian</h1>
@@ -512,7 +528,7 @@ function renderRekap(){
 
 /* ---------- PENGATURAN ---------- */
 function renderSettings(){
-  var h='<h2>Pengaturan & Amalan</h2><label>Nama panggilan</label><input type="text" id="sName" placeholder="Nama kamu" value="'+esc(S.name)+'">';
+  var h='<h2>Pengaturan & Amalan</h2>'+(S.unlocked?'<div class="badge" style="margin-top:10px">✓ Fitur lengkap aktif</div>':'<label>Kode akses pembeli</label><div class="two"><input type="text" id="sCode" placeholder="ATHAR-XXX-0000" autocapitalize="characters"><button class="btn" id="sCodeGo">Buka</button></div>')+'<label>Nama panggilan</label><input type="text" id="sName" placeholder="Nama kamu" value="'+esc(S.name)+'">';
   h+='<label>Target khatam Al-Qur\'an</label><select id="sTarget"><option value="0">Tanpa target</option><option value="30">Khatam 30 hari (1 juz/hari)</option><option value="60">Khatam 60 hari (½ juz/hari)</option><option value="90">Khatam 90 hari</option><option value="120">Khatam 120 hari</option><option value="15">Khatam 15 hari (2 juz/hari)</option></select>';
   h+='<label>Mulai 30 Hari (Hari 1 renungan e-book)</label><div class="two"><input type="date" id="sStart" value="'+esc(S.start)+'"><button class="btn ghost" id="sToday">Mulai hari ini</button></div>';
   CATALOG.forEach(function(g){h+='<div class="group">'+esc(g[0])+'</div>';g[1].forEach(function(it){h+='<div class="tg"><div class="x"><b>'+esc(it.n)+'</b><span>'+esc(it.s)+'</span></div><button class="sw'+(S.on[it.id]?" on":"")+'" data-t="'+it.id+'" aria-label="'+esc(it.n)+'"></button></div>';});});
@@ -524,6 +540,7 @@ function renderSettings(){
     r.querySelector(".del").onclick=function(){if(confirm('Hapus "'+c.n+'"?')){S.custom.splice(ix,1);save();cl();renderAll();}};w.appendChild(r);});}
   cl();
   [].forEach.call(document.querySelectorAll("[data-t]"),function(b){b.onclick=function(){var id=b.dataset.t;S.on[id]=!S.on[id];b.classList.toggle("on",S.on[id]);save();renderAll();};});
+  var scg=document.getElementById("sCodeGo");if(scg)scg.onclick=function(){tryCode(document.getElementById("sCode").value).then(function(ok){if(ok)renderSettings();});};
   document.getElementById("sTarget").value=String(S.target||0);
   document.getElementById("sTarget").onchange=function(e){S.target=+e.target.value;S.tStart=ymd(today);if(S.target)S.on.khatam=true;save();renderAll();toast(S.target?"Target khatam diatur: "+porsi():"Target dimatikan");};
   document.getElementById("sName").oninput=function(e){S.name=e.target.value.trim();save();renderDay();};
@@ -645,7 +662,31 @@ document.getElementById("gAddI").onclick=function(){goalIbForm(null);};
 document.getElementById("gAddH").onclick=function(){goalHdForm(null);};
 var tt;function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on");},2300);}
 function renderAll(){renderDay();renderCal();renderRekap();if(document.getElementById("v-more").classList.contains("on"))renderSettings();}
-function show(v){[].forEach.call(document.querySelectorAll(".view"),function(s){s.classList.toggle("on",s.id==="v-"+v);});[].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.classList.toggle("on",b.dataset.v===v);});if(v==="today")renderDay();if(v==="cal"){renderCal();renderRekap();}if(v==="goal")renderGoals();if(v==="more"){renderJuz();renderSettings();}if(v==="quran")renderQuranHome();window.scrollTo(0,0);}
+
+/* ---------- KODE AKSES ---------- */
+var CODE_HASHES=["489a82cf130d64e340ddfb69bafdbc648ded4318c1e81ef3cd4306a136fabf3e"];
+var PREMIUM={goal:["Goal & Impian","Susun goal ibadah dan simpan impian hidupmu lengkap dengan foto."],cal:["Jejak Ibadahmu","Kalender istiqamah, rekap 7/30/90 hari, dan statistik per amalan."],quran:["Al-Qur'an 30 Juz","Mushaf Utsmani, terjemahan Kemenag, dan tafsir di setiap ayat."]};
+var lockedTarget="goal";
+function normCode(s){return String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"");}
+function sha256hex(s){
+  if(window.crypto&&crypto.subtle&&window.TextEncoder){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2);}).join("");});}
+  return Promise.reject(0);
+}
+function tryCode(raw,silent){
+  var n=normCode(raw);if(!n){if(!silent)toast("Isi kode aksesnya dulu");return Promise.resolve(false);}
+  return sha256hex(n).then(function(h){
+    if(CODE_HASHES.indexOf(h)>=0){S.unlocked=true;save();if(!silent)toast("Alhamdulillah, fitur lengkap terbuka");return true;}
+    if(!silent)toast("Kode belum cocok. Cek lagi di halaman Bonus e-book");return false;
+  }).catch(function(){if(!silent)toast("Browser ini belum mendukung. Coba buka di Safari atau Chrome terbaru");return false;});
+}
+function renderLock(v){
+  lockedTarget=v;var f=PREMIUM[v]||PREMIUM.goal;
+  document.getElementById("lkTitle").textContent=f[0];
+  document.getElementById("lkSub").textContent=f[1]+" Fitur ini terbuka untuk pembeli Daily Muslim Journal.";
+}
+document.getElementById("lkGo").onclick=function(){tryCode(document.getElementById("lkCode").value).then(function(ok){if(ok)show(lockedTarget);});};
+document.getElementById("lkCode").addEventListener("keydown",function(e){if(e.key==="Enter")document.getElementById("lkGo").click();});
+function show(v){if(PREMIUM[v]&&!S.unlocked){[].forEach.call(document.querySelectorAll(".view"),function(s){s.classList.toggle("on",s.id==="v-lock");});[].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.classList.toggle("on",b.dataset.v===v);});renderLock(v);window.scrollTo(0,0);return;}[].forEach.call(document.querySelectorAll(".view"),function(s){s.classList.toggle("on",s.id==="v-"+v);});[].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.classList.toggle("on",b.dataset.v===v);});if(v==="today")renderDay();if(v==="cal"){renderCal();renderRekap();}if(v==="goal")renderGoals();if(v==="more"){renderJuz();renderSettings();}if(v==="quran")renderQuranHome();window.scrollTo(0,0);}
 [].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.onclick=function(){show(b.dataset.v);};});
 document.addEventListener("visibilitychange",function(){if(document.hidden)return;var n=new Date();n.setHours(0,0,0,0);if(n.getTime()!==today.getTime()){var w=ymd(cur)===ymd(today);today=n;if(w)cur=new Date(n);renderAll();}});
 renderAll();
@@ -653,19 +694,21 @@ renderAll();
 (function(){
   var q=new URLSearchParams(location.search),qn=(q.get("nama")||q.get("name")||"").trim().slice(0,40);
   if(qn&&!S.name){S.name=qn;save();renderDay();}
+  var qk=q.get("kode")||q.get("code");if(qk&&!S.unlocked)tryCode(qk,true).then(function(ok){if(ok)toast("Fitur lengkap terbuka");});
   if(S.name||S.welcomed)return;
   var bg=document.getElementById("bg");
   openSheet('<div class="eyebrow" style="margin-top:0">ATHAR · Daily Muslim Journal</div>'
     +'<h1 style="font-size:28px;margin:10px 0 6px">Assalamu\'alaikum 🤍</h1>'
     +'<div class="tagline" style="margin-bottom:6px">Selamat datang di ATHAR Daily Tracker. Biar sapaannya lebih personal, siapa namamu?</div>'
     +'<label>Nama panggilan</label><input type="text" id="wName" maxlength="40" placeholder="Nama kamu" autocomplete="given-name">'
+    +'<label>Kode akses <span style="color:var(--gold)">(ada di halaman Bonus e-book)</span></label><input type="text" id="wCode" placeholder="ATHAR-XXX-0000" autocapitalize="characters" autocomplete="off">'
     +'<div class="tg" style="border:0;margin-top:8px"><div class="x"><b>Mulai 30 Hari hari ini</b><span>Prompt journal mengikuti urutan e-book</span></div><button class="sw on" id="wStart" aria-label="Mulai 30 hari hari ini"></button></div>'
     +'<button class="btn" id="wGo" style="margin-top:14px">Bismillah, mulai</button>'
     +'<div class="hint" style="text-align:center;margin-top:12px">Semua datamu tersimpan di HP ini saja.</div>');
   var st=true,sw=document.getElementById("wStart");
   sw.onclick=function(){st=!st;sw.classList.toggle("on",st);};
   bg.onclick=null;
-  function go(){var v=document.getElementById("wName").value.trim();S.name=v;S.welcomed=true;if(st&&!S.start)S.start=ymd(today);save();bg.onclick=closeSheet;closeSheet();renderAll();toast(v?"Ahlan, "+v+". Bismillah.":"Bismillah, selamat memulai.");}
+  function go(){var c=document.getElementById("wCode").value;if(c&&!S.unlocked){tryCode(c,true).then(function(ok){if(!ok)toast("Kode belum cocok. Kamu tetap bisa pakai checklist harian");});}var v=document.getElementById("wName").value.trim();S.name=v;S.welcomed=true;if(st&&!S.start)S.start=ymd(today);save();bg.onclick=closeSheet;closeSheet();renderAll();toast(v?"Ahlan, "+v+". Bismillah.":"Bismillah, selamat memulai.");}
   document.getElementById("wGo").onclick=go;
   document.getElementById("wName").addEventListener("keydown",function(e){if(e.key==="Enter")go();});
 })();
