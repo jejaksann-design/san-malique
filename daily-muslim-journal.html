@@ -3,248 +3,321 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Muslim Journal | ATHAR · San Malique</title>
-  <meta name="description" content="Teman 30 hari untuk menjaga istiqamah: renungan, journaling, doa & dzikir harian, plus ATHAR Daily Tracker di HP.">
-  <meta property="og:title" content="Daily Muslim Journal — ATHAR">
-  <meta property="og:description" content="30 hari renungan, doa & amalan harian, plus Daily Tracker di HP.">
-  <meta property="og:image" content="https://sanmalique.com/daily-muslim-journal.jpg">
+  <title>ATHAR — Daily Muslim Journal | San Malique</title>
+  <meta name="description" content="Teman 30 hari untuk menjaga istiqamah: renungan Islami, doa, amalan harian, dan Daily Tracker di HP.">
+  <meta property="og:title" content="ATHAR — Daily Muslim Journal">
+  <meta property="og:description" content="Pernah semangat ibadah di hari pertama, terus hilang di hari kelima? Teman 30 hari untuk menjaga istiqamah.">
+  <meta property="og:image" content="https://sanmalique.com/images/dmj-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Amiri&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
     :root {
-      --bg-light: #fcfbf7;
-      --bg-warm: #f5f0e6;
-      --text-main: #111111;
-      --text-muted: #555555;
-      --border-color: #e5e5e0;
-      --accent-gold: #b58d3d;
-      --btn-gold: #a37c3f;
-      --green: #2f5d3a;
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --accent-gold: #d4af37;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --border-color: #262626;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg-light); color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.65; }
-    a { color: inherit; }
 
-    header { display: flex; justify-content: space-between; align-items: center; padding: 2.2rem 5%; max-width: 1100px; margin: 0 auto; }
-    .brand-logo { font-family: 'Newsreader', serif; font-size: 1.5rem; font-weight: 500; text-decoration: none; letter-spacing: -0.5px; }
-    .back-link { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
     .back-link:hover { color: var(--text-main); }
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
-    .tag { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; }
-    h1, h2, h3 { font-family: 'Newsreader', serif; font-weight: 400; letter-spacing: -0.5px; }
-    em { font-family: 'Newsreader', serif; }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
 
-    /* HERO */
-    .hero { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; padding: 2rem 0 5rem; }
-    .hero-cover img { width: 100%; max-width: 420px; display: block; margin: 0 auto; border-radius: 10px; box-shadow: 0 24px 60px rgba(40, 30, 10, 0.22); }
-    .hero h1 { font-size: 3.4rem; line-height: 1.05; margin: 0.8rem 0 1rem; }
-    .hero .sub { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.6rem; }
-    .hook { font-family: 'Newsreader', serif; font-style: italic; font-size: 1.35rem; line-height: 1.45; border-left: 2px solid var(--accent-gold); padding-left: 1.1rem; margin-bottom: 1.8rem; }
-    .btn { display: inline-block; background: var(--btn-gold); color: #fff; text-decoration: none; padding: 0.95rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.98rem; transition: background 0.2s ease, transform 0.2s ease; }
-    .btn:hover { background: #8a6833; transform: translateY(-2px); }
-    .btn.ghost { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
-    .btn.ghost:hover { background: #fff; }
-    .btn-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .note { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.9rem; }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--accent-gold);
+      line-height: 1.25;
+    }
 
-    section.block { padding: 5rem 0; border-top: 1px solid var(--border-color); }
-    .block-head { max-width: 640px; margin-bottom: 2.6rem; }
-    .block-head h2 { font-size: 2.4rem; line-height: 1.15; margin-top: 0.6rem; }
-    .block-head p { color: var(--text-muted); margin-top: 0.8rem; }
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
 
-    /* STORY */
-    .story { max-width: 680px; font-size: 1.05rem; }
-    .story p { margin-bottom: 1.1rem; }
-    .ar { font-family: 'Amiri', serif; direction: rtl; font-size: 1.9rem; line-height: 1.8; color: var(--green); margin: 1.6rem 0 0.4rem; }
-    .src { font-size: 0.85rem; color: var(--accent-gold); font-weight: 600; }
+    /* Styling Swiper Gallery */
+    .swiper-container-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      position: relative;
+      background: var(--card-bg);
+    }
 
-    /* ISI */
-    .grid4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-    .feat { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 1.8rem; }
-    .feat .num { font-family: 'Newsreader', serif; color: var(--accent-gold); font-size: 1.4rem; }
-    .feat h3 { font-size: 1.5rem; margin: 0.3rem 0 0.5rem; }
-    .feat p { color: var(--text-muted); font-size: 0.95rem; }
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
 
-    /* TRACKER */
-    .tracker { background: var(--bg-warm); border-radius: 22px; padding: 4rem 3rem; }
-    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.4rem; }
-    .shot { text-align: center; }
-    .shot img { width: 100%; border-radius: 22px; border: 6px solid #1f1f1f; box-shadow: 0 18px 40px rgba(0,0,0,0.15); display: block; }
-    .shot b { display: block; margin-top: 1rem; font-family: 'Newsreader', serif; font-size: 1.2rem; font-weight: 500; }
-    .shot span { font-size: 0.88rem; color: var(--text-muted); }
-    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-    .chip { background: #fff; border: 1px solid var(--border-color); border-radius: 999px; padding: 0.45rem 0.95rem; font-size: 0.86rem; }
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--accent-gold) !important;
+      background: rgba(10, 10, 10, 0.6);
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-color);
+    }
 
-    /* UNTUK */
-    .list { max-width: 680px; list-style: none; }
-    .list li { padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-size: 1.05rem; display: flex; gap: 0.9rem; }
-    .list li::before { content: "◆"; color: var(--accent-gold); font-size: 0.7rem; padding-top: 0.45rem; }
+    .swiper-button-next::after, .swiper-button-prev::after {
+      font-size: 16px !important;
+      font-weight: bold;
+    }
 
-    /* PENULIS */
-    .author { display: grid; grid-template-columns: 0.4fr 1fr; gap: 3rem; align-items: start; }
-    .author h3 { font-size: 2rem; }
-    .author p { color: var(--text-muted); margin-bottom: 1rem; }
+    .swiper-pagination-bullet { background: var(--text-muted) !important; }
+    .swiper-pagination-bullet-active { background: var(--accent-gold) !important; }
 
-    /* FAQ */
-    details { border-bottom: 1px solid var(--border-color); padding: 1.2rem 0; max-width: 760px; }
-    summary { cursor: pointer; font-weight: 500; font-size: 1.02rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
-    summary::after { content: "+"; color: var(--accent-gold); font-size: 1.3rem; line-height: 1; }
-    details[open] summary::after { content: "–"; }
-    details p { color: var(--text-muted); margin-top: 0.7rem; }
+    .story-card {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
 
-    /* CTA */
-    .cta { text-align: center; padding: 6rem 0 5rem; border-top: 1px solid var(--border-color); }
-    .cta h2 { font-size: 2.8rem; line-height: 1.1; margin: 0.8rem auto 1rem; max-width: 640px; }
-    .cta p { color: var(--text-muted); margin-bottom: 2rem; }
-    footer { text-align: center; padding: 2.5rem 0 3rem; font-size: 0.82rem; color: var(--text-muted); letter-spacing: 1px; }
+    .story-card p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
 
-    @media (max-width: 768px) {
-      header { padding: 1.6rem 5%; }
-      .hero { grid-template-columns: 1fr; gap: 2.4rem; padding-top: 0.5rem; }
-      .hero-cover img { max-width: 300px; }
-      .hero h1 { font-size: 2.5rem; }
-      .hook { font-size: 1.2rem; }
-      .block-head h2 { font-size: 1.9rem; }
-      .grid4 { grid-template-columns: 1fr; }
-      .tracker { padding: 2.6rem 1.4rem; border-radius: 18px; }
-      .shots { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
-      .author { grid-template-columns: 1fr; gap: 1rem; }
-      .cta h2 { font-size: 2.1rem; }
-      .btn { width: 100%; text-align: center; }
+    .story-card p:last-child { margin-bottom: 0; }
+
+    .story-card .hook {
+      color: var(--text-main);
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .learn-box {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 35px;
+    }
+
+    .learn-box h2 {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .learn-list { list-style: none; }
+
+    .learn-list li {
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 28px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .learn-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: bold;
+    }
+
+    .learn-list li strong { color: var(--text-main); }
+
+    .closing {
+      margin-top: 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .price-box {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--accent-gold);
+      margin-bottom: 30px;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 1.1rem;
+    }
+
+    .price-current {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 4px 0 6px 0;
+    }
+
+    .price-note {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 24px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      transition: opacity 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-buy:hover { opacity: 0.9; }
+
+    .author {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .author strong { color: var(--accent-gold); }
+
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="brand-logo">San Malique</a>
-    <a href="faith-quran.html" class="back-link">← Faith, Quran &amp; Learning</a>
-  </header>
+  <div class="container">
+    <a href="faith-quran.html" class="back-link">← Faith, Quran &amp; Learning</a><br>
 
-  <main class="wrap">
+    <span class="badge">ATHAR · E-Book + Daily Tracker</span>
+    <h1>ATHAR — Daily Muslim Journal</h1>
+    <p class="subtitle">Renungan Islami · Doa · Amalan Harian</p>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-cover">
-        <img src="daily-muslim-journal.jpg" alt="Cover Daily Muslim Journal">
-      </div>
-      <div>
-        <div class="tag">ATHAR · E-book + Daily Tracker</div>
-        <h1>Daily Muslim Journal</h1>
-        <p class="sub">Renungan Islami · Doa · Amalan Harian</p>
-        <p class="hook">Pernah semangat ibadah di hari pertama, terus hilang di hari kelima? Kamu nggak sendirian. Dan kamu nggak harus mulai dari nol lagi.</p>
-        <div class="btn-row">
-          <a class="btn buy" href="https://lynk.id/theathar" target="_blank" rel="noopener">Ambil Sekarang →</a>
-          <a class="btn ghost" href="#tracker">Lihat Tracker-nya</a>
+    <!-- Slider Gambar Produk -->
+    <div class="swiper swiper-container-box">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/dmj-cover.jpg" alt="Cover Daily Muslim Journal dan ATHAR Daily Tracker">
         </div>
-        <p class="note">E-book PDF 54 halaman · Bonus ATHAR Daily Tracker di HP</p>
-      </div>
-    </section>
-
-    <!-- STORY -->
-    <section class="block">
-      <div class="block-head">
-        <div class="tag">Kenapa journal ini ada</div>
-        <h2>Istiqamah itu bukan soal kuat. Tapi soal kecil yang dijaga.</h2>
-      </div>
-      <div class="story">
-        <p>Kita sering bikin target ibadah yang besar. Alarm tahajjud dipasang, target tilawah ditulis, dzikir pagi-petang mau dijaga semua. Lalu hari-hari sibuk datang, satu amalan bolong, dan muncul suara kecil: <em>"Ah, aku memang nggak bisa istiqamah."</em></p>
-        <p>Daily Muslim Journal lahir dari kebiasaan sederhana: menjaga sedikit amalan, setiap hari, dengan jujur. Ditemani renungan yang hangat, doa yang jelas sumbernya, dan tracker yang bikin kamu bisa lihat jejakmu sendiri.</p>
-        <p>Karena Nabi ﷺ bersabda:</p>
-        <p style="font-family:'Newsreader',serif;font-size:1.35rem;font-style:italic;color:var(--text-main);margin-bottom:0.4rem">"Amalan yang paling dicintai Allah adalah yang paling kontinu, walaupun sedikit."</p>
-        <p class="src">HR. Bukhari 6464, Muslim 783</p>
-      </div>
-    </section>
-
-    <!-- ISI -->
-    <section class="block">
-      <div class="block-head">
-        <div class="tag">Di dalamnya</div>
-        <h2>Satu journal, untuk satu bulan yang lebih dekat dengan Allah.</h2>
-      </div>
-      <div class="grid4">
-        <div class="feat"><div class="num">01</div><h3>30 Hari Renungan</h3><p>Ayat, hadits, dan kisah perjuangan Nabi ﷺ yang dekat dengan hidup kita sekarang. Tiap hari ada pertanyaan journaling dan satu amalan fokus.</p></div>
-        <div class="feat"><div class="num">02</div><h3>Doa &amp; Dzikir Harian</h3><p>Dzikir setelah shalat, pagi dan petang, doa teman ikhtiar, dan amalan malam. Lengkap dengan teks Arab, latin, terjemahan, dan sumbernya.</p></div>
-        <div class="feat"><div class="num">03</div><h3>Doa + Afirmasi</h3><p>12 afirmasi yang setiap kalimatnya bersandar pada ayat dan hadits. Husnuzhan kepada Allah, dijalani bareng ikhtiar.</p></div>
-        <div class="feat"><div class="num">04</div><h3>Template Journal</h3><p>Journal harian pagi &amp; malam, Catatan Doa, Review Pekanan, dan Afirmasi Pribadiku. Bisa dicetak atau dipakai di GoodNotes.</p></div>
-      </div>
-    </section>
-
-    <!-- TRACKER -->
-    <section class="block" id="tracker">
-      <div class="tracker">
-        <div class="block-head" style="margin-bottom:0">
-          <div class="tag">Bonus</div>
-          <h2>ATHAR Daily Tracker, langsung dari HP.</h2>
-          <p>Tap untuk centang amalan, lihat jejak ibadahmu sebulan, tulis goal dan impianmu, dan baca Al-Qur'an 30 juz lengkap dengan terjemahan dan tafsir. Bisa dipasang di layar HP seperti aplikasi.</p>
-        </div>
-        <div class="shots">
-          <div class="shot"><img src="images/dmj-tracker-today.jpg" alt="Tampilan Hari Ini" loading="lazy"><b>Hari Ini</b><span>Centang amalan harian, journal, dan afirmasi</span></div>
-          <div class="shot"><img src="images/dmj-tracker-jejak.jpg" alt="Tampilan Jejak" loading="lazy"><b>Jejak</b><span>Kalender, rekap, dan streak istiqamahmu</span></div>
-          <div class="shot"><img src="images/dmj-tracker-goal.jpg" alt="Tampilan Goal" loading="lazy"><b>Goal &amp; Impian</b><span>Goal ibadah dan impian hidup, lengkap dengan foto</span></div>
-        </div>
-        <div class="chips">
-          <span class="chip">40+ amalan, aktifkan sesukamu</span>
-          <span class="chip">Ziyadah &amp; muroja'ah hafalan</span>
-          <span class="chip">Tilawah per juz &amp; target khatam</span>
-          <span class="chip">Al-Qur'an 30 juz + tafsir</span>
-          <span class="chip">Puasa sunnah otomatis</span>
-          <span class="chip">Baca buku &amp; kajian</span>
-          <span class="chip">Tanggal Hijriah</span>
-          <span class="chip">Backup &amp; restore</span>
+        <div class="swiper-slide">
+          <img src="images/dmj-slide2.jpg" alt="Fitur ATHAR Daily Tracker: Goal, Al-Qur'an 30 Juz, Jurnal dan Afirmasi">
         </div>
       </div>
-    </section>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
 
-    <!-- UNTUK -->
-    <section class="block">
-      <div class="block-head">
-        <div class="tag">Untuk siapa</div>
-        <h2>Cocok untuk kamu yang...</h2>
-      </div>
-      <ul class="list">
-        <li>Sering semangat di awal, lalu futur di tengah jalan</li>
-        <li>Pengen ibadah yang terukur, tapi tetap santai dan nggak bikin capek</li>
-        <li>Lagi berjuang di dunia kerja atau usaha, dan butuh teman ikhtiar</li>
-        <li>Suka menulis, merenung, dan menyimpan jejak perjalanan iman</li>
+    <!-- Pengantar -->
+    <div class="story-card">
+      <p class="hook">Pernah semangat ibadah di hari pertama, terus hilang di hari kelima?</p>
+      <p>Kamu nggak sendirian. Dan kamu nggak harus mulai dari nol lagi.</p>
+      <p>Daily Muslim Journal adalah teman 30 hari untuk menjaga istiqamah.</p>
+      <p>ATHAR — Daily Muslim Journal hadir untuk menemani perjalanan spiritualmu melalui renungan Islami, kumpulan doa, panduan amalan harian, dan ruang untuk menjaga konsistensi ibadah.</p>
+      <p>Dilengkapi dengan Daily Tracker berbasis website yang bisa diakses melalui HP, ATHAR membantumu mencatat ibadah, menyusun target, dan merefleksikan keseharian dalam satu ruang digital.</p>
+    </div>
+
+    <!-- Fitur -->
+    <div class="learn-box">
+      <h2>Di Dalam ATHAR, Kamu Bisa Menemukan:</h2>
+      <ul class="learn-list">
+        <li><strong>Daily Ibadah Checklist</strong> — mencatat dan memantau amalan harian.</li>
+        <li><strong>Goal Ibadah</strong> — menyusun target ibadah dan memantau progresnya.</li>
+        <li><strong>Goal Hidup &amp; Impian</strong> — menyimpan impian yang ingin kamu doakan dan ikhtiarkan.</li>
+        <li><strong>Al-Qur'an 30 Juz</strong> — akses mushaf, terjemahan Kemenag, dan tafsir melalui website.</li>
+        <li><strong>Tracker Tilawah</strong> — mencatat bacaan per juz dan progres khatam.</li>
+        <li><strong>Journal Harian</strong> — ruang untuk menulis niat, rasa syukur, dan refleksi harian.</li>
+        <li><strong>Afirmasi Harian</strong> — pengingat Islami untuk menemani perjalananmu.</li>
       </ul>
-    </section>
+      <p class="closing">Semua dirancang dalam satu ekosistem digital yang bisa kamu akses melalui HP.</p>
+      <p class="closing" style="font-style: italic;">Semoga ATHAR menjadi teman dalam menjaga hubunganmu dengan Allah, merawat amalan harian, dan menghidupkan ikhtiar dalam keseharian.</p>
+    </div>
 
-    <!-- PENULIS -->
-    <section class="block">
-      <div class="author">
-        <div><div class="tag">Ditulis oleh</div><h3>San Malique</h3></div>
-        <div>
-          <p>Entrepreneur, strategist, dan founder yang membangun bisnis, produk, dan komunitas di seputar iman, Al-Qur'an, dan cara hidup yang lebih portable.</p>
-          <p>Lebih dari sepuluh tahun menjalani slow living dan tinggal lama di Arab Saudi (Haramain), Turki, Yordania, Oman, serta negara-negara di Eropa dan Asia Tengah. Selama itu ia terus mengajar Al-Qur'an, termasuk membangun pesantren tahfidz berbasis hybrid yang sudah berjalan lebih dari sepuluh tahun.</p>
-          <p>Daily Muslim Journal adalah bagian dari ATHAR, ruang untuk karya Islami yang reflektif. <em>What remains with you.</em></p>
-        </div>
-      </div>
-    </section>
+    <!-- Harga & Pembelian -->
+    <div class="price-box">
+      <p class="price-old">Rp149.000</p>
+      <p class="price-current">Rp79.000</p>
+      <p class="price-note">E-book PDF + akses ATHAR Daily Tracker</p>
+      <a href="https://lynk.id/theathar/l4m7g971n7qv" class="btn-buy" target="_blank" rel="noopener">Ambil Sekarang</a>
+    </div>
 
-    <!-- FAQ -->
-    <section class="block">
-      <div class="block-head"><div class="tag">Pertanyaan</div><h2>Yang sering ditanyakan</h2></div>
-      <details><summary>Formatnya apa? Bisa dibaca di HP?</summary><p>E-book berbentuk PDF, nyaman dibaca di HP, tablet, atau laptop. Bisa juga dicetak, atau dipakai di GoodNotes untuk menulis journal langsung di iPad.</p></details>
-      <details><summary>Bagaimana cara pakai tracker-nya?</summary><p>Di dalam e-book ada halaman bonus berisi QR code dan link. Buka di browser HP, lalu pilih "Add to Home Screen" supaya tampil seperti aplikasi. Nggak perlu daftar akun.</p></details>
-      <details><summary>Data tracker-ku aman?</summary><p>Semua catatanmu tersimpan di HP-mu sendiri, nggak dikirim ke server mana pun. Gunakan tombol Backup secara rutin, dan Restore kalau ganti HP.</p></details>
-      <details><summary>Apakah perlu internet?</summary><p>Tracker harian bisa dipakai seperti biasa. Untuk membuka Al-Qur'an 30 juz dan tafsirnya, HP perlu terhubung ke internet.</p></details>
-      <details><summary>Dalilnya bisa dipercaya?</summary><p>Setiap ayat dan hadits dicantumkan sumbernya (QS / HR + nomor), dan sudah melalui proses pemeriksaan dalil. Bagian renungan adalah refleksi penulis, ditandai terpisah dari teks dalil.</p></details>
-    </section>
+    <p class="author">Written by <strong>San Malique</strong></p>
 
-    <!-- CTA -->
-    <section class="cta">
-      <div class="tag">Daily Muslim Journal</div>
-      <h2>Nggak apa-apa sedikit. Yang penting istiqamah.</h2>
-      <p>E-book 54 halaman + ATHAR Daily Tracker</p>
-      <a class="btn buy" href="https://lynk.id/theathar" target="_blank" rel="noopener">Ambil Sekarang →</a>
-    </section>
+    <!-- Footer -->
+    <div class="footer">
+      &copy; San Malique · ATHAR — What Remains With You. All rights reserved.
+    </div>
 
-  </main>
+  </div>
 
-  <footer>ATHAR · WHAT REMAINS WITH YOU · SAN MALIQUE</footer>
-
+  <!-- Swiper JS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container-box', {
+      loop: true,
+      grabCursor: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+  </script>
 </body>
 </html>
