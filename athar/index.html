@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ATHAR Daily Tracker</title>
+<meta name="description" content="ATHAR · Daily Muslim Journal. Tracker ibadah harian.">
+<meta name="theme-color" content="#f3f4ef">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ATHAR">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Amiri+Quran&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f4ef; --card:#ffffff; --line:#e1e4da; --ink:#1f2b20; --muted:#6f766a;
+  --gold:#a67c2e; --green:#2f5d3a; --green2:#7d9b80; --green3:#cfdccb; --soft:#eef0e8; --skip:#d8cfb6;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:15px}
+body{padding:calc(14px + env(safe-area-inset-top)) 0 calc(96px + env(safe-area-inset-bottom))}
+.wrap{max-width:560px;margin:0 auto;padding:0 18px}
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.eyebrow{color:var(--gold);font-weight:600;letter-spacing:.16em;font-size:12px;text-transform:uppercase;margin-top:10px}
+.gear{border:1px solid var(--line);background:var(--card);border-radius:12px;width:40px;height:40px;font-size:18px;color:var(--muted)}
+.hello{font-family:Fraunces,serif;font-style:italic;color:var(--muted);font-size:18px;margin-top:8px}
+h1{font-family:Fraunces,serif;font-weight:600;font-size:30px;line-height:1.15;margin:6px 0}
+.tagline{font-style:italic;color:var(--muted);font-size:14px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin:14px 0}
+.ar{font-family:Amiri,serif;direction:rtl;text-align:right;font-size:26px;line-height:1.8}
+.trans{color:var(--muted);font-size:14.5px;line-height:1.6;margin-top:6px}
+.src{color:var(--gold);font-weight:600;font-size:13px;letter-spacing:.04em;margin-top:8px}
+.datecard{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.navbtn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--soft);font-size:20px;color:var(--ink)}
+.navbtn:disabled{opacity:.35}
+.dt{text-align:center;flex:1}
+.dt b{display:block;font-family:Fraunces,serif;font-weight:600;font-size:20px}
+.dt span{color:var(--muted);font-size:13px}
+.prog{display:flex;align-items:center;gap:12px;margin:18px 0 6px}
+.prog .t{flex:1;height:9px;background:var(--line);border-radius:9px;overflow:hidden}
+.prog .t i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.prog b{font-family:Fraunces,serif;font-size:18px;min-width:60px;text-align:right}
+.hint{color:var(--muted);font-size:12.5px;margin-bottom:10px}
+.badges{margin:4px 0 2px}
+.badge{display:inline-block;background:#f6ecd6;color:#7a5a1e;border-radius:999px;padding:5px 11px;font-size:12px;margin:3px 4px 3px 0}
+.group{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:18px 2px 8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.it{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:13px 12px 12px;min-height:112px;cursor:pointer;user-select:none;transition:background .2s,border-color .2s}
+.it .a{font-family:Amiri,serif;color:var(--gold);font-size:20px;line-height:1.3;direction:rtl;text-align:left;unicode-bidi:plaintext;padding-right:40px;min-height:26px}
+.it .n{font-weight:600;font-size:16px;margin-top:4px;line-height:1.25}
+.it .s{color:var(--muted);font-size:13px;margin-top:3px;line-height:1.35;word-break:break-word}
+.it .c{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;background:#fff}
+.it.done{background:#f1f5ef;border-color:#bfd1bf}
+.it.done .c{background:var(--green);border-color:var(--green)}
+.it.part .c{border-color:var(--gold);color:var(--gold);background:#fff}
+.it.skip{background:#faf7ef}
+.it.skip .c{background:var(--skip);border-color:var(--skip);color:#6d5a2c}
+.it .more{position:absolute;bottom:10px;right:12px;font-size:11px;color:var(--gold);font-weight:600}
+h2{font-family:Fraunces,serif;font-weight:600;font-size:22px;margin:0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:9px 16px;font:inherit;font-size:14px;color:var(--ink)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:14px}
+.cal .h{text-align:center;font-size:11px;letter-spacing:.08em;color:var(--muted);padding-bottom:4px}
+.cal .d{aspect-ratio:1/1.05;border-radius:12px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;font:inherit;font-size:14px;font-weight:600;color:var(--ink);padding:0}
+.cal .d small{font-size:9.5px;font-weight:500;opacity:.85;margin-top:1px}
+.cal .d.today{outline:2px solid var(--gold);outline-offset:1px}
+.cal .d.l3{background:var(--green);color:#fff;border-color:var(--green)}
+.cal .d.l2{background:var(--green2);color:#fff;border-color:var(--green2)}
+.cal .d.l1{background:var(--green3);border-color:var(--green3)}
+.cal .d.fut{opacity:.45}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.stat{background:var(--soft);border-radius:14px;padding:12px 8px;text-align:center}
+.stat b{display:block;font-family:Fraunces,serif;font-size:24px;color:var(--green)}
+.stat span{font-size:11.5px;color:var(--muted)}
+.seg{display:flex;gap:6px;margin-top:12px}
+.seg button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px;font:inherit;font-size:13px;color:var(--muted)}
+.seg button.on{background:var(--green);color:#fff;border-color:var(--green)}
+.bar{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:13px}
+.bar .l{flex:0 0 40%}
+.bar .t{flex:1;height:7px;background:var(--line);border-radius:7px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--gold)}
+.bar .v{flex:0 0 38px;text-align:right;color:var(--muted)}
+textarea,input[type=text],input[type=number],input[type=date],select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;font:inherit;background:#fbfcf8;color:var(--ink)}
+textarea{min-height:88px;resize:vertical}
+label{display:block;font-size:12.5px;color:var(--muted);margin:12px 0 5px}
+.prompt{font-family:Fraunces,serif;font-size:17px;line-height:1.45;margin-top:8px}
+.juz{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:12px}
+.juz button{aspect-ratio:1;border-radius:11px;border:1px solid var(--line);background:var(--card);font:inherit;font-weight:600;font-size:13px;color:var(--ink)}
+.juz button.on{background:var(--green);color:#fff;border-color:var(--green)}
+.btn{border:0;border-radius:13px;padding:13px 16px;font:inherit;font-weight:600;background:var(--green);color:#fff;width:100%}
+.btn.ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sheet-bg{position:fixed;inset:0;background:rgba(20,28,20,.35);opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:88vh;overflow:auto;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .3s;z-index:21;max-width:600px;margin:0 auto}
+.sheet.on{transform:none}
+.grab{width:42px;height:5px;border-radius:5px;background:var(--line);margin:0 auto 14px}
+.tg{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.tg .x{flex:1}
+.tg .x b{font-weight:600;font-size:14.5px;display:block}
+.tg .x span{font-size:12px;color:var(--muted)}
+.sw{flex:0 0 46px;height:27px;border-radius:99px;background:var(--line);position:relative;border:0}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.sw.on{background:var(--green)}
+.sw.on::after{left:22px}
+.del{border:0;background:none;color:#a1452c;font-size:12px;padding:4px}
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:30;white-space:nowrap}
+.toast.on{opacity:1}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:#fffdf8;border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:15}
+nav.tabs button{flex:1;border:0;background:none;padding:10px 0 9px;font:inherit;font-size:12px;color:var(--muted)}
+nav.tabs button b{display:block;font-size:20px;font-weight:400;margin-bottom:3px}
+nav.tabs button.on{color:var(--ink);font-weight:600}
+.view{display:none}.view.on{display:block}
+
+.qa{font-family:"Amiri Quran",Amiri,serif;direction:rtl;text-align:right;font-size:27px;line-height:2.2;color:var(--ink)}
+.qn{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);font-size:12px;font-family:Inter,sans-serif;margin:0 6px;vertical-align:middle}
+.qt{color:var(--muted);font-size:14.5px;line-height:1.65;margin-top:6px}
+.qay{padding:14px 0;border-bottom:1px solid var(--line)}
+.qay:last-child{border-bottom:0}
+.qsurah{text-align:center;padding:16px 0 6px}
+.qsurah b{display:block;font-family:Fraunces,serif;font-size:20px}
+.qsurah span{font-family:Amiri,serif;font-size:24px;color:var(--gold)}
+.qtaf{margin-top:10px;background:var(--soft);border-radius:12px;padding:12px;font-size:13.5px;line-height:1.7;color:var(--ink);display:none}
+.qtaf.on{display:block}
+.qbtn{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:inherit;font-size:12.5px;color:var(--gold);margin-top:8px}
+.jgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.jgrid button{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 0;font:inherit;font-weight:600;color:var(--ink)}
+.jgrid button small{display:block;font-weight:400;font-size:10.5px;color:var(--muted);margin-top:2px}
+.jgrid button.done{background:#f1f5ef;border-color:#bfd1bf;color:var(--green)}
+nav.tabs button{font-size:11px}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="view on" id="v-today">
+  <div class="top">
+    <div class="eyebrow">ATHAR · Daily Ibadah Checklist</div>
+  </div>
+  <div class="hello" id="hello">Assalamu'alaikum</div>
+  <h1>Sudah istiqamah hari ini?</h1>
+  <div class="tagline">Nggak apa-apa sedikit, yang penting istiqamah.</div>
+
+  <div class="card">
+    <div class="ar">اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالسَّدَادَ</div>
+    <div class="trans">Ya Allah, aku memohon kepada-Mu petunjuk dan ketepatan (dalam ucapan dan amal).</div>
+    <div class="src">HR. Muslim 2725</div>
+  </div>
+  <div class="card datecard">
+    <button class="navbtn" id="prev" aria-label="Hari sebelumnya">‹</button>
+    <div class="dt"><b id="dM"></b><span id="dH"></span></div>
+    <button class="navbtn" id="next" aria-label="Hari berikutnya">›</button>
+  </div>
+  <div class="prog"><div class="t"><i id="pBar"></i></div><b id="pTxt">0 / 0</b></div>
+  <div class="hint">Tap sekali = ✓ selesai · tap lagi = — berhalangan · tap lagi = kosong</div>
+  <div class="badges" id="badges"></div>
+  <div id="items"></div>
+  <div class="card">
+    <h2 id="jT">Journal</h2>
+    <div class="prompt" id="jP"></div>
+    <label>Pagi — niat, 3 syukur, 1 ikhtiar utama</label>
+    <textarea id="jPagi" placeholder="Niatku hari ini..."></textarea>
+    <label>Malam — yang Allah mudahkan, yang bolong, besok mau perbaiki apa</label>
+    <textarea id="jMalam" placeholder="Alhamdulillah hari ini..."></textarea>
+  </div>
+  <div class="card">
+    <div class="eyebrow" style="margin-top:0">Afirmasi hari ini</div>
+    <div class="ar" id="afA" style="margin-top:8px;font-size:24px"></div>
+    <div class="prompt" id="af"></div>
+    <div class="src" id="afS"></div>
+  </div>
+</section>
+<section class="view" id="v-cal">
+  <div class="eyebrow">ATHAR · Kalender</div>
+  <h1 style="margin-bottom:6px">Jejak Bulan Ini</h1>
+
+  <div class="tagline">Warna makin tua, makin lengkap amalan hari itu. Tap tanggal untuk membukanya.</div>
+  <div class="card">
+    <div class="row"><h2 id="mT"></h2><button class="pill" id="toToday">Ke hari ini</button></div>
+    <div class="row" style="margin-top:8px">
+      <button class="navbtn" id="mPrev" aria-label="Bulan sebelumnya" style="width:36px;height:36px">‹</button>
+      <span class="hint" id="mH" style="margin:0"></span>
+      <button class="navbtn" id="mNext" aria-label="Bulan berikutnya" style="width:36px;height:36px">›</button>
+    </div>
+    <div class="cal" id="cal"></div>
+  </div>
+</section>
+<section class="view" id="v-rekap">
+  <div class="eyebrow">ATHAR · Rekap</div>
+  <h1 style="margin-bottom:6px">Lihat Perjalananmu</h1>
+
+  <div class="tagline">Bukan untuk menghakimi diri, tapi untuk tahu mana yang perlu dijaga.</div>
+  <div class="card">
+    <h2>Rekap</h2>
+    <div class="seg" id="seg"><button data-r="7">7 hari</button><button data-r="30" class="on">30 hari</button><button data-r="90">90 hari</button></div>
+    <div class="stats">
+      <div class="stat"><b id="sA">–</b><span>rata-rata</span></div>
+      <div class="stat"><b id="sF">0</b><span>hari 100%</span></div>
+      <div class="stat"><b id="sS">0</b><span>streak ≥80%</span></div>
+    </div>
+    <div id="per" style="margin-top:14px"></div>
+  </div>
+</section>
+<section class="view" id="v-quran">
+  <div class="eyebrow">ATHAR · Al-Qur'an</div>
+  <h1 style="margin-bottom:6px" id="qTitle">Al-Qur'an 30 Juz</h1>
+  <div class="tagline">Mushaf Utsmani, terjemahan Kemenag, dan tafsir. Butuh koneksi internet.</div>
+  <div id="qBox"></div>
+</section>
+<section class="view" id="v-more">
+  <div class="eyebrow">ATHAR · Lainnya</div>
+  <h1 style="margin-bottom:6px">Atur Tracker-mu</h1>
+
+  <div class="card" id="juzCard">
+    <div class="row"><h2>Tilawah per Juz</h2><span class="hint" id="juzInfo" style="margin:0"></span></div>
+    <div class="juz" id="juz"></div>
+    <div style="margin-top:12px"><button class="btn ghost" id="khatam">Khatam! Mulai putaran baru</button></div>
+  </div>
+  <div class="card" id="setBox"></div>
+  <footer>ATHAR · What remains with you<br>San Malique</footer>
+</section>
+</div>
+<nav class="tabs">
+  <button class="on" data-v="today"><b>◉</b>Hari Ini</button>
+  <button data-v="cal"><b>▦</b>Kalender</button>
+  <button data-v="rekap"><b>◔</b>Rekap</button>
+  <button data-v="quran"><b>۞</b>Qur'an</button>
+  <button data-v="more"><b>☰</b>Lainnya</button>
+</nav>
+<div class="sheet-bg" id="bg"></div>
+<div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var KEY="athar_tracker_v2";
+/* type: check | count | detail ; f = fields untuk detail */
+var CATALOG=[
+ ["Shalat",[
+  {id:"shalat5",a:"الصلوات الخمس",n:"Shalat 5 Waktu",s:"Tepat waktu",type:"count",max:5,on:true},
+  {id:"rawatib",a:"الرواتب",n:"Rawatib",s:"12 rakaat",on:false},
+  {id:"dhuha",a:"الضحى",n:"Dhuha",s:"Shalat pagi",on:false},
+  {id:"tahajjud",a:"تهجّد",n:"Tahajjud",s:"Qiyamul lail",on:false},
+  {id:"witir",a:"الوتر",n:"Witir",s:"Penutup malam",on:false},
+  {id:"taubat",a:"صلاة التوبة",n:"Shalat Taubat",s:"2 rakaat",on:false},
+  {id:"hajat",a:"صلاة الحاجة",n:"Shalat Hajat",s:"2 rakaat + doa hajat",on:false}
+ ]],
+ ["Al-Qur'an",[
+  {id:"tilawah",a:"تلاوة",n:"Tilawah",s:"Baca Al-Qur'an",on:true},
+  {id:"murojaah",a:"مراجعة",n:"Muroja'ah",s:"Ulang hafalan",on:false},
+  {id:"ziyadah",a:"زيادة الحفظ",n:"Ziyadah Hafalan",s:"Min. 1 halaman",type:"detail",on:false,
+   f:[["surah","Surah","text","Al-Mulk"],["ayat","Ayat (dari–sampai)","text","1–10"],["juz","Juz","number","29"],["hal","Jumlah halaman","number","1"]]},
+  {id:"waqiah",a:"الواقعة",n:"Al-Waqi'ah",s:"Surah ke-56",on:false},
+  {id:"yasin",a:"يس",n:"Yasin",s:"Surah ke-36",on:false},
+  {id:"mulk",a:"الملك",n:"Al-Mulk",s:"Surah ke-67",on:false},
+  {id:"kahfi",a:"الكهف",n:"Al-Kahfi",s:"Hari Jumat",on:false},
+  {id:"khatam",a:"ختم القرآن",n:"Porsi Target Khatam",s:"Atur target di Lainnya",on:false}
+ ]],
+ ["Dzikir & Doa",[
+  {id:"dzshalat",a:"أذكار بعد الصلاة",n:"Dzikir Setelah Shalat",s:"Tasbih, tahmid, takbir",on:false},
+  {id:"dzpagi",a:"أذكار الصباح",n:"Dzikir Pagi",s:"Subuh – terbit",on:true},
+  {id:"dzpetang",a:"أذكار المساء",n:"Dzikir Petang",s:"Ashar – Maghrib",on:true},
+  {id:"istighfar",a:"استغفار",n:"Istighfar",s:"≥ 100x",on:true},
+  {id:"dztaubat",a:"ذكر التوبة",n:"Doa Taubat",s:"Rabbighfir lī wa tub 'alayya",on:false},
+  {id:"shalawat",a:"صلوات",n:"Shalawat",s:"100x",on:true},
+  {id:"shalawat1k",a:"صلوات",n:"Shalawat",s:"1000x",on:false},
+  {id:"tahlil",a:"تهليل",n:"Tahlil",s:"100x",on:false},
+  {id:"wirid",a:"ورد",n:"Wirid",s:"Wirid harian",on:false},
+  {id:"doa",a:"دعاء",n:"Doa + Afirmasi",s:"Doa harian",on:true}
+   ]],
+ ["Amal & Akhlak",[
+  {id:"sedekah",a:"صدقة",n:"Sedekah",s:"Sekecil apa pun",on:true},
+  {id:"puasa",a:"صيام",n:"Puasa Sunnah",s:"Senin-Kamis, Ayyamul Bidh",on:false},
+  {id:"birr",a:"برّ الوالدين",n:"Birrul Walidain",s:"Hubungi / bantu orang tua",on:false},
+  {id:"silat",a:"صلة الرحم",n:"Silaturahmi",s:"Sapa keluarga & sahabat",on:false},
+  {id:"lisan",a:"حفظ اللسان",n:"Jaga Lisan",s:"Tanpa ghibah hari ini",on:false},
+  {id:"berbagi",a:"نشر العلم",n:"Berbagi Ilmu",s:"Ngajar / bagikan kebaikan",type:"detail",on:false,
+   f:[["apa","Apa yang dibagikan","text","Materi, tulisan, nasihat..."],["ke","Ke siapa / di mana","text","Keluarga, murid, sosmed..."]]}
+ ]],
+ ["Ilmu",[
+  {id:"buku",a:"قراءة",n:"Baca Buku / E-book",s:"Judul & halaman",type:"detail",on:false,
+   f:[["judul","Judul","text","Judul buku"],["dari","Dari halaman","number","1"],["sampai","Sampai halaman","number","20"]]},
+  {id:"bahasa",a:"تعلّم اللغة",n:"Belajar Bahasa Asing",s:"Bahasa & durasi",type:"detail",on:false,
+   f:[["bhs","Bahasa","text","Arab / Inggris / Turki"],["menit","Durasi (menit)","number","15"],["catatan","Yang dipelajari","text","Kosakata, grammar..."]]},
+  {id:"kajianoff",a:"مجلس العلم",n:"Kajian Offline",s:"Hadir di majelis",type:"detail",on:false,
+   f:[["tema","Tema","text","Tema kajian"],["ustadz","Pemateri","text","Nama ustadz/ah"],["poin","Satu poin yang dibawa pulang","text",""]]},
+  {id:"kajianon",a:"درس",n:"Kajian Online",s:"Video / live / podcast",type:"detail",on:false,
+   f:[["tema","Tema","text","Tema kajian"],["ustadz","Pemateri","text","Nama ustadz/ah"],["poin","Satu poin yang dibawa pulang","text",""]]}
+ ]],
+ ["Jaga Badan",[
+  {id:"olahraga",a:"رياضة",n:"Olahraga",s:"Jenis & durasi",type:"detail",on:false,
+   f:[["jenis","Jenis","text","Jalan, lari, gym..."],["menit","Durasi (menit)","number","30"]]},
+  {id:"air",a:"ماء",n:"Air Putih",s:"8 gelas",type:"count",max:8,on:false},
+  {id:"tidurcukup",a:"نوم",n:"Tidur Cukup",s:"7–8 jam",on:false}
+ ]]
+];
+var PROMPTS=["Kenapa aku pengen istiqamah sekarang? Tulis satu kalimat niat yang jujur.","Satu amalan kecil apa yang sanggup aku jaga 30 hari ke depan?","Langkah sejengkal apa yang bisa aku ambil hari ini?","Siapa \"Khadijah\" di hidupku, orang yang bikin aku kuat?","Ibadah apa yang aku bikin terlalu berat? Gimana versi ringannya?","Di bagian mana aku terlalu keras ke diri sendiri?","Gimana tidur, makan, dan gerakku minggu ini?","Kalau lagi futur, batas minimal ibadahku apa?","Penolakan apa yang masih nyangkut di hatiku?","Amalan apa yang dulu rutin, lalu hilang? Kenapa?","Sama siapa aku sering membandingkan diri?","Apa yang bikin dadaku sempit minggu ini?","Perasaan apa yang selama ini aku tahan-tahan?","Kesalahan apa yang mau aku tinggalkan pekan ini?","Satu hal di hatiku yang cuma Allah yang tahu, dan perlu aku bereskan?","Relasi mana yang berat? Kapan terakhir aku doain orang itu?","Gimana kerjaanku hari ini bisa bernilai ibadah?","Doa apa yang sudah lama aku panjatkan?","Apa yang selama ini malu aku minta ke Allah?","Kalau masalahku disampaikan dalam satu kalimat ke Allah, apa kalimatnya?","Tiga doa apa yang sudah Allah jawab dalam hidupku?","Bagian mana dari rencanaku yang sudah aku usahakan, dan mana yang harus aku serahkan?","\"Unta\" apa yang belum aku ikat?","Apa yang aku syukuri dari pekerjaanku sekarang?","Di mana aku tergoda melebih-lebihkan? Gimana versi jujurnya?","Kerja apa yang jarang dihargai, tapi Allah melihatnya?","Sedekah non-uang apa yang bisa aku kasih hari ini?","Apa yang terlalu berat aku bawa, dan bisa aku lepas?","Amalan mana yang paling konsisten, dan mana yang paling sering bolong?","Jejak apa yang ingin aku tinggalkan?"];
+var AF=[["Allah dekat. Aku bisa berdoa kepada-Nya kapan pun.", "QS. Al-Baqarah 2:186", "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ"], ["Allah tahu dan menjamin rezekiku. Tugasku terus berikhtiar dengan cara yang halal.", "QS. Hud 11:6", "وَمَا مِن دَابَّةٍ فِي الْأَرْضِ إِلَّا عَلَى اللَّهِ رِزْقُهَا"], ["Allah tahu batas kemampuanku. Aku boleh meminta pertolongan saat merasa berat.", "QS. Al-Baqarah 2:286", "لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا"], ["Setelah badai ini, insyaallah akan ada kemudahan. Bahkan mudahnya barengan sama kesulitan itu.", "QS. Al-Insyirah 94:5–6", "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا"], ["Sebanyak apa pun salahku, pintu-Nya masih terbuka.", "QS. Az-Zumar 39:53", "لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ"], ["Aku serahkan hasilnya. Allah cukup bagiku.", "QS. At-Talaq 65:3", "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ"], ["Allah memintaku berdoa. Aku percaya pada janji-Nya dan menyerahkan jawabannya kepada-Nya.", "QS. Ghafir 40:60", "ادْعُونِي أَسْتَجِبْ لَكُمْ"], ["Kalau hatiku ingin tenang, aku mengingat Allah.", "QS. Ar-Ra'd 13:28", "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"], ["Nggak ada usahaku yang hilang. Semuanya dicatat. Hasilnya aku serahkan kepada Allah.", "QS. An-Najm 53:39–40", "وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ ۝ وَأَنَّ سَعْيَهُ سَوْفَ يُرَىٰ"], ["Aku bersyukur, dan Allah tambahkan nikmat-Nya.", "QS. Ibrahim 14:7", "لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ"], ["Perubahan dimulai dari aku, tentunya dengan pertolongan Allah.", "QS. Ar-Ra'd 13:11", "إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِمْ"], ["Aku bersemangat, meminta pertolongan kepada Allah, dan nggak menyerah.", "HR. Muslim 2664", "احْرِصْ عَلَى مَا يَنْفَعُكَ، وَاسْتَعِنْ بِاللَّهِ، وَلَا تَعْجَزْ"]];
+var HM=["Muharram","Safar","Rabiulawal","Rabiulakhir","Jumadilawal","Jumadilakhir","Rajab","Sya'ban","Ramadhan","Syawal","Dzulqa'dah","Dzulhijjah"];
+var DN=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+var MN=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+
+var BYID={},ORDER=[];
+CATALOG.forEach(function(g){g[1].forEach(function(it){it.g=g[0];BYID[it.id]=it;ORDER.push(it.id);});});
+
+function load(){
+  var d=null;try{d=JSON.parse(localStorage.getItem(KEY));}catch(e){}
+  if(!d||typeof d!=="object")d={};
+  d.days=d.days||{};d.juz=d.juz||{};d.khatam=d.khatam||0;d.start=d.start||"";d.name=d.name||"";
+  d.target=d.target||0;d.on=d.on||{};d.custom=Array.isArray(d.custom)?d.custom:[];
+  ORDER.forEach(function(id){if(typeof d.on[id]!=="boolean")d.on[id]=!!BYID[id].on;});
+  return d;
+}
+var S=load();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){toast("Gagal menyimpan. Coba Backup.");}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function pad(n){return (n<10?"0":"")+n;}
+function ymd(t){return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());}
+function parse(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function add(t,n){var x=new Date(t);x.setDate(x.getDate()+n);return x;}
+var today=new Date();today.setHours(0,0,0,0);
+var cur=new Date(today),calM=new Date(today.getFullYear(),today.getMonth(),1);
+
+function hijri(t){try{var o={};new Intl.DateTimeFormat("en-u-ca-islamic-umalqura-nu-latn",{day:"numeric",month:"numeric",year:"numeric"}).formatToParts(t).forEach(function(p){o[p.type]=p.value;});return {d:+o.day,m:+o.month,y:parseInt(o.year,10)};}catch(e){return null;}}
+function hTxt(t){var h=hijri(t);return h?h.d+" "+HM[h.m-1]+" "+h.y+" H":"";}
+function sunnah(t){
+  var o=[],w=t.getDay(),h=hijri(t);
+  if(h){
+    if(h.m===9)return ["Ramadhan · puasa wajib"];
+    if(h.m===10&&h.d===1)return ["Idul Fitri · tidak berpuasa"];
+    if(h.m===12&&h.d>=10&&h.d<=13)return ["Idul Adha / Tasyrik · tidak berpuasa"];
+  }
+  if(w===1)o.push("Sunnah puasa Senin");
+  if(w===4)o.push("Sunnah puasa Kamis");
+  if(w===5)o.push("Jumat · Al-Kahfi & perbanyak shalawat");
+  if(h){
+    if(h.d>=13&&h.d<=15)o.push("Ayyamul Bidh");
+    if(h.m===12&&h.d===9)o.push("Puasa Arafah");
+    if(h.m===12&&h.d<9)o.push("10 hari awal Dzulhijjah");
+    if(h.m===1&&h.d===9)o.push("Puasa Tasu'a");
+    if(h.m===1&&h.d===10)o.push("Puasa Asyura");
+    if(h.m===10&&h.d>1)o.push("Puasa 6 hari Syawal");
+  }
+  return o;
+}
+function items(){
+  var list=ORDER.filter(function(id){return S.on[id];}).map(function(id){return BYID[id];});
+  S.custom.forEach(function(c){if(c.on)list.push({id:c.id,a:"",n:c.n,s:c.s||"Amalan pribadi",g:"Amalan Pribadi",custom:true});});
+  return list;
+}
+function day(k){return S.days[k]||{a:{},x:{}};}
+function ens(k){if(!S.days[k])S.days[k]={a:{},x:{}};var d=S.days[k];d.a=d.a||{};d.x=d.x||{};return d;}
+function score(k){
+  var d=S.days[k],L=items();if(!d||!d.a||!Object.keys(d.a).length||!L.length)return null;
+  var tot=0,got=0;
+  L.forEach(function(it){var v=d.a[it.id];
+    if(it.type==="count"){tot++;got+=Math.min(v||0,it.max)/it.max;}
+    else if(v===2){}else{tot++;if(v===1)got++;}});
+  return tot?got/tot:1;
+}
+function counts(k){var d=day(k),L=items(),done=0,tot=0;L.forEach(function(it){var v=d.a[it.id];if(it.type==="count"){tot++;if((v||0)>=it.max)done++;}else if(v!==2){tot++;if(v===1)done++;}});return [done,tot];}
+function summary(it,d){
+  var x=(d.x||{})[it.id];if(!x)return "";
+  if(it.id==="ziyadah"){var p=[];if(x.surah)p.push(x.surah+(x.ayat?" "+x.ayat:""));if(x.juz)p.push("Juz "+x.juz);if(x.hal)p.push(x.hal+" hal");return p.join(" · ");}
+  if(it.id==="buku"){return (x.judul||"")+(x.dari||x.sampai?" · hal "+(x.dari||"?")+"–"+(x.sampai||"?"):"");}
+  if(it.id==="bahasa"){return [x.bhs,x.menit?x.menit+" menit":""].filter(Boolean).join(" · ");}
+  if(it.id==="berbagi"){return [x.apa,x.ke].filter(Boolean).join(" · ");}
+  if(it.id==="olahraga"){return [x.jenis,x.menit?x.menit+" menit":""].filter(Boolean).join(" · ");}
+  return [x.tema,x.ustadz].filter(Boolean).join(" · ");
+}
+
+/* ---------- RENDER HARI ---------- */
+function renderDay(){
+  var k=ymd(cur),d=day(k),isT=k===ymd(today);
+  document.getElementById("hello").textContent="Assalamu'alaikum"+(S.name?", "+S.name:"");
+  document.getElementById("dM").textContent=DN[cur.getDay()]+", "+cur.getDate()+" "+MN[cur.getMonth()]+" "+cur.getFullYear();
+  document.getElementById("dH").textContent=hTxt(cur)+(isT?" · hari ini":"");
+  document.getElementById("next").disabled=isT;
+  document.getElementById("badges").innerHTML=sunnah(cur).map(function(t){return '<span class="badge">'+esc(t)+'</span>';}).join("");
+  var c=counts(k),sc=score(k);
+  document.getElementById("pBar").style.width=Math.round((sc||0)*100)+"%";
+  document.getElementById("pTxt").textContent=c[0]+" / "+c[1];
+  var box=document.getElementById("items");box.innerHTML="";
+  var groups={};items().forEach(function(it){(groups[it.g]=groups[it.g]||[]).push(it);});
+  Object.keys(groups).forEach(function(g){
+    box.insertAdjacentHTML("beforeend",'<div class="group">'+esc(g)+'</div>');
+    var grid=document.createElement("div");grid.className="grid";
+    groups[g].forEach(function(it){
+      var v=d.a[it.id]||0,el=document.createElement("div"),cls="it",mk="",sub=it.s;
+      if(it.type==="count"){if(v>=it.max){cls+=" done";mk="✓";}else if(v>0){cls+=" part";mk=v;}sub=it.s+" · "+v+"/"+it.max;}
+      else if(v===1){cls+=" done";mk="✓";}else if(v===2){cls+=" skip";mk="—";}
+      if(it.type==="detail"){var sm=summary(it,d);if(sm)sub=sm;}
+      if(it.id==="khatam"&&S.target){sub=porsi();}
+      el.className=cls;
+      el.innerHTML='<div class="a">'+esc(it.a||"")+'</div><div class="n">'+esc(it.n)+'</div><div class="s">'+esc(sub)+'</div><div class="c">'+mk+'</div>'+(it.type==="detail"?'<div class="more">isi detail</div>':'');
+      el.querySelector(".c").addEventListener("click",function(e){e.stopPropagation();tap(it,k);});
+      el.addEventListener("click",function(){if(it.type==="detail")openDetail(it,k);else tap(it,k);});
+      grid.appendChild(el);
+    });
+    box.appendChild(grid);
+  });
+  document.getElementById("juzCard").style.display=(S.on.tilawah||S.on.khatam)?"":"none";
+  renderJuz();
+  var idx=null;if(S.start){var df=Math.round((cur-parse(S.start))/864e5);if(df>=0&&df<30)idx=df;}
+  var dn=Math.floor(cur.getTime()/864e5);
+  document.getElementById("jT").textContent=idx!==null?"Journal · Hari "+(idx+1):"Journal";
+  document.getElementById("jP").textContent=PROMPTS[idx!==null?idx:dn%30];
+  document.getElementById("jPagi").value=d.jp||"";document.getElementById("jMalam").value=d.jm||"";
+  var a=AF[dn%AF.length];document.getElementById("af").textContent="“"+a[0]+"”";document.getElementById("afS").textContent=a[1];document.getElementById("afA").textContent=a[2];
+}
+function tap(it,k){var d=ens(k),v=d.a[it.id]||0;v=it.type==="count"?(v+1)%(it.max+1):(v+1)%3;if(v)d.a[it.id]=v;else delete d.a[it.id];save();renderDay();renderCal();renderRekap();}
+function porsi(){var j=30/S.target;return j>=1?(Math.round(j*10)/10)+" juz/hari":(Math.round(j*20))+" halaman/hari";}
+function targetInfo(n){if(!S.target)return "";var st=S.tStart?parse(S.tStart):today;var el=Math.max(1,Math.round((today-st)/864e5)+1);var should=Math.min(30,Math.ceil(el*30/S.target));return " · target hari ini: "+should+" juz"+(n>=should?" ✓":"");}
+function renderJuz(){
+  var g=document.getElementById("juz");g.innerHTML="";var n=0;
+  for(var i=1;i<=30;i++){(function(i){var b=document.createElement("button");b.textContent=i;if(S.juz[i]){b.className="on";n++;}
+    b.onclick=function(){if(S.juz[i])delete S.juz[i];else S.juz[i]=1;save();renderJuz();};g.appendChild(b);})(i);}
+  document.getElementById("juzInfo").textContent=n+"/30 · khatam "+S.khatam+"×"+targetInfo(n);
+}
+document.getElementById("khatam").onclick=function(){if(confirm("Alhamdulillah! Catat khatam dan kosongkan grid juz?")){S.khatam++;S.juz={};if(S.target)S.tStart=ymd(today);save();renderJuz();toast("Barakallahu fiik, khatam tercatat");}};
+document.getElementById("prev").onclick=function(){cur=add(cur,-1);renderDay();};
+document.getElementById("next").onclick=function(){if(ymd(cur)!==ymd(today)){cur=add(cur,1);renderDay();}};
+["jPagi","jMalam"].forEach(function(id){document.getElementById(id).addEventListener("input",function(e){var d=ens(ymd(cur));d[id==="jPagi"?"jp":"jm"]=e.target.value;save();});});
+
+/* ---------- DETAIL SHEET ---------- */
+function openSheet(html){document.getElementById("sheetBody").innerHTML=html;document.getElementById("bg").classList.add("on");document.getElementById("sheet").classList.add("on");}
+function closeSheet(){document.getElementById("bg").classList.remove("on");document.getElementById("sheet").classList.remove("on");}
+document.getElementById("bg").onclick=closeSheet;
+function openDetail(it,k){
+  var d=day(k),x=(d.x||{})[it.id]||{};
+  var h='<div class="ar" style="font-size:24px;color:var(--gold);text-align:left;direction:rtl;unicode-bidi:plaintext">'+esc(it.a)+'</div><h2>'+esc(it.n)+'</h2><div class="hint" style="margin-top:4px">'+esc(it.s)+'</div>';
+  it.f.forEach(function(f){h+='<label>'+esc(f[1])+'</label><input type="'+f[2]+'" id="f_'+f[0]+'" placeholder="'+esc(f[3])+'" value="'+esc(x[f[0]]||"")+'"'+(f[2]==="number"?' inputmode="numeric"':'')+'>';});
+  h+='<div class="two" style="margin-top:16px"><button class="btn ghost" id="fSkip">Berhalangan</button><button class="btn" id="fSave">Simpan ✓</button></div>';
+  h+='<div style="margin-top:10px"><button class="btn ghost" id="fClear">Kosongkan</button></div>';
+  openSheet(h);
+  function collect(){var o={};it.f.forEach(function(f){var v=document.getElementById("f_"+f[0]).value.trim();if(v)o[f[0]]=v;});return o;}
+  document.getElementById("fSave").onclick=function(){var dd=ens(k);dd.x[it.id]=collect();dd.a[it.id]=1;save();closeSheet();renderAll();};
+  document.getElementById("fSkip").onclick=function(){var dd=ens(k);dd.a[it.id]=2;save();closeSheet();renderAll();};
+  document.getElementById("fClear").onclick=function(){var dd=ens(k);delete dd.a[it.id];delete dd.x[it.id];save();closeSheet();renderAll();};
+}
+
+/* ---------- KALENDER ---------- */
+function renderCal(){
+  var y=calM.getFullYear(),m=calM.getMonth();
+  document.getElementById("mT").textContent=MN[m]+" "+y;
+  var a=hijri(new Date(y,m,1)),b=hijri(new Date(y,m+1,0));
+  document.getElementById("mH").textContent=a&&b?HM[a.m-1]+(a.m!==b.m?" – "+HM[b.m-1]:"")+" "+b.y+" H":"";
+  var c=document.getElementById("cal");c.innerHTML="";
+  ["SEN","SEL","RAB","KAM","JUM","SAB","MIN"].forEach(function(t){c.insertAdjacentHTML("beforeend",'<div class="h">'+t+'</div>');});
+  var lead=(new Date(y,m,1).getDay()+6)%7,n=new Date(y,m+1,0).getDate();
+  for(var i=0;i<lead;i++)c.appendChild(document.createElement("div"));
+  for(var dd=1;dd<=n;dd++){(function(dd){
+    var t=new Date(y,m,dd),k=ymd(t),s=score(k),el=document.createElement("button"),cls="d";
+    if(k===ymd(today))cls+=" today";if(t>today)cls+=" fut";
+    if(s!==null)cls+=s>=0.8?" l3":s>=0.5?" l2":" l1";
+    el.className=cls;el.innerHTML=dd+'<small>'+(s!==null?Math.round(s*100)+"%":"")+'</small>';
+    el.onclick=function(){if(t>today)return;cur=t;show("today");};
+    c.appendChild(el);})(dd);}
+}
+document.getElementById("mPrev").onclick=function(){calM=new Date(calM.getFullYear(),calM.getMonth()-1,1);renderCal();};
+document.getElementById("mNext").onclick=function(){calM=new Date(calM.getFullYear(),calM.getMonth()+1,1);renderCal();};
+document.getElementById("toToday").onclick=function(){cur=new Date(today);calM=new Date(today.getFullYear(),today.getMonth(),1);renderAll();show("today");};
+
+/* ---------- REKAP ---------- */
+var R=30;
+function renderRekap(){
+  [].forEach.call(document.querySelectorAll("#seg button"),function(b){b.classList.toggle("on",+b.dataset.r===R);});
+  var keys=[],sum=0,cnt=0,full=0;for(var i=0;i<R;i++)keys.push(ymd(add(today,-i)));
+  keys.forEach(function(k){var s=score(k);if(s!==null){sum+=s;cnt++;if(s>=0.999)full++;}});
+  var st=0;for(var j=0;j<3650;j++){var s=score(ymd(add(today,-j)));if(s!==null&&s>=0.8)st++;else if(j===0)continue;else break;}
+  document.getElementById("sA").textContent=cnt?Math.round(sum/cnt*100)+"%":"–";
+  document.getElementById("sF").textContent=full;document.getElementById("sS").textContent=st;
+  var p=document.getElementById("per");p.innerHTML="";
+  items().forEach(function(it){var tot=0,got=0;keys.forEach(function(k){var d=S.days[k];if(!d||!d.a||!Object.keys(d.a).length)return;var v=d.a[it.id];
+    if(it.type==="count"){tot++;got+=Math.min(v||0,it.max)/it.max;}else if(v!==2){tot++;if(v===1)got++;}});
+    var pc=tot?Math.round(got/tot*100):0;
+    p.insertAdjacentHTML("beforeend",'<div class="bar"><span class="l">'+esc(it.n)+(it.id==="shalawat1k"?" 1000x":"")+'</span><span class="t"><i style="width:'+pc+'%"></i></span><span class="v">'+(tot?pc+"%":"–")+'</span></div>');});
+}
+[].forEach.call(document.querySelectorAll("#seg button"),function(b){b.onclick=function(){R=+b.dataset.r;renderRekap();};});
+
+/* ---------- PENGATURAN ---------- */
+function renderSettings(){
+  var h='<h2>Pengaturan & Amalan</h2><label>Nama panggilan</label><input type="text" id="sName" placeholder="Nama kamu" value="'+esc(S.name)+'">';
+  h+='<label>Target khatam Al-Qur\'an</label><select id="sTarget"><option value="0">Tanpa target</option><option value="30">Khatam 30 hari (1 juz/hari)</option><option value="60">Khatam 60 hari (½ juz/hari)</option><option value="90">Khatam 90 hari</option><option value="120">Khatam 120 hari</option><option value="15">Khatam 15 hari (2 juz/hari)</option></select>';
+  h+='<label>Mulai 30 Hari (Hari 1 renungan e-book)</label><div class="two"><input type="date" id="sStart" value="'+esc(S.start)+'"><button class="btn ghost" id="sToday">Mulai hari ini</button></div>';
+  CATALOG.forEach(function(g){h+='<div class="group">'+esc(g[0])+'</div>';g[1].forEach(function(it){h+='<div class="tg"><div class="x"><b>'+esc(it.n)+'</b><span>'+esc(it.s)+'</span></div><button class="sw'+(S.on[it.id]?" on":"")+'" data-t="'+it.id+'" aria-label="'+esc(it.n)+'"></button></div>';});});
+  h+='<div class="group">Amalan Pribadi</div><div id="cList"></div><div class="two" style="margin-top:10px"><input type="text" id="cName" placeholder="Nama amalan"><button class="btn" id="cAdd">Tambah</button></div>';
+  h+='<div class="group">Backup & Restore</div><div class="hint">Data hanya tersimpan di HP ini. Backup tiap pekan, restore kalau ganti HP atau browser.</div><div class="two"><button class="btn" id="bk">Backup</button><button class="btn ghost" id="rs">Restore</button></div><input type="file" id="rsf" accept=".json,application/json" hidden>';
+  document.getElementById("setBox").innerHTML=h;
+  function cl(){var w=document.getElementById("cList");w.innerHTML="";S.custom.forEach(function(c,ix){var r=document.createElement("div");r.className="tg";r.innerHTML='<div class="x"><b>'+esc(c.n)+'</b></div><button class="del">hapus</button><button class="sw'+(c.on?" on":"")+'" aria-label="'+esc(c.n)+'"></button>';
+    r.querySelector(".sw").onclick=function(){c.on=!c.on;save();cl();renderAll();};
+    r.querySelector(".del").onclick=function(){if(confirm('Hapus "'+c.n+'"?')){S.custom.splice(ix,1);save();cl();renderAll();}};w.appendChild(r);});}
+  cl();
+  [].forEach.call(document.querySelectorAll("[data-t]"),function(b){b.onclick=function(){var id=b.dataset.t;S.on[id]=!S.on[id];b.classList.toggle("on",S.on[id]);save();renderAll();};});
+  document.getElementById("sTarget").value=String(S.target||0);
+  document.getElementById("sTarget").onchange=function(e){S.target=+e.target.value;S.tStart=ymd(today);if(S.target)S.on.khatam=true;save();renderAll();toast(S.target?"Target khatam diatur: "+porsi():"Target dimatikan");};
+  document.getElementById("sName").oninput=function(e){S.name=e.target.value.trim();save();renderDay();};
+  document.getElementById("sStart").onchange=function(e){S.start=e.target.value;save();renderDay();};
+  document.getElementById("sToday").onclick=function(){S.start=ymd(today);document.getElementById("sStart").value=S.start;save();renderDay();toast("Hari 1 dimulai. Bismillah.");};
+  document.getElementById("cAdd").onclick=function(){var i=document.getElementById("cName"),v=i.value.trim();if(!v)return;S.custom.push({id:"c"+Date.now(),n:v,on:true});i.value="";save();cl();renderAll();};
+  document.getElementById("bk").onclick=backup;
+  document.getElementById("rs").onclick=function(){document.getElementById("rsf").click();};
+  document.getElementById("rsf").onchange=restore;
+}
+function backup(){
+  var blob=new Blob([JSON.stringify({app:"athar",v:2,at:new Date().toISOString(),data:S})],{type:"application/json"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="athar-backup-"+ymd(today)+".json";document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1500);toast("Backup tersimpan");
+}
+function restore(e){
+  var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  r.onload=function(){try{var j=JSON.parse(r.result),d=j&&j.app==="athar"?j.data:j;if(!d||!d.days)throw 0;
+    if(!confirm("Ganti semua data di HP ini dengan isi backup?"))return;
+    localStorage.setItem(KEY,JSON.stringify(d));S=load();closeSheet();renderAll();toast("Restore berhasil");}catch(x){toast("File backup tidak valid");}};
+  r.readAsText(f);e.target.value="";
+}
+
+
+/* ---------- AL-QUR'AN ---------- */
+var QAPI="https://api.alquran.cloud/v1/";var qCache={};
+function qFetch(u){if(qCache[u])return Promise.resolve(qCache[u]);return fetch(QAPI+u).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){if(j.code!==200)throw 0;qCache[u]=j.data;return j.data;});}
+function qBackBtn(){var b=document.getElementById("qBack");if(b)b.onclick=renderQuranHome;}
+function renderQuranHome(){
+  document.getElementById("qTitle").textContent="Al-Qur'an 30 Juz";
+  var h='<div class="card">'+(S.lastJuz?'<button class="btn" id="qCont" style="margin-bottom:14px">Lanjutkan Juz '+S.lastJuz+'</button>':'')+'<div class="jgrid">';
+  for(var i=1;i<=30;i++)h+='<button data-j="'+i+'" class="'+(S.juz[i]?"done":"")+'">'+i+'<small>'+(S.juz[i]?"✓ selesai":"Juz")+'</small></button>';
+  h+='</div></div><div class="hint" style="text-align:center">Teks Utsmani &amp; terjemahan Kemenag RI via alquran.cloud · Tafsir Jalalayn</div>';
+  document.getElementById("qBox").innerHTML=h;
+  [].forEach.call(document.querySelectorAll("[data-j]"),function(b){b.onclick=function(){openJuz(+b.dataset.j);};});
+  var c=document.getElementById("qCont");if(c)c.onclick=function(){openJuz(S.lastJuz);};
+}
+function openJuz(n){
+  S.lastJuz=n;save();window.scrollTo(0,0);
+  document.getElementById("qTitle").textContent="Juz "+n;
+  var box=document.getElementById("qBox");
+  box.innerHTML='<button class="pill" id="qBack">‹ Semua juz</button><div class="card" style="text-align:center;color:var(--muted)">Memuat juz '+n+'...</div>';qBackBtn();
+  Promise.all([qFetch("juz/"+n+"/quran-uthmani"),qFetch("juz/"+n+"/id.indonesian")]).then(function(r){
+    var ar=r[0].ayahs,tr=r[1].ayahs,h='<button class="pill" id="qBack">‹ Semua juz</button><div class="card">',last=0;
+    for(var i=0;i<ar.length;i++){var a=ar[i];
+      if(a.surah.number!==last){last=a.surah.number;h+='<div class="qsurah"><span>'+esc(a.surah.name)+'</span><b>'+esc(a.surah.englishName)+'</b><div class="hint" style="margin:0">Surah ke-'+a.surah.number+'</div></div>';}
+      h+='<div class="qay"><div class="qa">'+esc(a.text)+'<span class="qn">'+a.numberInSurah+'</span></div><div class="qt">'+esc(tr[i]?tr[i].text:"")+' <span style="color:var(--gold)">('+a.surah.number+':'+a.numberInSurah+')</span></div><button class="qbtn" data-n="'+a.number+'">Tafsir</button><div class="qtaf" id="tf'+a.number+'"></div></div>';}
+    h+='<button class="btn" id="qDone" style="margin-top:14px">'+(S.juz[n]?"✓ Juz "+n+" sudah ditandai":"Tandai Juz "+n+" selesai dibaca")+'</button></div>';
+    box.innerHTML=h;qBackBtn();
+    document.getElementById("qDone").onclick=function(){S.juz[n]=1;save();this.textContent="✓ Juz "+n+" sudah ditandai";toast("Juz "+n+" tercatat di tilawah");};
+    [].forEach.call(box.querySelectorAll("[data-n]"),function(b){b.onclick=function(){
+      var el=document.getElementById("tf"+b.dataset.n);
+      if(el.classList.contains("on")){el.classList.remove("on");b.textContent="Tafsir";return;}
+      el.classList.add("on");b.textContent="Tutup tafsir";
+      if(el.dataset.ok)return;el.textContent="Memuat tafsir...";
+      qFetch("ayah/"+b.dataset.n+"/id.jalalayn").then(function(d){el.textContent=d.text;el.dataset.ok=1;}).catch(function(){
+        qFetch("ayah/"+b.dataset.n+"/id.muntakhab").then(function(d){el.textContent=d.text;el.dataset.ok=1;}).catch(function(){el.textContent="Tafsir belum bisa dimuat. Cek koneksi internet.";});});
+    };});
+  }).catch(function(){box.innerHTML='<button class="pill" id="qBack">‹ Semua juz</button><div class="card">Juz belum bisa dimuat. Pastikan HP terhubung ke internet, lalu coba lagi.</div>';qBackBtn();});
+}
+var tt;function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on");},2300);}
+function renderAll(){renderDay();renderCal();renderRekap();if(document.getElementById("v-more").classList.contains("on"))renderSettings();}
+function show(v){[].forEach.call(document.querySelectorAll(".view"),function(s){s.classList.toggle("on",s.id==="v-"+v);});[].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.classList.toggle("on",b.dataset.v===v);});if(v==="today")renderDay();if(v==="cal")renderCal();if(v==="rekap")renderRekap();if(v==="more"){renderJuz();renderSettings();}if(v==="quran")renderQuranHome();window.scrollTo(0,0);}
+[].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.onclick=function(){show(b.dataset.v);};});
+document.addEventListener("visibilitychange",function(){if(document.hidden)return;var n=new Date();n.setHours(0,0,0,0);if(n.getTime()!==today.getTime()){var w=ymd(cur)===ymd(today);today=n;if(w)cur=new Date(n);renderAll();}});
+renderAll();
+})();
+</script>
+</body>
+</html>
