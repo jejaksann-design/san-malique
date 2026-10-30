@@ -177,6 +177,28 @@
     .ebook img { width: 96px; height: auto; border-radius: 8px; flex: 0 0 auto; }
     .ebook h3 { margin: 0 0 4px; font-size: 19px; }
     .ebook p { margin: 0; color: var(--muted); font-size: 16px; }
+    .hero { padding: 0 0 32px; }
+    .hero-photo { position: relative; margin: 0 -16px; }
+    .hero-photo img { width: 100%; height: auto; display: block; }
+    .hero-photo::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,8,0) 55%, rgba(8,8,8,.8) 82%, #080808 100%);
+    }
+    .hero-text { position: absolute; left: 16px; right: 16px; bottom: 0; z-index: 1; }
+    .hero-text h1 { margin-bottom: 4px; }
+    .hero-text .kicker { background: rgba(0,0,0,.55); }
+    .hero-text h1 { text-shadow: 0 2px 16px rgba(0,0,0,.6); }
+    .hero-text .lead { color: #e6e6e6; }
+    .hero-date { margin: 14px 0 18px; font-weight: 700; color: var(--gold-soft); font-size: 17px; }
+    @media (min-width: 672px) { .hero-photo { margin: 0; } .hero-photo img, .hero-photo::after { border-radius: 18px; } }
+
+    .pkg-photo { position: relative; }
+    .pkg-photo::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(22,21,16,0) 45%, rgba(22,21,16,.85) 78%, #161510 100%);
+    }
+    .pkg-photo .over { position: absolute; left: 20px; right: 20px; bottom: 16px; z-index: 1; }
+    .pkg-photo .over h3 { margin: 10px 0 0; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
   </style>
 </head>
 <body>
@@ -185,13 +207,17 @@
   <a href="index.html" class="back">&larr; Kembali</a>
 
   <!-- HERO -->
-  <section style="padding-top: 16px;">
-    <span class="kicker">Live Session</span>
-    <h1>Nyari Cuan <span class="gold">dari Negara</span> Mana Aja</h1>
-    <p class="lead">Penghasilan digital yang ikut ke mana pun kamu tinggal.</p>
-    <div class="photo">
+  <section class="hero">
+    <div class="hero-photo">
       <img src="images/live-reguler-salju.jpg" alt="Belajar live session Nyari Cuan dari jendela bersalju" width="1122" height="1402">
+      <div class="hero-text">
+        <span class="kicker">Live Session · Via Zoom</span>
+        <h1>Nyari Cuan <span class="gold">dari Negara</span> Mana Aja</h1>
+      </div>
     </div>
+    <p class="lead">Penghasilan digital yang ikut ke mana pun kamu tinggal.</p>
+    <p class="hero-date">Rabu, 25 November 2026 · 19.30 WIB</p>
+    <a href="#reguler" class="btn">Lihat Paket &darr;</a>
   </section>
 
   <!-- HOOK -->
@@ -256,10 +282,14 @@
   <section id="vip">
     <p class="label">Mau didampingi sampai ada hasil?</p>
     <div class="pkg vip">
-      <img src="images/live-vip-haramain.jpg" alt="Program VIP Nyari Cuan dengan latar Makkah" width="1122" height="1402" loading="lazy">
-      <div class="pkg-body">
-        <span class="pkg-tag">VIP</span>
-        <h3>Ilmu tanpa action itu cepat hilang.</h3>
+      <div class="pkg-photo">
+        <img src="images/live-vip-haramain.jpg" alt="Program VIP Nyari Cuan dengan latar Makkah" width="1122" height="1402" loading="lazy">
+        <div class="over">
+          <span class="pkg-tag">VIP · LIVE + MENTORING 5 PEKAN</span>
+          <h3>Ilmu tanpa action itu cepat hilang.</h3>
+        </div>
+      </div>
+      <div class="pkg-body" style="padding-top: 8px;">
         <p class="muted">Banyak orang selesai ikut kelas, semangat dua hari, lalu kembali ke rutinitas lama. Di program VIP, kamu nggak jalan sendirian. Selama 5 pekan kita kerjakan bareng di grup WhatsApp, satu modul per pekan, dengan feedback voice note langsung dariku.</p>
         <p style="margin: 20px 0 0; font-weight: 700;">Di akhir pekan kelima, kamu sudah punya:</p>
         <ul class="checks">

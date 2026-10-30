@@ -47,9 +47,19 @@
     }
     /* GANTI CSS POSTER SUPAYA FULL-WIDTH MEMENUHI HALAMAN */
     .poster-wrapper {
-      margin: 25px -16px;
+      margin: 8px -16px 18px;
     }
-    @media (min-width: 672px) { .poster-wrapper { margin: 25px 0; } }
+    .poster-wrapper { position: relative; }
+    .poster-wrapper::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,8,0) 55%, rgba(8,8,8,.8) 82%, #080808 100%);
+    }
+    .poster-text { position: absolute; left: 16px; right: 16px; bottom: 0; z-index: 1; }
+    .poster-text h1 { margin-bottom: 4px; }
+    .poster-text .badge-vip { background: rgba(0,0,0,.55); }
+    .poster-text h1 { color: #ffffff; text-shadow: 0 2px 16px rgba(0,0,0,.6); }
+    .poster-text .subtitle { color: #e6e6e6; margin-bottom: 18px; }
+    @media (min-width: 672px) { .poster-wrapper { margin: 25px 0; } .poster-wrapper img, .poster-wrapper::after { border-radius: 18px; } }
     .poster-wrapper img {
       width: 100%;
       height: auto;
@@ -176,15 +186,15 @@
   
   <a href="live-session-nyari-cuan.html" class="back-link">&larr; Kembali ke Live Session</a>
   
-  <br>
-  <span class="badge-vip">LIVE SESSION &amp; MENTORING — VIP</span>
-  
-  <h1>NYARI CUAN DARI NEGARA MANA AJA</h1>
-  <p class="subtitle">Live session dan 5 pekan mentoring untuk membangun sistem penghasilan digitalmu.</p>
-
   <div class="poster-wrapper">
     <img src="images/live-vip-haramain.jpg" alt="Program VIP Nyari Cuan dengan latar Makkah" width="1122" height="1402">
+    <div class="poster-text">
+      <span class="badge-vip">LIVE SESSION &amp; MENTORING — VIP</span>
+      <h1>Nyari Cuan dari Negara Mana Aja</h1>
+    </div>
   </div>
+  <p class="subtitle">Live session dan 5 pekan mentoring untuk membangun sistem penghasilan digitalmu.</p>
+  <a href="#daftar" class="btn-cta" style="margin: 0 0 28px;">Lihat Harga &darr;</a>
 
   <p style="color: #dddddd;">
     Banyak orang selesai ikut kelas, semangat dua hari, lalu kembali ke rutinitas lama. Ilmunya ada, <em>action</em>-nya nggak jalan.
@@ -270,7 +280,7 @@
   </div>
 
   <!-- CHECKOUT BOX -->
-  <div class="price-card">
+  <div class="price-card" id="daftar">
     <div>
       <span class="price-strike">Rp799.000</span>
       <span class="price-current">Rp599.000</span>
