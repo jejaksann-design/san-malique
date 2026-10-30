@@ -179,12 +179,12 @@
     .ebook p { margin: 0; color: var(--muted); font-size: 16px; }
     .hero { padding: 0 0 32px; }
     .hero-photo { position: relative; margin: 0 -16px; }
-    .hero-photo img { width: 100%; height: auto; display: block; }
+    .hero-photo img { width: 100%; height: auto; display: block; aspect-ratio: 1122 / 1000; object-fit: cover; object-position: center 80%; }
     .hero-photo::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(8,8,8,0) 55%, rgba(8,8,8,.8) 82%, #080808 100%);
+      content: ""; position: absolute; left: 0; right: 0; top: 0; aspect-ratio: 1122 / 1000; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,8,8,0) 78%, rgba(8,8,8,.7) 92%, #080808 100%);
     }
-    .hero-text { position: absolute; left: 16px; right: 16px; bottom: 0; z-index: 1; }
+    .hero-text { position: relative; z-index: 1; margin: -44px 16px 0; }
     .hero-text h1 { margin-bottom: 4px; }
     .hero-text .kicker { background: rgba(0,0,0,.55); }
     .hero-text h1 { text-shadow: 0 2px 16px rgba(0,0,0,.6); }
@@ -194,10 +194,11 @@
 
     .pkg-photo { position: relative; }
     .pkg-photo::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(22,21,16,0) 45%, rgba(22,21,16,.85) 78%, #161510 100%);
+      content: ""; position: absolute; left: 0; right: 0; top: 0; aspect-ratio: 1122 / 1120;
+      background: linear-gradient(180deg, rgba(22,21,16,0) 80%, rgba(22,21,16,.7) 92%, #161510 100%); pointer-events: none;
     }
-    .pkg-photo .over { position: absolute; left: 20px; right: 20px; bottom: 16px; z-index: 1; }
+    .pkg-photo img { aspect-ratio: 1122 / 1120; object-fit: cover; object-position: center 100%; }
+    .pkg-photo .over { position: relative; z-index: 1; margin: -36px 20px 0; }
     .pkg-photo .over h3 { margin: 10px 0 0; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
   </style>
 </head>
