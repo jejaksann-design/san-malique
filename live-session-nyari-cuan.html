@@ -1,114 +1,296 @@
-<!-- SECTION: LIVE SESSION & E-BOOK NYARI CUAN -->
-<div class="inventory-card live-session-card" style="background-color: #0f0f0f; color: #f0f0f0; padding: 30px 20px; border-radius: 16px; border: 1px solid #2a2a2a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-  
-  <!-- TIER 1: REGULER -->
-  <div class="session-tier tier-reguler">
-    <span class="inventory-tag" style="background: rgba(212, 175, 55, 0.15); color: #d4af37; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; display: inline-block; border: 1px solid rgba(212, 175, 55, 0.3);">LIVE SESSION - REGULER</span>
-    
-    <h3 class="inventory-card-title" style="color: #d4af37; font-size: 1.6rem; margin: 15px 0 5px 0; font-weight: 700;">NYARI CUAN DARI NEGARA MANA AJA</h3>
-    <p class="inventory-card-subtitle" style="color: #cccccc; font-size: 0.95rem; margin-bottom: 20px; font-weight: 600;">Penghasilan digital yang ikut ke mana pun kamu tinggal.</p>
-    
-    <!-- POSTER FULL WIDTH -->
-    <div class="card-image-wrapper" style="margin: 20px 0; width: 100%; text-align: center;">
-      <img src="images/live-nyari-cuan.jpeg" alt="Poster Live Session Nyari Cuan Reguler" style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); border: 1px solid #333;">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Session Nyari Cuan dari Negara Mana Aja — San Malique</title>
+  <meta name="description" content="Live session lima modul untuk membangun penghasilan digital yang ikut ke mana pun kamu tinggal. Bersama San Malique.">
+  <meta property="og:title" content="Live Session Nyari Cuan dari Negara Mana Aja">
+  <meta property="og:description" content="Penghasilan digital yang ikut ke mana pun kamu tinggal.">
+  <meta property="og:image" content="images/live-reguler-salju.jpg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    :root {
+      --bg: #080808;
+      --card: #111111;
+      --card-2: #161510;
+      --line: #262626;
+      --gold: #d4af37;
+      --gold-soft: #f3e5ab;
+      --text: #f2f2f2;
+      --muted: #b8b8b8;
+      --dim: #8a8a8a;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 64px; }
+    a { color: var(--gold); }
+
+    .back { display: inline-block; margin: 20px 0 8px; color: var(--dim); text-decoration: none; font-size: 15px; }
+
+    section { padding: 40px 0; border-bottom: 1px solid #1a1a1a; }
+    section:last-of-type { border-bottom: none; }
+
+    .kicker {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,.4);
+      background: rgba(212,175,55,.1);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 11vw, 60px);
+      line-height: 1.05;
+      margin: 18px 0 14px;
+      letter-spacing: -0.5px;
+    }
+    h1 .gold { color: var(--gold); }
+    .lead { font-size: 21px; color: var(--muted); margin: 0; }
+
+    .photo { margin: 28px -16px 0; }
+    .photo img { width: 100%; height: auto; display: block; }
+    @media (min-width: 672px) { .photo { margin: 28px 0 0; } .photo img { border-radius: 18px; } }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 0 0 18px;
+    }
+    .label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 12px;
+    }
+    .hook {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      line-height: 1.35;
+      font-style: italic;
+      margin: 0 0 20px;
+    }
+    p { margin: 0 0 16px; }
+    .muted { color: var(--muted); }
+
+    .modules { display: grid; gap: 12px; }
+    .module {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .num {
+      flex: 0 0 auto;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(212,175,55,.15);
+      color: var(--gold);
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .module h3 { margin: 0 0 2px; font-size: 19px; }
+    .module p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.55; }
+
+    .facts {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 6px 20px;
+    }
+    .fact { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .fact:last-child { border-bottom: none; }
+    .fact .ic { font-size: 22px; line-height: 1.4; }
+    .fact b { display: block; }
+    .fact span { color: var(--muted); font-size: 17px; }
+
+    .host { display: flex; flex-direction: column; gap: 6px; }
+    .host .name { font-family: Georgia, serif; font-size: 28px; color: var(--gold); font-style: italic; }
+
+    .pkg {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .pkg.vip { border-color: var(--gold); background: var(--card-2); }
+    .pkg img { width: 100%; height: auto; display: block; }
+    .pkg-body { padding: 24px 20px 26px; }
+    .pkg-tag {
+      display: inline-block;
+      font-size: 12px; font-weight: 800; letter-spacing: 2px;
+      color: #000; background: var(--gold);
+      padding: 5px 12px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .pkg-tag.ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .pkg h3 { font-family: Georgia, serif; font-size: 28px; line-height: 1.2; margin: 0 0 10px; }
+    .checks { list-style: none; padding: 0; margin: 18px 0 22px; }
+    .checks li { position: relative; padding-left: 32px; margin-bottom: 12px; }
+    .checks li::before {
+      content: "✓"; position: absolute; left: 0; top: 0;
+      color: var(--gold); font-weight: 800;
+    }
+    .price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+    .strike { text-decoration: line-through; color: var(--dim); font-size: 18px; }
+    .now { color: var(--gold); font-size: 36px; font-weight: 800; letter-spacing: -0.5px; }
+    .quota { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 19px;
+      padding: 18px 20px;
+      min-height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+      color: #000;
+      box-shadow: 0 6px 20px rgba(212,175,55,.3);
+    }
+    .btn.outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); box-shadow: none; }
+    .small { font-size: 15px; color: var(--dim); margin: 14px 0 0; text-align: center; }
+
+    .ebook { display: flex; gap: 16px; align-items: center; }
+    .ebook img { width: 96px; height: auto; border-radius: 8px; flex: 0 0 auto; }
+    .ebook h3 { margin: 0 0 4px; font-size: 19px; }
+    .ebook p { margin: 0; color: var(--muted); font-size: 16px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="index.html" class="back">&larr; Kembali</a>
+
+  <!-- HERO -->
+  <section style="padding-top: 16px;">
+    <span class="kicker">Live Session</span>
+    <h1>Nyari Cuan <span class="gold">dari Negara</span> Mana Aja</h1>
+    <p class="lead">Penghasilan digital yang ikut ke mana pun kamu tinggal.</p>
+    <div class="photo">
+      <img src="images/live-reguler-salju.jpg" alt="Belajar live session Nyari Cuan dari jendela bersalju" width="1122" height="1402">
     </div>
+  </section>
 
-    <p class="inventory-card-desc" style="line-height: 1.6; color: #dddddd; margin-bottom: 15px;">
-      <em>Kalau besok kamu pindah kota, penghasilanmu ikut pindah nggak?</em><br><br>
-      Di live session ini, kita bahas lima modul untuk membangun penghasilan digital yang portable: <strong>Content Creation, Writing, Digital Product, Monetization, dan Remote Work</strong>. Dari bikin konten yang menghasilkan, tulisan yang bikin orang stop scroll dan action, sampai produk pertama dan lamaran remote pertamamu.
-    </p>
+  <!-- HOOK -->
+  <section>
+    <p class="hook">Kalau besok kamu pindah kota, penghasilanmu ikut pindah nggak?</p>
+    <p class="muted">Di live session ini, kita bahas lima modul untuk membangun penghasilan digital yang portable. Dari bikin konten yang menghasilkan, tulisan yang bikin orang stop scroll dan action, sampai produk pertama dan lamaran remote pertamamu.</p>
+  </section>
 
-    <p style="font-size: 0.9rem; color: #bbbbbb; line-height: 1.5; margin-bottom: 20px;">
-      Bersama <strong>San Malique</strong>, penulis 20 buku dan e-book, serta founder Tahfidz Online Academy, ATHAR, dan Isya Indonesia.
-    </p>
-
-    <div class="session-highlights" style="background: #181818; padding: 18px; border-radius: 10px; border: 1px solid #282828; margin-bottom: 20px;">
-      <p style="color: #d4af37; margin-top: 0; font-weight: 600;">Yang kamu dapatkan:</p>
-      <ul style="list-style-type: none; padding-left: 0; color: #cccccc; margin-bottom: 10px; line-height: 1.8;">
-        <li><strong style="color: #d4af37;">&#10003;</strong> Live session lima modul via Zoom / Google Meet</li>
-        <li><strong style="color: #d4af37;">&#10003;</strong> Rumus, contoh, dan latihan di setiap modul</li>
-        <li><strong style="color: #d4af37;">&#10003;</strong> Tugas 24 jam supaya kamu langsung praktik</li>
-        <li><strong style="color: #d4af37;">&#10003;</strong> Rekaman sesi live</li>
-      </ul>
-      <p class="schedule-note" style="font-size: 0.85rem; color: #888888; margin-bottom: 0;"><em>Jadwal: dikirim admin lewat WhatsApp, maksimal 30 hari setelah kamu daftar.</em></p>
+  <!-- MODULES -->
+  <section>
+    <p class="label">Yang akan kita pelajari</p>
+    <h2>Lima modul, satu sesi</h2>
+    <div class="modules">
+      <div class="module"><div class="num">1</div><div><h3>Content Creation</h3><p>Konten yang bukan hanya ditonton, tapi menghasilkan.</p></div></div>
+      <div class="module"><div class="num">2</div><div><h3>Writing</h3><p>Hook, storytelling, copywriting. Bikin orang stop scroll, trust, lalu action.</p></div></div>
+      <div class="module"><div class="num">3</div><div><h3>Digital Product</h3><p>Kemas ilmu dan pengalamanmu jadi produk.</p></div></div>
+      <div class="module"><div class="num">4</div><div><h3>Monetization</h3><p>Karya dan produkmu jadi cuan.</p></div></div>
+      <div class="module"><div class="num">5</div><div><h3>Remote Work</h3><p>Kerja dari mana aja untuk company global.</p></div></div>
     </div>
-    
-    <div class="card-price-row" style="margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-      <span class="card-price-strike" style="text-decoration: line-through; color: #777777; font-size: 1rem;">Rp149.000</span>
-      <span class="card-price-current" style="color: #d4af37; font-size: 1.5rem; font-weight: 800;">Rp99.000</span>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section>
+    <p class="label">Jadwal</p>
+    <div class="facts">
+      <div class="fact"><div class="ic">🗓</div><div><b>Rabu, 25 November 2026</b><span>Live session</span></div></div>
+      <div class="fact"><div class="ic">⏰</div><div><b>19.30 WIB</b><span>20.30 WITA · 21.30 WIT</span></div></div>
+      <div class="fact"><div class="ic">💻</div><div><b>Via Zoom</b><span>Link dikirim admin lewat WhatsApp</span></div></div>
     </div>
-    
-    <!-- TOMBOL REGULER (DIRECT CHECKOUT LYNK.ID) -->
-    <a href="https://lynk.id/jejaksan/jk4myq201q5j" class="btn-inventory-cta" target="_blank" rel="noopener" style="display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%); color: #000000; font-weight: 700; padding: 14px 20px; border-radius: 8px; text-decoration: none; box-sizing: border-box; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);">Daftar Live Session Reguler &rarr;</a>
-  </div>
+  </section>
 
-  <hr class="tier-divider" style="margin: 40px 0; border: none; border-top: 1px dashed #333333;">
-
-  <!-- TIER 2: VIP -->
-  <div class="session-tier tier-vip">
-    <span class="inventory-tag tag-vip" style="background: rgba(212, 175, 55, 0.25); color: #fff8dc; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; display: inline-block; border: 1px solid #d4af37;">LIVE SESSION - VIP</span>
-    
-    <h3 class="inventory-card-title" style="color: #d4af37; font-size: 1.6rem; margin: 15px 0 5px 0; font-weight: 700;">Program Pendampingan VIP</h3>
-    <p class="inventory-card-subtitle" style="color: #ffffff; font-size: 0.95rem; margin-bottom: 20px; font-weight: 600;">Ilmu tanpa action itu cepat hilang.</p>
-    
-    <!-- POSTER FULL WIDTH VIP -->
-    <div class="card-image-wrapper" style="margin: 20px 0; width: 100%; text-align: center;">
-      <a href="live-session-vip.html">
-        <img src="images/live-nyari-cuan-vip.jpeg" alt="Poster Live Session Nyari Cuan VIP" style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); border: 1px solid #d4af37;">
-      </a>
+  <!-- HOST -->
+  <section>
+    <p class="label">Bersama</p>
+    <div class="host">
+      <div class="name">San Malique</div>
+      <p class="muted" style="margin:0;">Penulis 21 buku dan e-book, founder Tahfidz Online Academy dan ATHAR.</p>
     </div>
+  </section>
 
-    <p class="inventory-card-desc" style="line-height: 1.6; color: #dddddd; margin-bottom: 20px;">
-      Banyak orang selesai ikut kelas, semangat dua hari, lalu kembali ke rutinitas lama. Di program VIP, kamu nggak jalan sendirian.<br><br>
-      Selama 5 pekan kita kerjakan bareng di grup WhatsApp, satu modul per pekan, dengan feedback voice note langsung dariku.
-    </p>
-
-    <div class="session-highlights" style="background: #181818; padding: 18px; border-radius: 10px; border: 1px solid #d4af37; margin-bottom: 20px;">
-      <p style="color: #d4af37; margin-top: 0; font-weight: 600;">Di akhir pekan kelima, kamu sudah punya:</p>
-      <ul style="list-style-type: none; padding-left: 0; color: #cccccc; margin-bottom: 0; line-height: 1.8;">
-        <li><strong style="color: #d4af37;">&#10003;</strong> Konten yang siap jalan</li>
-        <li><strong style="color: #d4af37;">&#10003;</strong> Satu produk digital dengan link aktif</li>
-        <li><strong style="color: #d4af37;">&#10003;</strong> Halaman penjualan</li>
-        <li><strong style="color: #d4af37;">&#10003;</strong> CV dan lamaran remote pertama terkirim</li>
-      </ul>
+  <!-- PACKAGE: REGULER -->
+  <section id="reguler">
+    <p class="label">Pilih paketmu</p>
+    <div class="pkg">
+      <div class="pkg-body">
+        <span class="pkg-tag ghost">REGULER</span>
+        <h3>Live Session</h3>
+        <ul class="checks">
+          <li>Live session lima modul via Zoom</li>
+          <li>Rumus, contoh, dan latihan di setiap modul</li>
+          <li>Tugas 24 jam supaya kamu langsung praktik</li>
+          <li>Rekaman sesi live</li>
+        </ul>
+        <div class="price"><span class="strike">Rp149.000</span><span class="now">Rp99.000</span></div>
+        <p class="quota">Harga promo</p>
+        <a href="https://lynk.id/jejaksan/jk4myq201q5j" class="btn" target="_blank" rel="noopener">Daftar Live Session &rarr;</a>
+      </div>
     </div>
-    
-    <div class="card-price-row" style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-      <span class="card-price-strike" style="text-decoration: line-through; color: #777777; font-size: 1rem;">Rp799.000</span>
-      <span class="card-price-current" style="color: #d4af37; font-size: 1.5rem; font-weight: 800;">Rp599.000</span>
-      <span class="badge-quota" style="background: #a31c1c; color: #ffffff; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: 600;">Kuota Terbatas</span>
+  </section>
+
+  <!-- PACKAGE: VIP -->
+  <section id="vip">
+    <p class="label">Mau didampingi sampai ada hasil?</p>
+    <div class="pkg vip">
+      <img src="images/live-vip-haramain.jpg" alt="Program VIP Nyari Cuan dengan latar Makkah" width="1122" height="1402" loading="lazy">
+      <div class="pkg-body">
+        <span class="pkg-tag">VIP</span>
+        <h3>Ilmu tanpa action itu cepat hilang.</h3>
+        <p class="muted">Banyak orang selesai ikut kelas, semangat dua hari, lalu kembali ke rutinitas lama. Di program VIP, kamu nggak jalan sendirian. Selama 5 pekan kita kerjakan bareng di grup WhatsApp, satu modul per pekan, dengan feedback voice note langsung dariku.</p>
+        <p style="margin: 20px 0 0; font-weight: 700;">Di akhir pekan kelima, kamu sudah punya:</p>
+        <ul class="checks">
+          <li>Konten yang siap jalan</li>
+          <li>Satu produk digital dengan link aktif</li>
+          <li>Halaman penjualan</li>
+          <li>CV dan lamaran remote pertama terkirim</li>
+        </ul>
+        <div class="price"><span class="strike">Rp799.000</span><span class="now">Rp599.000</span></div>
+        <p class="quota">Kuota terbatas · feedback personal</p>
+        <a href="live-session-vip.html" class="btn">Lihat Detail VIP &rarr;</a>
+        <p class="small">Sudah ikut reguler? Upgrade ke VIP cukup bayar selisih Rp500.000, maksimal 7 hari setelah live.</p>
+      </div>
     </div>
+  </section>
 
-    <p class="upgrade-note" style="font-size: 0.85rem; color: #999999; margin-bottom: 20px;">
-      <em>Sudah ikut reguler? Upgrade ke VIP cukup bayar selisihnya (maks. 7 hari setelah live).</em>
-    </p>
-    
-    <!-- TOMBOL VIP DIARAHKAN KE LANDING PAGE KHUSUS VIP -->
-    <a href="live-session-vip.html" class="btn-inventory-cta btn-vip-cta" style="display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%); color: #000000; font-weight: 800; padding: 14px 20px; border-radius: 8px; text-decoration: none; box-sizing: border-box; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);">Lihat Detail Complete &amp; Daftar VIP &rarr;</a>
-  </div>
-
-  <hr class="tier-divider" style="margin: 40px 0; border: none; border-top: 1px dashed #333333;">
-
-  <!-- TIER 3: E-BOOK NYARI CUAN -->
-  <div class="session-tier tier-ebook">
-    <span class="inventory-tag" style="background: rgba(212, 175, 55, 0.15); color: #d4af37; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; display: inline-block; border: 1px solid rgba(212, 175, 55, 0.3);">E-BOOK &amp; PANDUAN</span>
-    
-    <h3 class="inventory-card-title" style="color: #d4af37; font-size: 1.6rem; margin: 15px 0 5px 0; font-weight: 700;">Nyari Cuan dari Negara Mana Aja</h3>
-    <p class="inventory-card-subtitle" style="color: #cccccc; font-size: 0.95rem; margin-bottom: 20px; font-weight: 600;">Panduan mandiri format bacaan.</p>
-    
-    <!-- COVER EBOOK FULL WIDTH -->
-    <div class="card-image-wrapper" style="margin: 20px 0; width: 100%; text-align: center;">
-      <a href="nyari-cuan.html">
-        <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan" style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); border: 1px solid #333;">
-      </a>
-    </div>
-
-    <p class="inventory-card-desc" style="line-height: 1.6; color: #dddddd; margin-bottom: 20px;">
-      Panduan taktis membangun sistem pendapatan digital dan kerangka kerja remote work yang fleksibel dari mana saja dalam format e-book praktis.
-    </p>
-
-    <!-- TOMBOL EBOOK -->
-    <a href="nyari-cuan.html" class="btn-inventory-cta" style="display: block; width: 100%; text-align: center; background: #1a1a1a; color: #d4af37; font-weight: 700; padding: 14px 20px; border-radius: 8px; text-decoration: none; box-sizing: border-box; border: 1px solid #d4af37;">Lihat E-Book &rarr;</a>
-  </div>
+  <!-- EBOOK -->
+  <section>
+    <p class="label">Mau baca dulu?</p>
+    <a href="nyari-cuan.html" style="text-decoration:none; color:inherit;">
+      <div class="ebook">
+        <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan dari Negara Mana Aja" loading="lazy">
+        <div>
+          <h3>E-Book Nyari Cuan dari Negara Mana Aja</h3>
+          <p>Peta lima jalur penghasilan digital dalam format bacaan.</p>
+        </div>
+      </div>
+    </a>
+    <a href="nyari-cuan.html" class="btn outline" style="margin-top: 20px;">Lihat E-Book &rarr;</a>
+  </section>
 
 </div>
+</body>
+</html>
