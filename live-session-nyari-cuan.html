@@ -200,6 +200,8 @@
     .pkg-photo img { aspect-ratio: 1122 / 1402; object-fit: cover; object-position: center 100%; }
     .pkg-photo .over { position: relative; z-index: 1; margin: -26px 20px 0; }
     .pkg-photo .over h3 { margin: 10px 0 0; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+    .ebook-cover { display: block; }
+    .ebook-cover img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 5; object-fit: cover; object-position: 49.5% 50%; }
   </style>
 </head>
 <body>
@@ -310,16 +312,18 @@
   <!-- EBOOK -->
   <section>
     <p class="label">Mau baca dulu?</p>
-    <a href="nyari-cuan.html" style="text-decoration:none; color:inherit;">
-      <div class="ebook">
-        <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan dari Negara Mana Aja" loading="lazy">
-        <div>
-          <h3>E-Book Nyari Cuan dari Negara Mana Aja</h3>
-          <p>Peta lima jalur penghasilan digital dalam format bacaan.</p>
-        </div>
+    <div class="pkg">
+      <a href="nyari-cuan.html" class="ebook-cover">
+        <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan dari Negara Mana Aja" width="1672" height="941">
+      </a>
+      <div class="pkg-body">
+        <span class="pkg-tag ghost">E-BOOK</span>
+        <h3>Nyari Cuan dari Negara Mana Aja</h3>
+        <p class="muted">Peta lima jalur penghasilan digital dalam format bacaan. Cocok kalau kamu mau paham petanya dulu sebelum ikut live.</p>
+        <div class="price"><span class="now">Rp49.000</span></div>
+        <a href="nyari-cuan.html" class="btn outline" style="margin-top: 16px;">Lihat E-Book &rarr;</a>
       </div>
-    </a>
-    <a href="nyari-cuan.html" class="btn outline" style="margin-top: 20px;">Lihat E-Book &rarr;</a>
+    </div>
   </section>
 
 </div>
