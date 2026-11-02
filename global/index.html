@@ -31,6 +31,15 @@
     section { margin-bottom: 48px; }
     .book { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 20px; }
     .book img { width: 100%; display: block; margin: 0 auto 22px; border-radius: 12px; }
+    .slider { position: relative; margin-bottom: 22px; }
+    .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 12px; scrollbar-width: none; }
+    .slides::-webkit-scrollbar { display: none; }
+    .slides img { flex: 0 0 100%; width: 100%; scroll-snap-align: start; display: block; margin: 0; border-radius: 0; }
+    .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(0,0,0,0.45); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; }
+    .prev { left: 8px; } .next { right: 8px; }
+    .dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+    .dots span { width: 8px; height: 8px; border-radius: 50%; background: #444; transition: background .2s; }
+    .dots span.on { background: var(--accent-gold); }
     .book ul { list-style: none; margin: 4px 0 20px; }
     .book li { color: var(--text-muted); padding: 6px 0 6px 26px; position: relative; }
     .book li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-gold); font-weight: 700; }
@@ -64,7 +73,15 @@
     </section>
 
     <section class="book">
-      <img src="/make-money-mockup.jpg" alt="Make Money From Anywhere by San Malique" loading="lazy">
+      <div class="slider">
+        <div class="slides" id="slides">
+          <img src="/make-money-mockup.jpg" alt="Make Money From Anywhere by San Malique">
+          <img src="/make-money-contents.jpg" alt="Table of contents of Make Money From Anywhere" loading="lazy">
+        </div>
+        <button class="arrow prev" aria-label="Previous" onclick="go(-1)">&#8249;</button>
+        <button class="arrow next" aria-label="Next" onclick="go(1)">&#8250;</button>
+        <div class="dots" id="dots"><span class="on"></span><span></span></div>
+      </div>
       <h2>Make Money From Anywhere</h2>
       <p>A practical guide to building digital income without being tied to one place. Written from real experience, not theory.</p>
       <ul>
@@ -73,7 +90,6 @@
         <li>How to sell digital products to a global audience</li>
         <li>A personal roadmap to choose one door and start</li>
       </ul>
-      <img src="/make-money-contents.jpg" alt="Table of contents of Make Money From Anywhere" loading="lazy">
       <a class="btn" href="https://sanmalique.gumroad.com/l/make-money-from-anywhere" target="_blank" rel="noopener">Get the ebook · $9.99</a>
       <p class="note">Instant PDF download via Gumroad.</p>
     </section>
@@ -107,5 +123,11 @@
     </footer>
 
   </div>
+<script>
+  var sl=document.getElementById('slides'),dots=document.querySelectorAll('#dots span');
+  function idx(){return Math.round(sl.scrollLeft/sl.clientWidth);}
+  function go(d){var n=(idx()+d+dots.length)%dots.length;sl.scrollTo({left:n*sl.clientWidth,behavior:'smooth'});}
+  sl.addEventListener('scroll',function(){var i=idx();dots.forEach(function(e,k){e.classList.toggle('on',k===i);});});
+</script>
 </body>
 </html>
