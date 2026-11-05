@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Book Nyari Cuan dari Konten Faceless | San Malique</title>
+  <meta name="description" content="Panduan ngonten mulai dari nol, tanpa wajah, tanpa resign. Dari bikin akun faceless sampai produk digital pertamamu laku.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Swiper CSS Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --accent-gold: #d4af37;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --border-color: #262626;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* Styling Swiper Gallery */
+    .swiper-container-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      position: relative;
+      background: var(--card-bg);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--accent-gold) !important;
+      background: rgba(10, 10, 10, 0.6);
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-color);
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+      font-size: 16px !important;
+      font-weight: bold;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--text-muted) !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent-gold) !important;
+    }
+
+    .story-card {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .story-card p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .learn-box {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 35px;
+    }
+
+    .learn-box h2 {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .learn-list {
+      list-style: none;
+    }
+
+    .learn-list li {
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 28px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .learn-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: bold;
+    }
+
+    .price-box {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .price-current {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 8px 0 20px 0;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 24px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      transition: opacity 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-buy:hover {
+      opacity: 0.9;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+  
+    .back-link { display:inline-block; margin-bottom:25px; color:var(--accent-gold); text-decoration:none; font-size:0.9rem; font-weight:500; }
+    .back-link:hover { text-decoration:underline; }
+    .bonus-box { background: rgba(212,175,55,0.06); border:1px solid rgba(212,175,55,0.35); border-radius:16px; padding:24px 28px; margin-bottom:30px; }
+    .bonus-box h3 { color: var(--accent-gold); font-size:1.1rem; margin-bottom:10px; }
+    .bonus-box li { color: var(--text-muted); font-size:0.95rem; margin:0 0 8px 18px; }
+    .meta-row { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:18px; }
+    .meta-row span { font-size:0.8rem; color:var(--text-muted); border:1px solid var(--border-color); border-radius:20px; padding:4px 12px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="portable-income-landing.html" class="back-link">&larr; Kembali ke Portable Income &amp; Work</a>
+    <br>
+    <span class="badge">E-Book Panduan</span>
+    <h1>Nyari Cuan dari Konten Faceless</h1>
+    <p class="subtitle">Ngonten mulai dari nol, tanpa wajah, tanpa resign.</p>
+
+    <div class="swiper swiper-container-box">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/faceless-cover.jpg" alt="Cover E-Book Nyari Cuan dari Konten Faceless">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/faceless-daftar-isi.jpg" alt="Daftar Isi E-Book Nyari Cuan dari Konten Faceless">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="story-card">
+      <p>Jam sembilan malam. Kerjaan baru beres. Kamu buka Instagram, lalu lewat satu akun yang jualan produk digital. Ratusan terjual.</p>
+      <p>Kamu mikir, <em>"Aku juga bisa sih. Tapi aku nggak mau tampil."</em></p>
+      <p>Kabar baiknya, orang di media sosial nggak beli wajah. Mereka beli rasa dimengerti. Dan itu bisa dibangun pakai tulisan, tanpa harus muncul di kamera.</p>
+      <p>E-book ini nemenin kamu dari bikin akun faceless sampai produk digital pertamamu laku. Bisa dijalanin dari HP, di sela kerjaan.</p>
+    </div>
+
+    <div class="learn-box">
+      <h2>Di Dalam E-Book Ini, Kamu Akan Belajar:</h2>
+      <ul class="learn-list">
+        <li><strong>Kenapa Faceless:</strong> kenapa akun tanpa wajah masuk akal buat kamu yang udah kerja.</li>
+        <li><strong>Persona dan Niche:</strong> akunmu ngobrol sama siapa, dan cara ngecek ada pasarnya atau nggak.</li>
+        <li><strong>Konten Tanpa Wajah yang Tetap Punya Rasa:</strong> carousel, reels B-roll, voice-over, dan contoh caption sebelum-sesudah.</li>
+        <li><strong>Hook, Story, CTA:</strong> plus Bank Hook 9 pola yang bikin orang stop scroll.</li>
+        <li><strong>Produk Pertamamu:</strong> dari problem jadi produk, dibikin dalam 7 hari, dan cara nentuin harga.</li>
+        <li><strong>Buka Toko Digitalmu:</strong> platform jualan buat pasar Indonesia dan global, cara daftar, dan halaman produk yang bikin orang klik beli.</li>
+        <li><strong>Jualan Tanpa Maksa:</strong> pola 80/20, jalur dari bio sampai checkout, dan jualan lewat tulisan tanpa video.</li>
+        <li><strong>Satu Akun, Banyak Pintu:</strong> income stack, collab dan endorse, negosiasi, sampai skill yang kepake buat bisnis apa pun.</li>
+      </ul>
+      <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;">
+        Kamu bakal ngikutin cerita Dimas dan Rina, lengkap dengan kesalahan yang mereka bikin dan angka hasilnya yang realistis. Nggak ada janji "100 juta sebulan". Setelah baca, kamu tahu persis harus mulai dari mana.
+      </p>
+      <p style="font-weight: 600; text-align: center; margin: 15px 0; color: var(--accent-gold);">
+        Wajah bikin orang kenal. Tulisan bikin orang percaya.
+      </p>
+    </div>
+
+    <div class="bonus-box">
+      <h3>Bonus: 30 Hari Pertama</h3>
+      <ul>
+        <li>Checklist harian buat akun barumu, dari hari pertama bikin akun sampai launching produk.</li>
+        <li>Pertanyaan renungan di tiap chapter, biar kamu langsung action.</li>
+      </ul>
+    </div>
+
+    <div class="story-card">
+      <p style="color: var(--text-main); font-weight: 600;">Cocok buat kamu yang:</p>
+      <p>&#10003; Usia 25+ dan pengin punya income kedua<br>
+         &#10003; Nggak pede atau nggak bisa tampil di kamera<br>
+         &#10003; Waktunya terbatas, cuma bisa di sela kerjaan<br>
+         &#10003; Pengin mulai dari nol, tanpa alat mahal</p>
+    </div>
+
+    <div class="price-box">
+      <div class="meta-row"><span>57 halaman</span><span>PDF</span><span>Langsung dikirim setelah pembayaran</span></div>
+      <p class="price-current">Rp49.000</p>
+      <a href="https://lynk.id/jejaksan/qgql9mm07ry5" class="btn-buy" target="_blank" rel="noopener">Beli E-Book Sekarang</a>
+    </div>
+
+    <div style="border: 1px solid var(--accent-gold); border-radius: 16px; padding: 24px; margin-bottom: 30px; background: rgba(212, 175, 55, 0.05);">
+      <div style="display: inline-block; border: 1px solid var(--accent-gold); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--accent-gold); margin-bottom: 12px;">PAKET BUNDLE HEMAT</div>
+      <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 8px;">Mau Dapet Kedua E-Book Sekaligus?</h3>
+      <p style="color: #ccc; font-size: 0.95rem; margin-bottom: 16px;">Dapatkan E-Book <strong>"Nyari Cuan dari Konten Faceless"</strong> + <strong>"Nyari Cuan dari Remote Work"</strong>. Satu buat bangun income dari konten, satu buat dapat gaji tetap dari kerja remote.</p>
+      <img src="images/bundle-faceless-remote.jpg" alt="Bundle Nyari Cuan dari Konten Faceless dan Nyari Cuan dari Remote Work" style="width: 100%; border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-color); object-fit: cover;">
+      <p class="price-current" style="font-size: 1.8rem; margin: 10px 0 15px 0; color: var(--accent-gold);">
+        <span style="text-decoration: line-through; color: #888; font-size: 1.1rem; margin-right: 8px;">Rp98.000</span>
+        Rp79.000
+      </p>
+      <a href="bundle-faceless-remote-work.html" class="btn-buy" style="display: block; width: 100%; padding: 14px; background-color: var(--accent-gold); color: #000;">Lihat Detail Paket Bundle &rarr;</a>
+    </div>
+    <div class="footer">
+      &copy; 2026 San Malique. All rights reserved.
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container-box', {
+      loop: true,
+      grabCursor: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Book Bundle: Konten Faceless &amp; Remote Work | San Malique</title>
+  <meta name="description" content="Dua e-book Nyari Cuan dalam satu bundle: bangun income dari konten faceless dan dapat kerja remote.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --accent-gold: #d4af37;
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --border-color: #262626;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* BREADCRUMB / BACK LINK */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .bundle-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .bundle-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* BANNER UTAMA COVER BUNDLE */
+    .bundle-cover-img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      display: block;
+    }
+
+    /* SWIPER GALLERY SLIDER */
+    .swiper-container-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 35px;
+      border: 1px solid var(--border-color);
+      position: relative;
+      background: var(--card-bg);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--accent-gold) !important;
+      background: rgba(10, 10, 10, 0.6);
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-color);
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+      font-size: 16px !important;
+      font-weight: bold;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--text-muted) !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent-gold) !important;
+    }
+
+    /* DETAIL ISI BUNDLE (STORY CARD) */
+    .details-box {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .details-box > p {
+      font-size: 1rem;
+      color: var(--text-main);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .item-block {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .item-block:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .item-block h4 {
+      font-size: 1.15rem;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .item-block p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* KOTAK HARGA BUNDLE UTAMA (PRICE BOX) */
+    .price-box {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .price-current {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 8px 0 12px 0;
+    }
+
+    .cta-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 24px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      transition: opacity 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-buy:hover {
+      opacity: 0.9;
+    }
+
+    /* STYLING KARTU TERPISAH STANDALONE E-BOOK */
+    .standalone-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .card-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(212, 175, 55, 0.1);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .card-image-wrapper {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-color);
+    }
+
+    .card-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .card-price-current {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .btn-card-action {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      background-color: var(--accent-gold);
+      color: #000000;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-card-action:hover {
+      opacity: 0.9;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+  
+    .back-link { display:inline-block; margin-bottom:25px; color:var(--accent-gold); text-decoration:none; font-size:0.9rem; font-weight:500; }
+    .back-link:hover { text-decoration:underline; }
+    .bonus-box { background: rgba(212,175,55,0.06); border:1px solid rgba(212,175,55,0.35); border-radius:16px; padding:24px 28px; margin-bottom:30px; }
+    .bonus-box h3 { color: var(--accent-gold); font-size:1.1rem; margin-bottom:10px; }
+    .bonus-box li { color: var(--text-muted); font-size:0.95rem; margin:0 0 8px 18px; }
+    .meta-row { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:18px; }
+    .meta-row span { font-size:0.8rem; color:var(--text-muted); border:1px solid var(--border-color); border-radius:20px; padding:4px 12px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <a href="portable-income-landing.html" class="back-link">&larr; Kembali ke Portable Income &amp; Work</a>
+
+    <br>
+    <span class="bundle-tag">E-Book Bundle</span>
+    <h1>Nyari Cuan dari Konten Faceless &amp; Remote Work</h1>
+    <p class="bundle-subtitle">
+      Dua pintu income dalam satu bundle: gaji tetap dari kerja remote sebagai lantai, dan income dari konten yang bisa terus tumbuh di atasnya.
+    </p>
+
+    <div class="swiper swiper-container-box">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/bundle-faceless-remote.jpg" alt="Cover Bundle Nyari Cuan dari Konten Faceless dan Remote Work">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/remote-work-daftar-isi.jpg" alt="Daftar Isi E-Book Nyari Cuan dari Remote Work">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/faceless-daftar-isi.jpg" alt="Daftar Isi E-Book Nyari Cuan dari Konten Faceless">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="details-box">
+      <p>Di dalam bundle ini kamu mendapatkan:</p>
+
+      <div class="item-block">
+        <h4>1. Nyari Cuan dari Remote Work</h4>
+        <p>Panduan dapat kerja remote pertamamu: kenali value, pilih jalur, siapin CV dan portfolio, cari perusahaan yang tepat, apply dengan bantuan ChatGPT dan Claude, sampai interview dan offer. Bonus 30 hari lamaran pertama, template CV dan email, direktori 30+ website, dan Global Interview Question Decoder.</p>
+      </div>
+
+      <div class="item-block">
+        <h4>2. Nyari Cuan dari Konten Faceless</h4>
+        <p>Panduan ngonten mulai dari nol, tanpa wajah, tanpa resign: persona dan niche, konten yang tetap punya rasa, Bank Hook 9 pola, produk digital pertama, buka toko digital buat pasar Indonesia dan global, sampai jualan tanpa maksa. Bonus checklist 30 hari pertama.</p>
+      </div>
+    </div>
+
+    <div class="price-box">
+      <p class="price-old">Rp98.000</p>
+      <p class="price-current">Rp79.000</p>
+      <p class="cta-note">
+        Dua e-book. Satu bundle.<br>
+        Remote work jadi lantai income-mu, konten jadi pintu yang terus tumbuh di atasnya.
+      </p>
+      <a href="https://lynk.id/jejaksan/562dq48gnjwz" class="btn-buy" target="_blank" rel="noopener">
+        DAPATKAN BUNDLE &middot; Rp79.000 &rarr;
+      </a>
+    </div>
+
+    <div class="standalone-card">
+      <span class="card-badge">E-Book Standalone</span>
+      <h2 class="card-title">Ingin E-Book Remote Work Saja?</h2>
+      <p class="card-subtitle">Panduan praktis bangun penghasilan fleksibel, dari mana aja di dunia.</p>
+      <div class="card-image-wrapper">
+        <img src="images/remote-work-cover.jpg" alt="Cover E-Book Nyari Cuan dari Remote Work">
+      </div>
+      <div class="card-price-row"><span class="card-price-current">Rp49.000</span></div>
+      <a href="nyari-cuan-remote-work.html" class="btn-card-action">Lihat Detail E-Book &rarr;</a>
+    </div>
+
+    <div class="standalone-card">
+      <span class="card-badge">E-Book Standalone</span>
+      <h2 class="card-title">Ingin E-Book Konten Faceless Saja?</h2>
+      <p class="card-subtitle">Ngonten mulai dari nol, tanpa wajah, tanpa resign.</p>
+      <div class="card-image-wrapper">
+        <img src="images/faceless-cover.jpg" alt="Cover E-Book Nyari Cuan dari Konten Faceless">
+      </div>
+      <div class="card-price-row"><span class="card-price-current">Rp49.000</span></div>
+      <a href="nyari-cuan-konten-faceless.html" class="btn-card-action">Lihat Detail E-Book &rarr;</a>
+    </div>
+
+    <div class="footer">
+      &copy; 2026 San Malique. All rights reserved.
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container-box', {
+      loop: true,
+      grabCursor: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+  </script>
+</body>
+</html>
