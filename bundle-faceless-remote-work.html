@@ -325,6 +325,16 @@
     .bonus-box li { color: var(--text-muted); font-size:0.95rem; margin:0 0 8px 18px; }
     .meta-row { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:18px; }
     .meta-row span { font-size:0.8rem; color:var(--text-muted); border:1px solid var(--border-color); border-radius:20px; padding:4px 12px; }
+    .section-label { font-size:0.8rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin:10px 0 16px; text-align:center; }
+    .pcard { background: var(--card-bg); border:1px solid var(--border-color); border-radius:16px; padding:24px; margin-bottom:24px; }
+    .pcard.gold { border-color: var(--accent-gold); background: rgba(212,175,55,0.05); }
+    .pcard .pbadge { display:inline-block; border:1px solid rgba(212,175,55,0.4); color:var(--accent-gold); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:12px; }
+    .pcard h3 { color: var(--text-main); font-size:1.3rem; margin-bottom:6px; line-height:1.3; }
+    .pcard .pdesc { color: var(--text-muted); font-size:0.93rem; margin-bottom:16px; }
+    .pcard img { width:100%; border-radius:12px; border:1px solid var(--border-color); display:block; margin-bottom:16px; }
+    .pcard .pprice { font-size:1.7rem; font-weight:700; color: var(--accent-gold); margin-bottom:14px; }
+    .pcard .pprice s { color:#888; font-size:1.05rem; font-weight:400; margin-right:8px; }
+    .pcard .btn-buy { display:block; text-align:center; }
   </style>
 </head>
 <body>
@@ -406,13 +416,11 @@
     </div>
 
     <div class="standalone-card" style="border: 1px solid var(--border-color); text-align: center;">
-      <span class="card-badge" style="background-color: rgba(255,255,255,0.05); color: var(--text-muted); border-color: var(--border-color);">PETA LENGKAPNYA</span>
-      <h3 style="font-size: 1.3rem; color: var(--text-main); margin: 10px 0;">Nyari Cuan dari Negara Mana Aja</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Dua e-book ini fokus ke dua pintu. Kalau kamu pengin lihat peta besarnya, dari konten, writing, produk digital, jasa, remote work, sampai bisnis, mulai dari sini.</p>
-      <a href="nyari-cuan.html" style="text-decoration: none; display: block; margin-bottom: 20px;">
-        <img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan dari Negara Mana Aja" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); object-fit: cover;">
-      </a>
-      <p class="price-current" style="font-size: 1.8rem; margin: 10px 0 15px 0; color: var(--accent-gold);">Rp49.000</p>
+      <span class="card-badge">PETA LENGKAPNYA</span>
+      <h2 class="card-title">Nyari Cuan dari Negara Mana Aja</h2>
+      <p class="card-subtitle">Dua e-book ini fokus ke dua pintu. Kalau kamu pengin lihat peta besarnya, dari konten, writing, produk digital, jasa, remote work, sampai bisnis, mulai dari sini.</p>
+      <div class="card-image-wrapper"><img src="images/nyari-cuan-cover.jpeg" alt="Cover E-Book Nyari Cuan dari Negara Mana Aja"></div>
+      <div class="card-price-row" style="justify-content:center"><span class="card-price-current">Rp49.000</span></div>
       <a href="nyari-cuan.html" class="btn-card-action">Lihat E-Book &rarr;</a>
     </div>
 
