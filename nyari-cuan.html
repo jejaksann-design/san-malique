@@ -209,6 +209,16 @@
       border-top: 1px solid var(--border-color);
       padding-top: 20px;
     }
+      .section-label { font-size:0.8rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin:10px 0 16px; text-align:center; }
+    .pcard { background: var(--card-bg); border:1px solid var(--border-color); border-radius:16px; padding:24px; margin-bottom:24px; }
+    .pcard.gold { border-color: var(--accent-gold); background: rgba(212,175,55,0.05); }
+    .pcard .pbadge { display:inline-block; border:1px solid rgba(212,175,55,0.4); color:var(--accent-gold); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:12px; }
+    .pcard h3 { color: var(--text-main); font-size:1.3rem; margin-bottom:6px; line-height:1.3; }
+    .pcard .pdesc { color: var(--text-muted); font-size:0.93rem; margin-bottom:16px; }
+    .pcard img { width:100%; border-radius:12px; border:1px solid var(--border-color); display:block; margin-bottom:16px; }
+    .pcard .pprice { font-size:1.7rem; font-weight:700; color: var(--accent-gold); margin-bottom:14px; }
+    .pcard .pprice s { color:#888; font-size:1.05rem; font-weight:400; margin-right:8px; }
+    .pcard .btn-buy { display:block; text-align:center; }
   </style>
 </head>
 <body>
@@ -280,6 +290,33 @@
     <div class="price-box">
       <p class="price-current">Rp49.000</p>
       <a href="https://lynk.id/jejaksan/j0nxozm19ldn" class="btn-buy" target="_blank">Beli E-Book Sekarang</a>
+    </div>
+
+    <!-- SERI NYARI CUAN -->
+    <p class="section-label">Lanjut ke seri Nyari Cuan</p>
+    <div class="pcard">
+      <span class="pbadge">E-Book</span>
+      <h3>Nyari Cuan dari Konten Faceless</h3>
+      <p class="pdesc">Ngonten mulai dari nol, tanpa wajah, tanpa resign. Dari bikin akun faceless sampai produk digital pertamamu laku.</p>
+      <a href="nyari-cuan-konten-faceless.html"><img src="images/faceless-cover.jpg" alt="Nyari Cuan dari Konten Faceless"></a>
+      <p class="pprice">Rp49.000</p>
+      <a href="nyari-cuan-konten-faceless.html" class="btn-buy">Lihat E-Book &rarr;</a>
+    </div>
+    <div class="pcard">
+      <span class="pbadge">E-Book</span>
+      <h3>Nyari Cuan dari Remote Work</h3>
+      <p class="pdesc">Panduan dapat kerja remote pertamamu: kenali value, siapin CV dan portfolio, apply dengan bantuan AI, sampai interview dan offer.</p>
+      <a href="nyari-cuan-remote-work.html"><img src="images/remote-work-cover.jpg" alt="Nyari Cuan dari Remote Work"></a>
+      <p class="pprice">Rp49.000</p>
+      <a href="nyari-cuan-remote-work.html" class="btn-buy">Lihat E-Book &rarr;</a>
+    </div>
+    <div class="pcard gold">
+      <span class="pbadge">Paket Bundle Hemat</span>
+      <h3>Bundle: Konten Faceless + Remote Work</h3>
+      <p class="pdesc">Dua e-book sekaligus. Remote work jadi lantai income-mu, konten jadi pintu yang terus tumbuh di atasnya.</p>
+      <a href="bundle-faceless-remote-work.html"><img src="images/bundle-faceless-remote.jpg" alt="Bundle: Konten Faceless + Remote Work"></a>
+      <p class="pprice"><s>Rp98.000</s>Rp79.000</p>
+      <a href="bundle-faceless-remote-work.html" class="btn-buy">Lihat Paket Bundle &rarr;</a>
     </div>
 
     <!-- 2. Section E-Book Bundle -->
