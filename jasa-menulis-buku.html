@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jasa Menulis Buku — San Malique</title>
+  <meta name="description" content="Jasa menulis buku dan e-book atas namamu, dari wawancara sampai naskah final. Bersama San Malique, penulis 28 buku dan e-book.">
+  <meta property="og:title" content="Jasa Menulis Buku — San Malique">
+  <meta property="og:description" content="Ceritamu layak jadi buku. Kamu cerita, San Malique yang menulis.">
+  <meta property="og:image" content="images/hero.jpg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fcfbf7;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #555555;
+      --line: #e5e5e0;
+      --green: #2d4030;
+      --gold: #b58d3d;
+      --gold-btn: #a37c3f;
+      --soft: #f4efe3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    a { color: var(--gold); }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px 64px; }
+    .back { display: inline-block; margin: 20px 0 8px; color: var(--muted); text-decoration: none; font-size: 15px; }
+
+    section { padding: 44px 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: none; }
+
+    .kicker {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(181,141,61,.4); background: rgba(181,141,61,.08);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    h1 {
+      font-family: 'Newsreader', serif; font-weight: 500;
+      font-size: clamp(38px, 9vw, 56px); line-height: 1.08;
+      margin: 18px 0 16px; letter-spacing: -0.5px;
+    }
+    h1 em { color: var(--gold); }
+    .lead { font-size: 19px; color: var(--muted); }
+
+    .photo { margin: 28px -16px 0; }
+    .photo img { width: 100%; height: auto; display: block; aspect-ratio: 16/10; object-fit: cover; }
+    @media (min-width: 752px) { .photo { margin: 28px 0 0; } .photo img { border-radius: 16px; } }
+
+    .label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    h2 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 32px; line-height: 1.2; margin-bottom: 18px; }
+    p { margin-bottom: 16px; }
+    .muted { color: var(--muted); }
+    .hook { font-family: 'Newsreader', serif; font-style: italic; font-size: 24px; line-height: 1.4; margin-bottom: 18px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--green); color: #fff; text-decoration: none; font-weight: 600;
+      padding: 15px 26px; border-radius: 12px; font-size: 16px; margin-top: 8px;
+    }
+    .btn:hover { opacity: .92; }
+    .btn-full { width: 100%; }
+
+    .list { list-style: none; display: grid; gap: 12px; }
+    .list li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+    .list li strong { display: block; font-size: 16px; margin-bottom: 2px; }
+    .list li span { color: var(--muted); font-size: 15px; }
+
+    .proof { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 22px; }
+    .proof div { background: var(--soft); border-radius: 14px; padding: 18px 16px; }
+    .proof b { display: block; font-family: 'Newsreader', serif; font-size: 34px; font-weight: 500; color: var(--gold); line-height: 1.1; }
+    .proof span { font-size: 14px; color: var(--muted); }
+
+    .packages { display: grid; gap: 14px; }
+    @media (min-width: 620px) { .packages { grid-template-columns: 1fr 1fr; } }
+    .pkg { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px; }
+    .pkg h3 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 24px; margin-bottom: 4px; }
+    .pkg .pages { color: var(--gold); font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+    .pkg p { color: var(--muted); font-size: 15px; margin: 0; }
+
+    .incl { list-style: none; margin-top: 22px; display: grid; gap: 8px; }
+    .incl li { padding-left: 28px; position: relative; }
+    .incl li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+    .note { background: var(--soft); border-radius: 14px; padding: 18px; font-size: 15px; color: #333; margin-top: 22px; }
+
+    .steps { list-style: none; counter-reset: s; display: grid; gap: 14px; }
+    .steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
+    .steps li::before {
+      content: counter(s); width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green); color: #fff; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .steps strong { display: block; }
+    .steps span { color: var(--muted); font-size: 15px; }
+
+    .covers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (min-width: 620px) { .covers { grid-template-columns: repeat(4, 1fr); } }
+    .covers img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; display: block; box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+
+    details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; }
+    summary { font-weight: 600; cursor: pointer; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--gold); font-weight: 700; }
+    details[open] summary::after { content: "–"; }
+    details p { margin: 10px 0 0; color: var(--muted); font-size: 15px; }
+
+    .cta { text-align: center; }
+    footer { text-align: center; padding: 32px 16px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="/" class="back">&larr; San Malique</a>
+
+    <!-- HERO -->
+    <section>
+      <span class="kicker">Jasa Menulis Buku</span>
+      <h1>Ceritamu layak jadi buku. <em>Biar aku yang nulis.</em></h1>
+      <p class="lead">Kamu punya kisah, ilmu, atau pengalaman yang pengin diwariskan. Aku bantu ubah jadi buku atau e-book atas namamu, dari obrolan pertama sampai naskah final.</p>
+      <a class="btn" href="https://wa.me/6282199342740?text=Assalamualaikum%2C%20saya%20mau%20konsultasi%20Jasa%20Menulis%20Buku%20San%20Malique." target="_blank" rel="noopener">Konsultasi via WhatsApp &rarr;</a>
+      <div class="photo"><img src="images/hero.jpg" alt="San Malique"></div>
+    </section>
+
+    <!-- MASALAH -->
+    <section>
+      <p class="label">Kenapa buku itu belum ada</p>
+      <p class="hook">"Dari dulu pengin nulis buku, tapi nggak pernah selesai."</p>
+      <p>Kalimat ini sering banget aku dengar. Biasanya bukan karena ceritanya kurang menarik. Justru sebaliknya, ceritanya ada, ilmunya ada, pengalamannya kaya.</p>
+      <p>Yang bikin mentok itu hal lain: sibuk, bingung mulai dari mana, atau nggak percaya diri sama tulisan sendiri. Akhirnya buku itu cuma jadi wacana bertahun-tahun.</p>
+      <p>Di sinilah aku masuk. Kamu cukup cerita. Sisanya, dari menyusun alur sampai merangkai kalimat, aku yang kerjakan.</p>
+    </section>
+
+    <!-- UNTUK SIAPA -->
+    <section>
+      <p class="label">Untuk siapa</p>
+      <h2>Cocok buat kamu yang…</h2>
+      <ul class="list">
+        <li><strong>Pengusaha & tokoh</strong><span>Ingin membagikan perjalanan, prinsip, atau pelajaran bisnis lewat buku, tapi waktunya habis buat menjalankan usaha.</span></li>
+        <li><strong>Lembaga & yayasan</strong><span>Butuh buku profil atau kisah perjalanan lembaga yang enak dibaca, bukan laporan kaku.</span></li>
+        <li><strong>Travel umrah & haji</strong><span>Ingin buku panduan atau kumpulan kisah jamaah sebagai karya yang bisa dibagikan ke calon jamaah.</span></li>
+        <li><strong>Siapa pun yang punya cerita</strong><span>Guru, dai, praktisi, orang tua. Selama ada kisah yang layak diwariskan, kita bisa mulai.</span></li>
+      </ul>
+    </section>
+
+    <!-- KENAPA SAN MALIQUE -->
+    <section>
+      <p class="label">Siapa yang menulis</p>
+      <h2>Ditulis oleh San Malique</h2>
+      <div class="proof">
+        <div><b>28</b><span>buku & e-book yang sudah ditulis</span></div>
+        <div><b>2018</b><span>buku fisik pertama terbit</span></div>
+        <div><b>300+</b><span>penjualan e-book</span></div>
+        <div><b>10+</b><span>tahun slow living dan tinggal lama di berbagai negara</span></div>
+      </div>
+      <p>Salah satu bukuku, <em>Mencari Cahaya Para Nabi di Tiga Kota Suci</em>, menjadi bestseller. Dari situ aku belajar satu hal: buku yang dibaca orang bukan yang paling banyak teorinya, tapi yang paling jujur ceritanya.</p>
+      <p>Itu juga yang aku bawa ke bukumu. Tulisan yang terasa seperti suaramu sendiri, bukan tulisan yang hambar dan generik.</p>
+    </section>
+
+    <!-- PAKET -->
+    <section>
+      <p class="label">Paket</p>
+      <h2>Dua pilihan format</h2>
+      <div class="packages">
+        <div class="pkg">
+          <h3>E-book Pendek</h3>
+          <p class="pages">±40–60 halaman</p>
+          <p>Pas untuk satu topik yang fokus: panduan praktis, kisah singkat, atau lead magnet untuk bisnismu.</p>
+        </div>
+        <div class="pkg">
+          <h3>Buku Standar</h3>
+          <p class="pages">±100–150 halaman</p>
+          <p>Untuk kisah hidup, perjalanan lembaga, atau buku yang ingin dicetak dan dibagikan lebih luas.</p>
+        </div>
+      </div>
+      <ul class="incl">
+        <li>Wawancara dan pengumpulan bahan (Zoom atau email)</li>
+        <li>Outline yang disetujui sebelum mulai menulis</li>
+        <li>Penulisan per bab sampai naskah final</li>
+        <li>2x revisi</li>
+        <li>Nama kamu di cover, kerahasiaan dijaga</li>
+      </ul>
+      <div class="note">
+        <strong>Biaya dihitung per proyek</strong>, tergantung panjang buku dan kedalaman bahan. Pembayaran bertahap: DP 50% di awal, 50% saat naskah selesai. Konsultasi awal gratis.
+      </div>
+      <div class="note">
+        <strong>Mau dicetak jadi buku fisik?</strong> Naskah bisa lanjut ke layout, ISBN, dan cetak lewat penerbit atau percetakan partner. Biaya cetak ditanggung klien.
+      </div>
+    </section>
+
+    <!-- ALUR -->
+    <section>
+      <p class="label">Alur kerja</p>
+      <h2>Dari cerita sampai naskah</h2>
+      <ol class="steps">
+        <li><div><strong>Brief & wawancara</strong><span>Kita ngobrol soal isi, tujuan, dan pembaca bukumu. Kamu cerita, aku yang tanya.</span></div></li>
+        <li><div><strong>Outline disetujui</strong><span>Aku susun kerangka bab. Kita sepakati dulu sebelum masuk ke penulisan.</span></div></li>
+        <li><div><strong>Penulisan per bab</strong><span>Naskah dikirim bertahap, jadi kamu bisa kasih masukan sejak awal.</span></div></li>
+        <li><div><strong>Revisi & naskah final</strong><span>Dua kali revisi, lalu naskah siap untuk layout atau terbit.</span></div></li>
+      </ol>
+    </section>
+
+    <!-- CONTOH KARYA -->
+    <section>
+      <p class="label">Contoh karya</p>
+      <h2>Beberapa buku dan e-book San Malique</h2>
+      <div class="covers">
+        <img src="images/nyari-cuan-cover.jpeg" alt="E-book Nyari Cuan">
+        <img src="images/pergi-ke-mana-hafalanku-dulu.jpeg" alt="Pergi ke Mana Hafalanku Dulu">
+        <img src="images/dmj-cover.jpg" alt="Daily Muslim Journal">
+        <img src="images/remote-work-cover.jpg" alt="E-book Remote Work">
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <p class="label">FAQ</p>
+      <h2>Yang sering ditanyakan</h2>
+      <details>
+        <summary>Nama siapa yang ada di cover?</summary>
+        <p>Namamu. Buku ini sepenuhnya milikmu. San Malique bekerja di belakang layar.</p>
+      </details>
+      <details>
+        <summary>Apakah orang lain akan tahu bukunya dibantu?</summary>
+        <p>Tidak dari pihakku. Kerahasiaan proyek dijaga, dan aku nggak akan mencantumkan bukumu sebagai portofolio tanpa izinmu.</p>
+      </details>
+      <details>
+        <summary>Aku nggak pandai bercerita. Bisa?</summary>
+        <p>Bisa banget. Kamu cukup ngobrol santai, aku yang memandu dengan pertanyaan. Banyak cerita terbaik justru keluar dari obrolan, bukan dari tulisan.</p>
+      </details>
+      <details>
+        <summary>Kalau bahannya sudah ada sebagian?</summary>
+        <p>Lebih bagus. Catatan, rekaman ceramah, tulisan lama, atau dokumen lembaga bisa jadi bahan utama. Aku yang merapikan dan menyusunnya jadi buku utuh.</p>
+      </details>
+      <details>
+        <summary>Bagaimana dengan penerbitan dan ISBN?</summary>
+        <p>Untuk buku fisik, naskah bisa diteruskan ke penerbit atau percetakan partner untuk layout, ISBN, dan cetak. Biaya cetak ditanggung klien.</p>
+      </details>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Yuk, mulai dari satu obrolan.</h2>
+      <p class="muted">Ceritakan buku seperti apa yang kamu bayangkan. Konsultasi awal gratis.</p>
+      <a class="btn btn-full" href="https://wa.me/6282199342740?text=Assalamualaikum%2C%20saya%20mau%20konsultasi%20Jasa%20Menulis%20Buku%20San%20Malique." target="_blank" rel="noopener">Konsultasi via WhatsApp &rarr;</a>
+    </section>
+  </div>
+
+  <footer>&copy; 2026 SAN MALIQUE. All rights reserved.</footer>
+</body>
+</html>
