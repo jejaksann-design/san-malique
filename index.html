@@ -149,6 +149,15 @@
       cursor: pointer;
     }
 
+    .hero-read-first {
+      display: inline-block;
+      margin-top: 22px;
+      color: #e6c88a;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
     /* TITLES */
     .section-main-title {
       font-family: 'Newsreader', serif;
@@ -345,6 +354,17 @@
       .btn-subscribe-head { padding: 7px 16px; }
       .hero-title { font-size: 2.4rem; }
       .subscribe-form { flex-direction: column; }
+      /* HP: foto hero tampil utuh di atas, teks di bawahnya */
+      .hero-newsletter { background: #17120d; padding: 0 20px 44px; overflow: hidden; }
+      .hero-newsletter::before {
+        content: '';
+        display: block;
+        margin: 0 -20px;
+        aspect-ratio: 1450 / 1085;
+        background: linear-gradient(to bottom, rgba(23,18,13,0) 55%, #17120d 100%), url('images/hero.jpg') center/cover no-repeat;
+      }
+      .hero-label { position: relative; margin-top: -28px; }
+      .subscribe-form input, .subscribe-form button { padding: 14px 20px; font-size: 1rem; }
     }
 
     /* CATATAN TERBARU */
@@ -464,10 +484,11 @@
       <p class="hero-desc">
         Catatan, refleksi, dan pengalaman tentang iman, Al-Qur'an, kehidupan, pekerjaan, perjalanan, dan hal-hal yang sedang kupelajari sepanjang membangun kehidupan yang portable.
       </p>
-      <form class="subscribe-form" onsubmit="event.preventDefault();">
-        <input type="email" placeholder="Alamat email kamu...">
+      <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/jejak" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/jejak', 'popupwindow')">
+        <input type="email" name="email" placeholder="Alamat email kamu..." required>
         <button type="submit">Subscribe</button>
       </form>
+      <a href="#catatan" class="hero-read-first">Baca catatan dulu &rarr;</a>
     </div>
 
     <!-- SECTION 1: CATATAN TERBARU (FEED + FILTER KATEGORI) -->
