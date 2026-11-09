@@ -176,6 +176,13 @@
       text-decoration: none;
     }
 
+    /* HALAMAN DEPAN: hanya hero sampai pengunjung memilih explore */
+    html.landing .container > *:not(.hero-newsletter),
+    html.landing footer { display: none; }
+    html.landing body { min-height: 100svh; display: flex; flex-direction: column; }
+    html.landing .container { flex: 1; display: flex; flex-direction: column; width: 100%; padding-bottom: 40px; }
+    html.landing .hero-newsletter { flex: 1; display: flex; flex-direction: column; justify-content: center; margin-bottom: 0; }
+
     /* TITLES */
     .section-main-title {
       font-family: 'Newsreader', serif;
@@ -373,6 +380,13 @@
       .hero-title { font-size: 2.3rem; }
       /* HP: foto hero tampil utuh di atas, teks di bawahnya */
       .hero-newsletter { background: #17120d; padding: 0 20px 44px; overflow: hidden; margin: -40px -20px 50px; border-radius: 0; }
+      html.landing .container { padding-bottom: 0; }
+      html.landing .hero-newsletter { justify-content: flex-start; margin-bottom: 0; }
+      .hero-newsletter { padding-bottom: 32px; }
+      .hero-title { margin-bottom: 14px; }
+      .hero-desc { line-height: 1.6; margin-bottom: 22px; }
+      .hero-proof { margin-top: 14px; }
+      .hero-read-first { margin-top: 10px; }
       .hero-newsletter::before {
         content: '';
         display: block;
@@ -479,6 +493,13 @@
   </style>
 </head>
 <body>
+  <script>
+    (function () {
+      var h = location.hash, seen = false;
+      try { seen = sessionStorage.getItem('sm_explore') === '1'; } catch (e) {}
+      if (!seen && (h === '' || h === '#' || h === '#subscribe')) document.documentElement.classList.add('landing');
+    })();
+  </script>
 
   <!-- NAVBAR -->
   <header>
@@ -508,7 +529,7 @@
         <button type="submit">Dapatkan catatan gratis</button>
       </form>
       <p class="hero-proof">Diikuti 170K+ followers di berbagai platform.</p>
-      <a href="#catatan" class="hero-read-first">Baca catatan dulu &rarr;</a>
+      <a href="#catatan" class="hero-read-first">Mau explore isi websitenya dulu? &rarr;</a>
     </div>
 
     <!-- SECTION 1: CATATAN TERBARU (FEED + FILTER KATEGORI) -->
@@ -657,5 +678,28 @@
     })();
   </script>
 
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function explore(target) {
+        root.classList.remove('landing');
+        try { sessionStorage.setItem('sm_explore', '1'); } catch (e) {}
+        var el = target && document.querySelector(target);
+        if (el) setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30);
+      }
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!a || !root.classList.contains('landing')) return;
+        var h = a.getAttribute('href');
+        if (h === '#' || h === '#subscribe') return;
+        e.preventDefault();
+        explore(h);
+        try { history.replaceState(null, '', h); } catch (err) {}
+      });
+      window.addEventListener('hashchange', function () {
+        if (root.classList.contains('landing') && location.hash && location.hash !== '#subscribe') explore(location.hash);
+      });
+    })();
+  </script>
 </body>
 </html>
