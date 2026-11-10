@@ -161,6 +161,8 @@
       cursor: pointer;
     }
 
+    .hero-proof.hero-visits { margin-top: 6px; }
+
     .hero-proof {
       margin-top: 18px;
       font-size: 0.9rem;
@@ -494,6 +496,7 @@
   <!-- Vercel Web Analytics -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/sm-visit.js"></script>
 </head>
 <body>
   <script>
@@ -532,6 +535,7 @@
         <button type="submit">Dapatkan catatan gratis</button>
       </form>
       <p class="hero-proof">Diikuti 170K+ followers di berbagai platform.</p>
+      <p class="hero-proof hero-visits" id="vc" hidden></p>
       <a href="#catatan" class="hero-read-first">Mau explore isi websitenya dulu? &rarr;</a>
     </div>
 
