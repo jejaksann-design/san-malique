@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini E-Course Remote Work | San Malique</title>
+<meta name="description" content="Pre-order mini e-course Nyari Cuan dari Remote Work: e-book langsung dikirim, video pembelajaran per modul, dan grup alumni.">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0806;--brown:#2a1b11;--brown2:#3a2616;--card:rgba(255,240,215,.04);--line:rgba(212,175,95,.18);--gold:#d4a94a;--gold2:#f1dca4;--text:#f4ece0;--muted:#c4b6a2;--dim:#8f8270}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);font-size:17px;line-height:1.7;background:var(--ink);
+ background-image:radial-gradient(1200px 700px at 50% -10%,#4a3020 0%,rgba(74,48,32,0) 60%),linear-gradient(180deg,#140d09 0%,#2a1b11 30%,#120c08 55%,#2b1c12 80%,#0b0806 100%);background-attachment:scroll}
+a{color:var(--gold)}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+section{padding:64px 0;position:relative}
+.kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);background:rgba(212,169,74,.08);padding:7px 14px;border-radius:999px}
+.label{font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+h1{font-family:'Lora',serif;font-weight:700;font-size:clamp(40px,11vw,64px);line-height:1.04;letter-spacing:-.5px;margin:20px 0 16px}
+h1 em,h2 em{font-style:italic;color:var(--gold)}
+h2{font-family:'Lora',serif;font-weight:700;font-size:clamp(28px,7vw,38px);line-height:1.18;margin-bottom:16px}
+h3{font-family:'Lora',serif;font-size:21px;line-height:1.3;margin-bottom:6px}
+p{margin-bottom:14px}
+.muted{color:var(--muted)}
+.lead{font-size:19px;color:var(--muted)}
+.hook{font-family:'Lora',serif;font-style:italic;font-size:clamp(22px,6vw,28px);line-height:1.4;color:var(--gold2)}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);background:rgba(11,8,6,.6);border-bottom:1px solid rgba(212,169,74,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{font-family:'Lora',serif;font-weight:700;color:var(--text);text-decoration:none;font-size:18px}
+.brand span{color:var(--gold)}
+.nav a.cta-s{font-size:14px;font-weight:800;text-decoration:none;color:#1a110a;background:var(--gold);padding:8px 14px;border-radius:999px}
+/* hero */
+.hero{padding-top:40px;text-align:left}
+.slider{margin:34px 0 0;position:relative}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;padding:0}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:0 0 100%;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;scroll-snap-align:center;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;background:rgba(212,169,74,.35);padding:0;transition:all .3s}
+.dots button.on{width:24px;background:var(--gold)}
+.hero-photo{margin:34px -16px 0;position:relative;overflow:hidden;height:min(92vw,460px)}
+.hero-photo img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;will-change:transform}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,8,6,0) 50%,rgba(20,13,9,.95) 100%)}
+@media(min-width:712px){.hero-photo{margin:34px 0 0;border-radius:22px}}
+.btns{display:grid;gap:10px;margin-top:26px}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:18px;padding:17px 20px;border-radius:14px;background:linear-gradient(135deg,#c89a3c 0%,#f1dca4 50%,#a8741c 100%);background-size:200% 200%;color:#1a110a;box-shadow:0 10px 30px rgba(212,169,74,.25);animation:shine 6s ease-in-out infinite}
+.btn.ghost{background:transparent;color:var(--gold);border:1.5px solid var(--gold);box-shadow:none;animation:none}
+@keyframes shine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 16px}
+.stat b{display:block;font-family:'Lora',serif;font-size:40px;line-height:1;color:var(--gold)}
+.stat span{font-size:14px;color:var(--muted)}
+/* marquee */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin:8px 0}
+.track{display:flex;gap:36px;white-space:nowrap;width:max-content;animation:scroll 28s linear infinite}
+.track span{font-family:'Lora',serif;font-style:italic;font-size:22px;color:var(--gold2);opacity:.85}
+.track span:after{content:"✦";font-style:normal;color:var(--gold);margin-left:36px;font-size:14px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* cards */
+.grid{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.path{display:flex;gap:14px;align-items:flex-start}
+.path .n{flex:0 0 38px;height:38px;border-radius:50%;background:rgba(212,169,74,.14);color:var(--gold);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
+.path p{margin:0;color:var(--muted);font-size:16px;line-height:1.55}
+/* before after */
+.ba{display:grid;gap:12px}
+@media(min-width:600px){.ba{grid-template-columns:1fr 1fr}}
+.ba .card h3{font-size:18px;margin-bottom:12px}
+.ba ul{list-style:none}
+.ba li{position:relative;padding-left:28px;margin-bottom:10px;font-size:16px;line-height:1.55}
+.ba .before li:before{content:"✕";position:absolute;left:0;color:#b5735a;font-weight:800}
+.ba .after{border-color:rgba(212,169,74,.5);background:rgba(212,169,74,.07)}
+.ba .after li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+/* modules */
+.mod{position:relative;padding:22px 20px 20px 74px;background:var(--card);border:1px solid var(--line);border-radius:18px}
+.mod .big{position:absolute;left:18px;top:16px;font-family:'Lora',serif;font-size:40px;font-weight:700;color:var(--gold);opacity:.9;line-height:1}
+.mod p{margin:0;color:var(--muted);font-size:16px;line-height:1.55}
+.mod .tag{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+/* bonus */
+.bonus{display:flex;gap:16px;align-items:center}
+.bonus img{width:110px;height:110px;object-fit:cover;border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.5);flex:0 0 auto}
+.bonus .ph{width:92px;height:128px;border-radius:8px;flex:0 0 auto;background:linear-gradient(160deg,#4a3020,#1a110a);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;color:var(--gold);font-size:13px;text-align:center;padding:8px}
+.bonus p{margin:0;color:var(--muted);font-size:15px}
+/* about */
+.about img{width:100%;border-radius:22px;display:block;margin-bottom:22px}
+.sig{font-family:'Lora',serif;font-style:italic;font-size:30px;color:var(--gold)}
+.facts{list-style:none;margin-top:10px}
+.facts li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.facts li b{color:var(--text)}
+/* pricing */
+.pkg{border-radius:22px;padding:26px 22px;background:var(--card);border:1px solid var(--line)}
+.pkg.main{border:1.5px solid var(--gold);background:linear-gradient(180deg,rgba(212,169,74,.12),rgba(212,169,74,.02));box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11px;font-weight:800;letter-spacing:2px;color:#1a110a;background:var(--gold);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.pill.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.checks{list-style:none;margin:16px 0 20px}
+.checks li{position:relative;padding-left:28px;margin-bottom:10px;font-size:16px}
+.checks li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.strike{text-decoration:line-through;color:var(--dim)}
+.now{font-family:'Lora',serif;font-size:42px;font-weight:700;color:var(--gold);line-height:1}
+.small{font-size:14px;color:var(--dim);text-align:center;margin-top:12px}
+.more{margin-top:34px}
+.more .label{margin-bottom:6px}
+.prod{display:flex;gap:16px;align-items:center;text-decoration:none;color:var(--text)}
+.prod img{width:96px;height:128px;object-fit:cover;border-radius:10px;flex:0 0 auto;box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.prod h3{font-size:19px;margin-bottom:4px}
+.prod p{margin:0 0 8px;color:var(--muted);font-size:15px;line-height:1.5}
+.prod .pr{font-weight:800;color:var(--gold);font-size:16px}
+.prod .pr s{color:var(--dim);font-weight:500;margin-right:6px}
+.prod .go{font-size:14px;font-weight:700;color:var(--gold)}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:700;list-style:none;position:relative;padding-right:28px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";position:absolute;right:0;top:-2px;color:var(--gold);font-size:22px;transition:transform .3s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin:10px 0 0;color:var(--muted);font-size:16px}
+.final{text-align:center}
+footer{padding:30px 0 50px;text-align:center;color:var(--dim);font-size:14px}
+/* motion */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}.reveal.d6{transition-delay:.48s}
+.line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 1.2s ease}
+.line.in{transform:scaleX(1)}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,74,.12),rgba(212,169,74,0) 70%);pointer-events:none;z-index:0;left:-120px;top:30vh;will-change:transform}
+main{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.track,.btn{animation:none}.line{transform:none}}
+.hero-img{margin:30px 0 0}
+.hero-img img{width:100%;border-radius:18px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.po{margin-top:22px;border:1px solid rgba(212,169,74,.45);background:rgba(212,169,74,.08);border-radius:16px;padding:16px 18px;font-size:15px;line-height:1.6;color:var(--text)}
+.po b{color:var(--gold2)}
+.steps{counter-reset:s;list-style:none}
+.steps li{position:relative;padding:0 0 18px 46px}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:rgba(212,169,74,.14);color:var(--gold);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.steps li b{display:block;color:var(--text)}
+.steps li span{color:var(--muted);font-size:16px}
+</style>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/sm-visit.js"></script>
+</head>
+<body>
+<div class="glow" id="glow"></div>
+<nav class="nav"><div class="wrap"><a class="brand" href="index.html">San <span>Malique</span></a><a class="cta-s" href="#harga">Pre-order</a></div></nav>
+<main>
+<section class="hero"><div class="wrap">
+  <span class="kicker reveal">Pre-Order · Mini E-Course</span>
+  <h1 class="reveal d1">Nyari Cuan dari <em>Remote Work</em></h1>
+  <p class="hook reveal d2">Kantormu bisa di mana aja. Penghasilanmu nggak harus terikat satu tempat.</p>
+  <p class="lead reveal d3">Dari mengenali value yang sudah kamu punya, memilih jalur remote, menyiapkan CV dan portfolio, sampai apply, interview, dan menimbang offer. Belajar dari video, praktik dari e-book.</p>
+  <div class="po reveal d4"><b>Pre-order.</b> E-book langsung dikirim setelah pembayaran. Video pembelajaran dikirim bertahap per modul, lengkap paling lambat <b>Kamis, 3 Desember 2026</b>.</div>
+  <div class="btns reveal d5"><a class="btn" href="#harga">Ikut Pre-Order</a><a class="btn ghost" href="#modul">Lihat isi modul</a></div>
+  <div class="hero-img reveal d6"><img src="images/remote-work-cover.jpg" alt="E-book Nyari Cuan dari Remote Work oleh San Malique"></div>
+  <div class="stats">
+    <div class="stat reveal"><b data-count="5">0</b><span>modul video</span></div>
+    <div class="stat reveal d1"><b data-count="7">0</b><span>bab e-book</span></div>
+    <div class="stat reveal d2"><b data-count="3">0</b><span>bonus praktik</span></div>
+    <div class="stat reveal d3"><b data-count="30">0</b><span>website remote</span></div>
+  </div>
+</div></section>
+
+<div class="marquee"><div class="track">
+  <span>Kenali Value</span><span>Pilih Jalur</span><span>CV &amp; Portfolio</span><span>Cari Lowongan</span><span>Apply dengan AI</span><span>Interview &amp; Offer</span>
+  <span>Kenali Value</span><span>Pilih Jalur</span><span>CV &amp; Portfolio</span><span>Cari Lowongan</span><span>Apply dengan AI</span><span>Interview &amp; Offer</span>
+</div></div>
+
+<section><div class="wrap">
+  <div class="line reveal" style="margin-bottom:48px"></div>
+  <p class="label reveal">Setelah mini e-course ini</p>
+  <h2 class="reveal d1">Dari bingung mau melamar sebagai apa, jadi punya <em>jalur yang jelas</em>.</h2>
+  <div class="ba">
+    <div class="card before reveal"><h3>Sebelum</h3><ul>
+      <li>Merasa belum punya skill yang bisa dijual ke pasar remote</li>
+      <li>Nggak tahu harus melamar sebagai apa</li>
+      <li>CV masih versi lama, belum ada portfolio</li>
+      <li>Melamar ke mana saja, tanpa arah</li>
+    </ul></div>
+    <div class="card after reveal d2"><h3>Sesudah</h3><ul>
+      <li>Tahu value dan pengalaman mana yang layak ditawarkan</li>
+      <li>Punya satu jalur utama, satu jalur kedua, dan satu cadangan</li>
+      <li>Punya CV, profil, dan portfolio yang remote-ready</li>
+      <li>Punya daftar tempat mencari dan cara apply yang lebih terarah</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section id="modul"><div class="wrap">
+  <p class="label reveal">Isi mini e-course</p>
+  <h2 class="reveal d1">Lima modul, dari <em>value</em> sampai <em>offer</em>.</h2>
+  <div class="grid">
+    <div class="mod reveal"><div class="big">01</div><h3>Kenali Value-mu dan Pilih Jalur</h3><p>Kenapa remote work, aset apa yang sudah kamu punya, dan cara memilih role di bidang penulisan, kreatif, pelayanan, data, operasional, teknologi, atau pendidikan.</p></div>
+    <div class="mod reveal d1"><div class="big">02</div><h3>Siapkan Bukti: CV, Profil, Portfolio</h3><p>Menyusun bukti yang relevan dengan pekerjaan yang ingin kamu lamar, walau pengalamanmu belum banyak.</p></div>
+    <div class="mod reveal d2"><div class="big">03</div><h3>Cari di Tempat yang Tepat</h3><p>Platform kerja, situs remote job, marketplace freelance, dan halaman karier perusahaan.</p><span class="tag">Direktori 30+ website remote</span></div>
+    <div class="mod reveal d3"><div class="big">04</div><h3>Apply dengan AI sebagai Asisten</h3><p>Memakai ChatGPT dan Claude untuk menyesuaikan CV, menulis lamaran, dan riset perusahaan, tanpa kehilangan suaramu sendiri.</p><span class="tag">Rekaman layar step by step</span></div>
+    <div class="mod reveal d4"><div class="big">05</div><h3>Interview dan Offer</h3><p>Mempersiapkan interview, menjawab pertanyaan rekruter, dan menimbang tawaran sebelum menerima pekerjaan.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="label reveal">Termasuk di dalamnya</p>
+  <h2 class="reveal d1">Satu e-book dan <em>tiga bonus praktik</em>.</h2>
+  <div class="grid">
+    <div class="card bonus reveal"><img src="images/mec-ebook-rw.jpg" alt="E-book Nyari Cuan dari Remote Work"><div><h3>E-book Nyari Cuan dari Remote Work</h3><p>Tujuh bab. Langsung dikirim setelah pembayaran.</p></div></div>
+    <div class="card bonus reveal d1"><div class="ph">30 Hari</div><div><h3>30 Hari Lamaran Pertama + Template</h3><p>Panduan aktivitas harian untuk membangun kebiasaan mencari dan melamar.</p></div></div>
+    <div class="card bonus reveal d2"><div class="ph">30+ Website</div><div><h3>Direktori Website Remote</h3><p>Lebih dari 30 website pencarian kerja, dikelompokkan per jalur.</p></div></div>
+    <div class="card bonus reveal d3"><div class="ph">Interview Decoder</div><div><h3>Global Interview Question Decoder</h3><p>Memahami dan menyiapkan jawaban untuk pertanyaan interview kerja global.</p></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="label reveal">Cara pre-order berjalan</p>
+  <h2 class="reveal d1">Mulai belajar <em>hari ini</em>.</h2>
+  <ol class="steps reveal d2">
+    <li><b>Pembayaran lewat admin</b><span>Pilih paket di bawah, admin membantu proses pembayaran.</span></li>
+    <li><b>E-book langsung dikirim</b><span>Kamu bisa mulai membaca dan praktik dari hari pertama.</span></li>
+    <li><b>Video dikirim bertahap</b><span>Setiap modul yang selesai langsung dikirim, lengkap paling lambat Kamis, 3 Desember 2026.</span></li>
+    <li><b>Masuk Grup Alumni</b><span>Semua peserta masuk Portable Income Alumni, dengan sesi feedback sekali sebulan.</span></li>
+  </ol>
+</div></section>
+
+<section class="about"><div class="wrap">
+  <div class="line reveal" style="margin-bottom:48px"></div>
+  <img class="reveal" src="images/live-vip-haramain.jpg" alt="San Malique di Haramain">
+  <p class="label reveal">Bersama</p>
+  <div class="sig reveal d1">San Malique</div>
+  <p class="muted reveal d2" style="margin-top:10px">Selama lebih dari sepuluh tahun, aku menjalani gaya hidup slow living sambil tinggal lama di berbagai negara. Aku tetap bisa menghasilkan uang karena membangun beberapa sumber income dari kemampuan dan pengalaman yang aku punya.</p>
+  <ul class="facts reveal d3">
+    <li><b>28 buku dan e-book</b> ditulis</li>
+    <li><b>Bisnis digital</b> yang dijalankan dari negara mana saja</li>
+    <li><b>Founder</b> pesantren tahfidz hybrid</li>
+  </ul>
+</div></section>
+
+<section id="harga"><div class="wrap">
+  <p class="label reveal">Harga pre-order</p>
+  <h2 class="reveal d1">Pilih caramu <em>belajar</em>.</h2>
+  <div class="grid">
+    <div class="pkg main reveal">
+      <span class="pill">MINI E-COURSE · REGULER</span>
+      <h3 style="font-size:26px">Belajar mandiri</h3>
+      <ul class="checks">
+        <li>E-book Nyari Cuan dari Remote Work, langsung dikirim</li>
+        <li>5 modul video, dikirim bertahap</li>
+        <li>3 bonus praktik: template 30 hari, direktori 30+ website, interview decoder</li>
+        <li>Masuk Grup Portable Income Alumni</li>
+        <li>Sesi feedback sekali sebulan</li>
+      </ul>
+      <div class="price"><span class="strike">Rp129.000</span><span class="now">Rp99.000</span></div>
+      <a class="btn" href="https://wa.me/6282199342740?text=Halo%20admin%2C%20saya%20mau%20ikut%20Pre-Order%20Mini%20E-Course%20Remote%20Work%20%28Reguler%29.">Pre-Order Reguler</a>
+      <p class="small">Harga pre-order. Naik ke Rp129.000 setelah video lengkap.</p>
+    </div>
+    <div class="pkg reveal d2">
+      <span class="pill ghost">VIP · PENDAMPINGAN 4 MINGGU</span>
+      <h3 style="font-size:24px">Didampingi sampai siap apply</h3>
+      <ul class="checks">
+        <li>Semua isi paket Reguler</li>
+        <li>Minggu pertama untuk belajar video dan e-book</li>
+        <li>Lalu 4 minggu pendampingan, check-in sekali tiap minggu</li>
+        <li>Feedback langsung dari San Malique (CV, profil, lamaran)</li>
+        <li>Setelah selesai, lanjut di Grup Alumni</li>
+      </ul>
+      <div class="price"><span class="strike">Rp399.000</span><span class="now" style="font-size:36px">Rp299.000</span></div>
+      <a class="btn ghost" href="https://wa.me/6282199342740?text=Halo%20admin%2C%20saya%20mau%20ikut%20Pre-Order%20Mini%20E-Course%20Remote%20Work%20%28VIP%20Pendampingan%204%20Minggu%29.">Pre-Order VIP</a>
+      <p class="small">Pendampingan dimulai setelah video lengkap.</p>
+    </div>
+  </div>
+  <div class="more">
+    <p class="label reveal">Mau e-book-nya saja?</p>
+    <div class="grid">
+      <a class="card prod reveal" href="nyari-cuan-remote-work.html"><img src="images/mec-ebook-rw.jpg" alt="E-book Nyari Cuan dari Remote Work" loading="lazy"><div><h3>Nyari Cuan dari Remote Work</h3><p>E-book panduan tujuh bab dengan tiga bonus praktik.</p><span class="pr">Rp49.000</span> <span class="go">· Lihat &rarr;</span></div></a>
+      <a class="card prod reveal d1" href="mini-ecourse-nyari-cuan.html"><img src="images/mec-ebook-nc.jpg" alt="Mini E-Course Nyari Cuan dari Negara Mana Aja" loading="lazy"><div><h3>Mini E-Course Nyari Cuan dari Negara Mana Aja</h3><p>Peta enam jalur income, termasuk e-book Remote Work.</p><span class="pr">Rp149.000</span> <span class="go">· Lihat &rarr;</span></div></a>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="label reveal">Pertanyaan</p>
+  <h2 class="reveal d1">Yang sering ditanyakan</h2>
+  <div class="reveal d2">
+    <details><summary>Kenapa pre-order?</summary><p>Video pembelajarannya sedang diselesaikan. Kamu mendapat harga lebih rendah dan e-book langsung, lalu setiap modul video dikirim begitu selesai. Semua lengkap paling lambat Kamis, 3 Desember 2026.</p></details>
+    <details><summary>Aku belum punya pengalaman kerja, apakah cocok?</summary><p>Cocok. Modul pertama dimulai dari mengenali value yang sudah kamu punya, termasuk pengalaman organisasi, proyek pribadi, atau pekerjaan sampingan.</p></details>
+    <details><summary>Apakah ada live session?</summary><p>Tidak. Semua materi berupa video rekaman dan e-book yang bisa kamu pelajari kapan saja dari HP.</p></details>
+    <details><summary>Apa itu Grup Portable Income Alumni?</summary><p>Grup untuk semua peserta mini e-course San Malique. Sebulan sekali ada sesi feedback: kirim satu pertanyaan atau satu dokumen, lalu dijawab bersama.</p></details>
+    <details><summary>Apa bedanya Reguler dan VIP?</summary><p>Reguler untuk belajar mandiri dengan feedback bulanan di grup alumni. VIP menambahkan pendampingan 4 minggu dengan check-in mingguan dan feedback langsung untuk CV, profil, dan lamaranmu.</p></details>
+    <details><summary>Apakah ada jaminan diterima kerja?</summary><p>Tidak ada. Mini e-course ini membantumu menyiapkan diri dan melamar dengan lebih terarah. Hasilnya tetap bergantung pada proses rekrutmen tiap perusahaan.</p></details>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <div class="line reveal" style="margin-bottom:48px"></div>
+  <p class="hook reveal">Yang aku bawa ke mana-mana bukan kantornya, tapi kemampuan untuk tetap menghasilkan income dari negara mana aja.</p>
+  <div class="btns reveal d2"><a class="btn" href="#harga">Ikut Pre-Order</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">© San Malique · <a href="index.html">sanmalique.com</a></div></footer>
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');var c=e.target.querySelector('[data-count]');if(c)count(c);io.unobserve(e.target);}})},{threshold:.15});
+  document.querySelectorAll('.reveal,.line').forEach(function(el){io.observe(el)});
+  function count(el){var to=+el.getAttribute('data-count'),t0=null;function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/900);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+
+  var sl=document.getElementById('slides'),dw=document.getElementById('dots');
+  if(sl){var n=sl.children.length,cur=0,timer;
+    for(var i=0;i<n;i++){var bt=document.createElement('button');bt.setAttribute('aria-label','Slide '+(i+1));(function(k){bt.onclick=function(){go(k);restart()}})(i);dw.appendChild(bt)}
+    function mark(){cur=Math.round(sl.scrollLeft/(sl.children[0].offsetWidth+12));[].forEach.call(dw.children,function(d,k){d.className=k===cur?'on':''})}
+    function go(k){sl.scrollTo({left:k*(sl.children[0].offsetWidth+12),behavior:'smooth'})}
+    function restart(){clearInterval(timer);timer=setInterval(function(){go((cur+1)%n)},4500)}
+    sl.addEventListener('scroll',function(){requestAnimationFrame(mark)},{passive:true});
+    sl.addEventListener('touchstart',restart,{passive:true});mark();restart();}
+  var img=document.getElementById('heroimg'),glow=document.getElementById('glow'),ticking=false;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function onScroll(){var y=window.scrollY;if(img)img.style.transform='translateY('+(y*0.12)+'px) scale(1.04)';if(glow)glow.style.transform='translate('+(Math.sin(y/400)*120+160)+'px,'+(Math.cos(y/500)*80)+'px)';ticking=false}
+  if(!reduce)window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(onScroll);ticking=true}},{passive:true});
+  setTimeout(function(){document.querySelectorAll('.hero .reveal').forEach(function(el){el.classList.add('in')})},60);
+})();
+</script>
+</body>
+</html>
