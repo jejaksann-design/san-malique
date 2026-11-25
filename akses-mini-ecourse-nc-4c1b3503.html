@@ -91,7 +91,7 @@
 </div>
 <script>
   // Isi ID video YouTube (bagian setelah "youtu.be/" atau "v=") dan link playlist di sini.
-  var PLAYLIST = '';
+  var PLAYLIST = 'https://www.youtube.com/playlist?list=PLJHfOAQDpjBo'; var PLAYLIST_ID = 'PLJHfOAQDpjBo';
   var WHATSAPP = '';
   var MODULES = [
     { n: 'Modul 1', t: 'Cuan dari Mana Aja, Peta Besarnya', yt: '', task: 'Tulis tiga hal yang sudah bisa kamu lakukan dengan baik, lalu satu peluang income untuk masing-masing.' },
@@ -101,7 +101,18 @@
     { n: 'Modul 5', t: 'Monetisasi dan Remote Work', yt: '', task: 'Pilih satu jalur untuk tiga bulan ke depan dan satu tindakan konkret minggu ini.' }
   ];
   var box = document.getElementById('mods');
+  var anyYt = MODULES.some(function (m) { return m.yt; });
+  if (!anyYt && PLAYLIST_ID) {
+    var pl = document.createElement('div'); pl.className = 'mod';
+    pl.innerHTML = '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=' + PLAYLIST_ID + '&rel=0" title="Mini E-Course Nyari Cuan" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="task">Video akan berlanjut otomatis dari Modul 1 sampai Modul 5. Tap ikon daftar putar di pojok kanan atas video untuk memilih modul.</p>';
+    box.appendChild(pl);
+  }
   MODULES.forEach(function (m) {
+    if (!anyYt && PLAYLIST_ID) {
+      var c = document.createElement('div'); c.className = 'mod';
+      c.innerHTML = '<div class="eyebrow">' + m.n + '</div><h3>' + m.t + '</h3><p class="task"><b>Tugas:</b> ' + m.task + '</p>';
+      box.appendChild(c); return;
+    }
     var d = document.createElement('div'); d.className = 'mod';
     var v = m.yt ? '<iframe src="https://www.youtube-nocookie.com/embed/' + m.yt + '?rel=0" title="' + m.t + '" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>'
                  : '<div class="soon">Video sedang disiapkan, insya Allah segera tersedia.</div>';
