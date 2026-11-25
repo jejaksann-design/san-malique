@@ -52,9 +52,9 @@
     <p class="salam">Assalamu'alaikum warahmatullahi wabarakatuh.</p>
     <p>Terima kasih sudah bergabung di <strong>Mini E-Course Nyari Cuan dari Negara Mana Aja</strong>. Semua materinya ada di halaman ini. Simpan link-nya, supaya bisa kamu buka lagi kapan saja.</p>
     <ol class="steps">
-      <li>Tonton video berurutan, dari Modul 1 sampai Modul 5.</li>
-      <li>Setiap selesai satu video, kerjakan tugasnya di workbook.</li>
-      <li>Nggak perlu sempurna. Yang penting kamu mulai menuliskannya.</li>
+      <li><b>Download dan simpan dulu</b> e-book dan workbook di bawah.</li>
+      <li><b>Per modul:</b> tonton videonya, baca bagian e-book yang berkaitan, lalu kerjakan tugasnya di workbook. Video boleh diputar ulang sambil workbook dibuka.</li>
+      <li><b>Bacaan tambahan:</b> e-book <i>Nyari Cuan dari Konten Faceless</i> setelah Modul 2, dan <i>Nyari Cuan dari Remote Work</i> setelah Modul 5.</li>
     </ol>
   </div>
 
@@ -66,10 +66,20 @@
   </div>
 
   <div class="card center">
-    <div class="eyebrow">Workbook</div>
-    <h2>Tulis jawabanmu di sini.</h2>
-    <a class="btn" href="/workbook-mini-ecourse-nyari-cuan.pdf" target="_blank" rel="noopener">DOWNLOAD WORKBOOK (PDF)</a>
-    <p class="task">Bisa dicetak, atau diisi langsung di iPad dan HP pakai aplikasi PDF.</p>
+    <div class="eyebrow">Download</div>
+    <h2>E-book dan workbook.</h2>
+    <a id="ebnc" class="btn hide" target="_blank" rel="noopener">E-BOOK · NYARI CUAN DARI NEGARA MANA AJA</a>
+    <a class="btn" href="/workbook-mini-ecourse-nyari-cuan.pdf" target="_blank" rel="noopener">WORKBOOK MINI E-COURSE (PDF)</a>
+    <p class="task" style="margin:18px 0 6px"><b>Bonus bacaan tambahan</b></p>
+    <a class="btn gold" href="https://drive.google.com/file/d/1W5dfxyH_-4qoM1feLf5NuMjRkkB8Gf9Y/view?usp=drivesdk" target="_blank" rel="noopener">BONUS · NYARI CUAN DARI KONTEN FACELESS</a>
+    <a class="btn gold" href="https://drive.google.com/file/d/1UHYZVqK03GeWON1A15tCt4N0WUKjjKWB/view?usp=drivesdk" target="_blank" rel="noopener">BONUS · NYARI CUAN DARI REMOTE WORK</a>
+    <p class="task">Kalau file kebuka di Google Drive, tap ikon titik tiga lalu pilih <em>Download</em> biar tersimpan di HP-mu. Workbook bisa dicetak atau diisi langsung di iPad dan HP.</p>
+  </div>
+
+  <div class="card center">
+    <div class="eyebrow">Grup Alumni</div>
+    <h2>Kamu akan diundang ke grup alumni.</h2>
+    <p>Admin akan mengundangmu ke grup WhatsApp alumni mini e-course. Di sana ada sesi feedback untuk tugas modul yang sudah kamu kerjakan.</p>
   </div>
 
   <div id="wa" class="card center hide">
@@ -92,7 +102,7 @@
 <script>
   // Isi ID video YouTube (bagian setelah "youtu.be/" atau "v=") dan link playlist di sini.
   var PLAYLIST = 'https://www.youtube.com/playlist?list=PLJHfOAQDpjBo'; var PLAYLIST_ID = 'PLJHfOAQDpjBo';
-  var WHATSAPP = '';
+  var WHATSAPP = ''; var EBOOK_NC = '';
   var MODULES = [
     { n: 'Modul 1', t: 'Cuan dari Mana Aja, Peta Besarnya', yt: '', task: 'Tulis tiga hal yang sudah bisa kamu lakukan dengan baik, lalu satu peluang income untuk masing-masing.' },
     { n: 'Modul 2', t: 'Konten sebagai Pintu', yt: '', task: 'Tulis satu bingkai akunmu dan tiga ide konten di dalamnya.' },
@@ -120,6 +130,7 @@
     box.appendChild(d);
   });
   if (PLAYLIST) { var p = document.getElementById('playlist'); p.href = PLAYLIST; p.classList.remove('hide'); }
+  if (EBOOK_NC) { var e = document.getElementById('ebnc'); e.href = EBOOK_NC; e.classList.remove('hide'); }
   if (WHATSAPP) { document.getElementById('walink').href = WHATSAPP; document.getElementById('wa').classList.remove('hide'); }
 </script>
 </body>
