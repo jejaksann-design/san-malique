@@ -37,6 +37,13 @@ p{margin-bottom:14px}
 .nav a.cta-s{font-size:14px;font-weight:800;text-decoration:none;color:#1a110a;background:var(--gold);padding:8px 14px;border-radius:999px}
 /* hero */
 .hero{padding-top:40px;text-align:left}
+.slider{margin:34px 0 0;position:relative}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;padding:0}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:0 0 100%;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;scroll-snap-align:center;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;background:rgba(212,169,74,.35);padding:0;transition:all .3s}
+.dots button.on{width:24px;background:var(--gold)}
 .hero-photo{margin:34px -16px 0;position:relative;overflow:hidden;height:min(92vw,460px)}
 .hero-photo img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;will-change:transform}
 .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,8,6,0) 50%,rgba(20,13,9,.95) 100%)}
@@ -78,7 +85,7 @@ p{margin-bottom:14px}
 .mod .tag{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
 /* bonus */
 .bonus{display:flex;gap:16px;align-items:center}
-.bonus img{width:92px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.5);flex:0 0 auto}
+.bonus img{width:110px;height:110px;object-fit:cover;border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.5);flex:0 0 auto}
 .bonus .ph{width:92px;height:128px;border-radius:8px;flex:0 0 auto;background:linear-gradient(160deg,#4a3020,#1a110a);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;color:var(--gold);font-size:13px;text-align:center;padding:8px}
 .bonus p{margin:0;color:var(--muted);font-size:15px}
 /* about */
@@ -132,7 +139,13 @@ main{position:relative;z-index:1}
   <p class="hook reveal d2">Kalau besok kamu harus pindah kota atau negara, apakah penghasilanmu bisa ikut pindah?</p>
   <p class="lead reveal d3">Peta lengkap untuk mulai membangun penghasilan dari kemampuan yang sudah kamu punya. Tanpa janji cepat kaya, dengan langkah yang bisa langsung kamu praktikkan.</p>
   <div class="btns reveal d4"><a class="btn" href="#harga">Ambil Mini E-Course</a><a class="btn ghost" href="#modul">Lihat isi modul</a></div>
-  <div class="hero-photo reveal d5"><img id="heroimg" src="images/live-reguler-salju.jpg" alt="San Malique"></div>
+  <div class="slider reveal d5"><div class="slides" id="slides">
+    <img src="images/mec-slide-1.jpg" alt="Mini E-Course Nyari Cuan dari Negara Mana Aja">
+    <img src="images/mec-slide-2.jpg" alt="Pengalamanmu mungkin punya value ekonomi" loading="lazy">
+    <img src="images/mec-slide-3.jpg" alt="Bukan hanya teori, kita praktik" loading="lazy">
+    <img src="images/mec-slide-4.jpg" alt="Materi dari pengalaman nyata" loading="lazy">
+    <img src="images/mec-slide-5.jpg" alt="Bonus 3 e-book dan workbook" loading="lazy">
+  </div><div class="dots" id="dots"></div></div>
   <div class="stats">
     <div class="stat reveal"><b data-count="5">0</b><span>video modul</span></div>
     <div class="stat reveal d1"><b data-count="3">0</b><span>e-book bonus</span></div>
@@ -196,9 +209,9 @@ main{position:relative;z-index:1}
   <p class="label reveal">Termasuk di dalamnya</p>
   <h2 class="reveal d1">Tiga e-book dan satu <em>workbook</em>.</h2>
   <div class="grid">
-    <div class="card bonus reveal"><img src="images/mec-ebook-nc.png" alt="E-book Nyari Cuan" style="box-shadow:none"><div><h3>Nyari Cuan dari Negara Mana Aja</h3><p>E-book utama, versi terbaru.</p></div></div>
-    <div class="card bonus reveal d1"><div class="ph">Nyari Cuan dari Remote Work</div><div><h3>Nyari Cuan dari Remote Work</h3><p>Bonus e-book.</p></div></div>
-    <div class="card bonus reveal d2"><div class="ph">Nyari Cuan dari Konten Faceless</div><div><h3>Nyari Cuan dari Konten Faceless</h3><p>Bonus e-book.</p></div></div>
+    <div class="card bonus reveal"><img src="images/mec-ebook-nc.jpg" alt="E-book Nyari Cuan dari Negara Mana Aja"><div><h3>Nyari Cuan dari Negara Mana Aja</h3><p>E-book utama, versi terbaru.</p></div></div>
+    <div class="card bonus reveal d1"><img src="images/mec-ebook-rw.jpg" alt="E-book Nyari Cuan dari Remote Work"><div><h3>Nyari Cuan dari Remote Work</h3><p>Bonus e-book.</p></div></div>
+    <div class="card bonus reveal d2"><img src="images/mec-ebook-fl.jpg" alt="E-book Nyari Cuan dari Konten Faceless"><div><h3>Nyari Cuan dari Konten Faceless</h3><p>Bonus e-book.</p></div></div>
     <div class="card bonus reveal d3"><img src="images/mec-workbook.jpg" alt="Workbook &amp; Action Plan"><div><h3>Workbook &amp; Action Plan</h3><p>Satu halaman tugas untuk setiap modul.</p></div></div>
   </div>
 </div></section>
@@ -271,6 +284,15 @@ main{position:relative;z-index:1}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');var c=e.target.querySelector('[data-count]');if(c)count(c);io.unobserve(e.target);}})},{threshold:.15});
   document.querySelectorAll('.reveal,.line').forEach(function(el){io.observe(el)});
   function count(el){var to=+el.getAttribute('data-count'),t0=null;function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/900);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+
+  var sl=document.getElementById('slides'),dw=document.getElementById('dots');
+  if(sl){var n=sl.children.length,cur=0,timer;
+    for(var i=0;i<n;i++){var bt=document.createElement('button');bt.setAttribute('aria-label','Slide '+(i+1));(function(k){bt.onclick=function(){go(k);restart()}})(i);dw.appendChild(bt)}
+    function mark(){cur=Math.round(sl.scrollLeft/(sl.children[0].offsetWidth+12));[].forEach.call(dw.children,function(d,k){d.className=k===cur?'on':''})}
+    function go(k){sl.scrollTo({left:k*(sl.children[0].offsetWidth+12),behavior:'smooth'})}
+    function restart(){clearInterval(timer);timer=setInterval(function(){go((cur+1)%n)},4500)}
+    sl.addEventListener('scroll',function(){requestAnimationFrame(mark)},{passive:true});
+    sl.addEventListener('touchstart',restart,{passive:true});mark();restart();}
   var img=document.getElementById('heroimg'),glow=document.getElementById('glow'),ticking=false;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function onScroll(){var y=window.scrollY;if(img)img.style.transform='translateY('+(y*0.12)+'px) scale(1.04)';if(glow)glow.style.transform='translate('+(Math.sin(y/400)*120+160)+'px,'+(Math.cos(y/500)*80)+'px)';ticking=false}
