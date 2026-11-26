@@ -39,7 +39,7 @@ p{margin-bottom:14px}
 .slider{margin:34px 0 0;position:relative}
 .slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;padding:0}
 .slides::-webkit-scrollbar{display:none}
-.slides img{flex:0 0 100%;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;scroll-snap-align:center;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.slides{align-items:center}.slides img{flex:0 0 100%;width:100%;height:auto;border-radius:18px;scroll-snap-align:center;box-shadow:0 20px 50px rgba(0,0,0,.45)}
 .dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
 .dots button{width:8px;height:8px;border-radius:99px;border:0;background:rgba(212,169,74,.35);padding:0;transition:all .3s}
 .dots button.on{width:24px;background:var(--gold)}
@@ -157,7 +157,7 @@ main{position:relative;z-index:1}
   <p class="lead reveal d3">Dari mengenali value yang sudah kamu punya, memilih jalur remote, menyiapkan CV dan portfolio, sampai apply, interview, dan menimbang offer. Belajar dari video, praktik dari e-book.</p>
   <div class="po reveal d4"><b>Pre-order.</b> E-book langsung dikirim setelah pembayaran. Video pembelajaran dikirim bertahap per modul, lengkap paling lambat <b>Kamis, 3 Desember 2026</b>.</div>
   <div class="btns reveal d5"><a class="btn" href="#harga">Ikut Pre-Order</a><a class="btn ghost" href="#modul">Lihat isi modul</a></div>
-  <div class="hero-img reveal d6"><img src="images/remote-work-cover.jpg" alt="E-book Nyari Cuan dari Remote Work oleh San Malique"></div>
+  <div class="slider reveal d6"><div class="slides" id="slides"><img src="images/mecrw-poster-1.jpg" alt="Mini E-Course Nyari Cuan dari Remote Work bersama San Malique"><img src="images/mecrw-poster-2.jpg" alt="Isi Mini E-Course: 5 video, Workbook &amp; Action Plan, bonus e-book" loading="lazy"></div><div class="dots" id="dots"></div></div>
   <div class="stats">
     <div class="stat reveal"><b data-count="5">0</b><span>modul video</span></div>
     <div class="stat reveal d1"><b data-count="7">0</b><span>bab e-book</span></div>
@@ -205,9 +205,11 @@ main{position:relative;z-index:1}
 
 <section><div class="wrap">
   <p class="label reveal">Termasuk di dalamnya</p>
-  <h2 class="reveal d1">Satu e-book dan <em>tiga bonus praktik</em>.</h2>
+  <h2 class="reveal d1">Dua e-book, workbook, dan <em>tiga bonus praktik</em>.</h2>
   <div class="grid">
     <div class="card bonus reveal"><img src="images/mec-ebook-rw.jpg" alt="E-book Nyari Cuan dari Remote Work"><div><h3>E-book Nyari Cuan dari Remote Work</h3><p>Tujuh bab. Langsung dikirim setelah pembayaran.</p></div></div>
+    <div class="card bonus reveal"><img src="images/mec-ebook-nc.jpg" alt="E-book Nyari Cuan dari Negara Mana Aja"><div><h3>Bonus E-book Nyari Cuan dari Negara Mana Aja</h3><p>Peta enam jalur income digital. Langsung dikirim setelah pembayaran.</p></div></div>
+    <div class="card bonus reveal"><img src="images/mec-workbook.jpg" alt="Workbook &amp; Action Plan"><div><h3>Workbook &amp; Action Plan</h3><p>Satu tugas per video, selesai dalam seminggu. Dikirim bersama video.</p></div></div>
     <div class="card bonus reveal d1"><div class="ph">30 Hari</div><div><h3>30 Hari Lamaran Pertama + Template</h3><p>Panduan aktivitas harian untuk membangun kebiasaan mencari dan melamar.</p></div></div>
     <div class="card bonus reveal d2"><div class="ph">30+ Website</div><div><h3>Direktori Website Remote</h3><p>Lebih dari 30 website pencarian kerja, dikelompokkan per jalur.</p></div></div>
     <div class="card bonus reveal d3"><div class="ph">Interview Decoder</div><div><h3>Global Interview Question Decoder</h3><p>Memahami dan menyiapkan jawaban untuk pertanyaan interview kerja global.</p></div></div>
@@ -218,10 +220,10 @@ main{position:relative;z-index:1}
   <p class="label reveal">Cara pre-order berjalan</p>
   <h2 class="reveal d1">Mulai belajar <em>hari ini</em>.</h2>
   <ol class="steps reveal d2">
-    <li><b>Pembayaran lewat admin</b><span>Pilih paket di bawah, admin membantu proses pembayaran.</span></li>
-    <li><b>E-book langsung dikirim</b><span>Kamu bisa mulai membaca dan praktik dari hari pertama.</span></li>
+    <li><b>Pilih paket</b><span>Reguler langsung checkout di halaman pembayaran. VIP lewat admin.</span></li>
+    <li><b>Dua e-book langsung dikirim</b><span>Kamu bisa mulai membaca dan praktik dari hari pertama.</span></li>
     <li><b>Video dikirim bertahap</b><span>Setiap modul yang selesai langsung dikirim, lengkap paling lambat Kamis, 3 Desember 2026.</span></li>
-    <li><b>Masuk Grup Alumni</b><span>Semua peserta masuk Portable Income Alumni, dengan sesi feedback sekali sebulan.</span></li>
+    <li><b>Masuk Grup Alumni</b><span>Admin mengundangmu ke grup alumni. Reguler: feedback sekali sebulan. VIP: grup alumni VIP, feedback dua kali sebulan.</span></li>
   </ol>
 </div></section>
 
@@ -246,14 +248,15 @@ main{position:relative;z-index:1}
       <span class="pill">MINI E-COURSE · REGULER</span>
       <h3 style="font-size:26px">Belajar mandiri</h3>
       <ul class="checks">
-        <li>E-book Nyari Cuan dari Remote Work, langsung dikirim</li>
         <li>5 modul video, dikirim bertahap</li>
+        <li>Workbook &amp; Action Plan</li>
+        <li>E-book Nyari Cuan dari Remote Work, langsung dikirim</li>
+        <li>Bonus e-book Nyari Cuan dari Negara Mana Aja</li>
         <li>3 bonus praktik: template 30 hari, direktori 30+ website, interview decoder</li>
-        <li>Masuk Grup Portable Income Alumni</li>
-        <li>Sesi feedback sekali sebulan</li>
+        <li>Grup alumni, feedback sekali sebulan (diundang admin)</li>
       </ul>
       <div class="price"><span class="strike">Rp129.000</span><span class="now">Rp99.000</span></div>
-      <a class="btn" href="https://wa.me/6282199342740?text=Halo%20admin%2C%20saya%20mau%20ikut%20Pre-Order%20Mini%20E-Course%20Remote%20Work%20%28Reguler%29.">Pre-Order Reguler</a>
+      <a class="btn" href="https://lynk.id/jejaksan/5z571mvqjjwy" target="_blank" rel="noopener">Pre-Order Reguler</a>
       <p class="small">Harga pre-order. Naik ke Rp129.000 setelah video lengkap.</p>
     </div>
     <div class="pkg reveal d2">
@@ -261,10 +264,9 @@ main{position:relative;z-index:1}
       <h3 style="font-size:24px">Didampingi sampai siap apply</h3>
       <ul class="checks">
         <li>Semua isi paket Reguler</li>
-        <li>Minggu pertama untuk belajar video dan e-book</li>
-        <li>Lalu 4 minggu pendampingan, check-in sekali tiap minggu</li>
+        <li>Pendampingan sekali seminggu selama sebulan (4 sesi)</li>
         <li>Feedback langsung dari San Malique (CV, profil, lamaran)</li>
-        <li>Setelah selesai, lanjut di Grup Alumni</li>
+        <li>Grup alumni VIP, feedback dua kali sebulan</li>
       </ul>
       <div class="price"><span class="strike">Rp399.000</span><span class="now" style="font-size:36px">Rp299.000</span></div>
       <a class="btn ghost" href="https://wa.me/6282199342740?text=Halo%20admin%2C%20saya%20mau%20ikut%20Pre-Order%20Mini%20E-Course%20Remote%20Work%20%28VIP%20Pendampingan%204%20Minggu%29.">Pre-Order VIP</a>
@@ -288,7 +290,7 @@ main{position:relative;z-index:1}
     <details><summary>Aku belum punya pengalaman kerja, apakah cocok?</summary><p>Cocok. Modul pertama dimulai dari mengenali value yang sudah kamu punya, termasuk pengalaman organisasi, proyek pribadi, atau pekerjaan sampingan.</p></details>
     <details><summary>Apakah ada live session?</summary><p>Tidak. Semua materi berupa video rekaman dan e-book yang bisa kamu pelajari kapan saja dari HP.</p></details>
     <details><summary>Apa itu Grup Portable Income Alumni?</summary><p>Grup untuk semua peserta mini e-course San Malique. Sebulan sekali ada sesi feedback: kirim satu pertanyaan atau satu dokumen, lalu dijawab bersama.</p></details>
-    <details><summary>Apa bedanya Reguler dan VIP?</summary><p>Reguler untuk belajar mandiri dengan feedback bulanan di grup alumni. VIP menambahkan pendampingan 4 minggu dengan check-in mingguan dan feedback langsung untuk CV, profil, dan lamaranmu.</p></details>
+    <details><summary>Apa bedanya Reguler dan VIP?</summary><p>Reguler untuk belajar mandiri dengan feedback bulanan di grup alumni. VIP menambahkan pendampingan sekali seminggu selama sebulan (4 sesi), feedback langsung untuk CV, profil, dan lamaranmu, plus grup alumni VIP dengan feedback dua kali sebulan.</p></details>
     <details><summary>Apakah ada jaminan diterima kerja?</summary><p>Tidak ada. Mini e-course ini membantumu menyiapkan diri dan melamar dengan lebih terarah. Hasilnya tetap bergantung pada proses rekrutmen tiap perusahaan.</p></details>
   </div>
 </div></section>
