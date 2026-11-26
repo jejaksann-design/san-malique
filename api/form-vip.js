@@ -1,11 +1,11 @@
-// Form VIP Mentoring Nyari Cuan: check-in, kumpulkan tugas, refleksi akhir.
+// Form VIP Mentoring Nyari Cuan: perkenalan, check-in, kumpulkan tugas, refleksi akhir.
 // POST menyimpan isian; GET (dengan PIN admin) mengambil semua isian.
 // Repo publik, jadi yang disimpan di sini hanya hash PIN, bukan PIN-nya.
 const kv = require('./_kv');
 const crypto = require('crypto');
 const PIN_HASH = '0ffc6dd089a0416ee416ce3b6c9498fcc29afa65b63de6ce48febdccca337059';
 const KEY = 'sm:fvip';
-const TYPES = ['checkin', 'tugas', 'refleksi'];
+const TYPES = ['perkenalan', 'checkin', 'tugas', 'refleksi'];
 
 function clean(v, max) { return String(v == null ? '' : v).slice(0, max || 3000); }
 

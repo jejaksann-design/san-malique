@@ -19,7 +19,7 @@
     .eyebrow { font-size:0.75rem; font-weight:700; letter-spacing:1.5px; color:var(--gold); text-transform:uppercase; }
     h1 { font-family:'Lora',serif; color:var(--green); font-size:1.8rem; line-height:1.2; margin:10px 0 8px; }
     .lead { color:var(--muted); font-size:0.95rem; }
-    .tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; background:#EDE6D9; padding:5px; border-radius:14px; margin-bottom:18px; }
+    .tabs { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; background:#EDE6D9; padding:5px; border-radius:14px; margin-bottom:18px; }
     .tabs button { border:0; background:transparent; font:inherit; font-weight:600; font-size:0.86rem; color:var(--muted); padding:11px 4px; border-radius:10px; cursor:pointer; }
     .tabs button.on { background:#fff; color:var(--green); box-shadow:0 1px 3px rgba(0,0,0,.08); }
     label { display:block; font-weight:600; font-size:0.92rem; color:var(--green); margin:16px 0 6px; }
@@ -49,6 +49,7 @@
 
   <div class="card" id="formCard">
     <div class="tabs" role="tablist">
+      <button type="button" data-t="perkenalan">Perkenalan</button>
       <button type="button" data-t="checkin" class="on">Check-in</button>
       <button type="button" data-t="tugas">Kumpulkan Tugas</button>
       <button type="button" data-t="refleksi">Refleksi Akhir</button>
@@ -83,6 +84,20 @@
 <script>
 var ADMIN = '6282199342740';
 var FORMS = {
+  perkenalan: {
+    judul: 'Perkenalan',
+    desc: 'Diisi sekali saja sebelum pendampingan dimulai, paling lambat Selasa 1 Desember. Ini membantu San Malique memahami titik awal dan targetmu.',
+    q: [
+      ['domisili', 'Domisili', 'Kota dan negara tempat kamu tinggal sekarang', 1],
+      ['kegiatan', 'Pekerjaan atau kegiatan sekarang', '', 1],
+      ['skill', 'Skill yang paling kamu kuasai', '', 1],
+      ['jalur', 'Jalur yang kamu pilih', 'Dari tugas Modul 5: konten, menulis, produk digital, remote work, atau gabungan', 1],
+      ['target', 'Target dalam 5 minggu', '', 1],
+      ['waktu', 'Waktu yang bisa kamu pakai per minggu', 'Contoh: 6 jam per minggu', 1],
+      ['ig', 'Link Instagram atau portofolio', 'Kalau ada', 0],
+      ['cv', 'Link CV atau LinkedIn', 'Wajib kalau memilih remote work. Foto diri dikirim nanti di WhatsApp admin.', 0]
+    ]
+  },
   checkin: {
     judul: 'Check-in',
     desc: 'Update singkat di tengah pekan. Ini bukan penilaian, cukup supaya kami tahu progresmu dan bisa bantu sebelum deadline.',
@@ -123,10 +138,11 @@ try { $('nama').value = localStorage.getItem('fvip_nama') || ''; } catch (e) {}
 function render() {
   var F = FORMS[cur];
   $('desc').textContent = F.desc;
-  $('pekanBox').classList.toggle('hide', cur === 'refleksi');
+  $('pekanBox').classList.toggle('hide', cur === 'refleksi' || cur === 'perkenalan');
   $('fields').innerHTML = F.q.map(function (q) {
-    var tag = q[0] === 'link'
+    var tag = ['link', 'ig', 'cv'].indexOf(q[0]) >= 0
       ? '<input id="q_' + q[0] + '" inputmode="url" placeholder="https://">'
+      : ['domisili', 'waktu'].indexOf(q[0]) >= 0 ? '<input id="q_' + q[0] + '">'
       : '<textarea id="q_' + q[0] + '"></textarea>';
     return '<label for="q_' + q[0] + '">' + q[1] + (q[3] ? ' <span class="req">*</span>' : '') +
       (q[2] ? '<small>' + q[2] + '</small>' : '') + '</label>' + tag;
@@ -146,16 +162,17 @@ function waText(F, nama, pekan, f) {
 
 $('f').addEventListener('submit', function (ev) {
   ev.preventDefault();
-  var F = FORMS[cur], nama = $('nama').value.trim(), pekan = cur === 'refleksi' ? '' : $('pekan').value, f = {}, miss = [];
+  var F = FORMS[cur], nama = $('nama').value.trim(), pekan = (cur === 'refleksi' || cur === 'perkenalan') ? '' : $('pekan').value, f = {}, miss = [];
   if (!nama) miss.push('Nama');
-  if (cur !== 'refleksi' && !pekan) miss.push('Pekan');
+  if (cur !== 'refleksi' && cur !== 'perkenalan' && !pekan) miss.push('Pekan');
   F.q.forEach(function (q) { var v = $('q_' + q[0]).value.trim(); f[q[0]] = v; if (q[3] && !v) miss.push(q[1]); });
   if (miss.length) { $('err').textContent = 'Lengkapi dulu: ' + miss.join(', ') + '.'; $('err').style.display = 'block'; return; }
   try { localStorage.setItem('fvip_nama', nama); } catch (e) {}
   var btn = $('kirim'); btn.disabled = true; btn.textContent = 'MENGIRIM...';
   var wa = waText(F, nama, pekan, f);
   var waShort = 'https://wa.me/' + ADMIN + '?text=' + encodeURIComponent(cur === 'tugas'
-    ? 'Assalamu\'alaikum, admin. Ini file tugas ' + pekan + ' VIP Mentoring dari ' + nama + '.' : 'Assalamu\'alaikum, admin. ');
+    ? 'Assalamu\'alaikum, admin. Ini file tugas ' + pekan + ' VIP Mentoring dari ' + nama + '.'
+    : cur === 'perkenalan' ? 'Assalamu\'alaikum, admin. Aku ' + nama + ', sudah isi perkenalan VIP Mentoring. Ini foto diriku:' : 'Assalamu\'alaikum, admin. ');
   var ctrl = window.AbortController ? new AbortController() : null;
   var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
   fetch('/api/form-vip', {
@@ -173,8 +190,10 @@ function done(saved, wa) {
     $('doneTitle').textContent = 'Terkirim, terima kasih!';
     $('doneText').textContent = cur === 'tugas'
       ? 'Tugasmu sudah tercatat. Kalau ada file atau foto hasil kerja, kirim lewat WhatsApp admin, ya.'
+      : cur === 'perkenalan'
+      ? 'Perkenalanmu sudah tercatat. Satu langkah lagi: kirim foto dirimu (dan file CV kalau bukan link) ke WhatsApp admin.'
       : 'Isianmu sudah tercatat. Admin akan menindaklanjuti kalau ada yang perlu diteruskan ke San Malique.';
-    $('wa').textContent = cur === 'tugas' ? 'KIRIM FILE KE WHATSAPP ADMIN' : 'CHAT ADMIN';
+    $('wa').textContent = cur === 'tugas' ? 'KIRIM FILE KE WHATSAPP ADMIN' : cur === 'perkenalan' ? 'KIRIM FOTO KE WHATSAPP ADMIN' : 'CHAT ADMIN';
   } else {
     $('doneTitle').textContent = 'Satu langkah lagi';
     $('doneText').textContent = 'Koneksi sedang bermasalah. Tap tombol di bawah, lalu tap Send di WhatsApp supaya isianmu sampai ke admin.';
@@ -186,6 +205,7 @@ function done(saved, wa) {
 $('lagi').addEventListener('click', function () {
   $('doneCard').classList.add('hide'); $('formCard').classList.remove('hide'); render();
 });
+if (FORMS[location.hash.slice(1)]) cur = location.hash.slice(1);
 render();
 </script>
 </body>

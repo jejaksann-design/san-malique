@@ -35,6 +35,7 @@
     .tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:20px; background:#EDE6D9; color:var(--green); margin-right:6px; }
     .tag.tugas { background:var(--green); color:#fff; }
     .tag.refleksi { background:var(--gold); color:#fff; }
+    .tag.perkenalan { background:#fff; border:1px solid var(--gold); color:var(--gold); }
     .item dl { margin-top:8px; font-size:0.9rem; }
     .item dt { font-weight:600; color:var(--green); margin-top:6px; }
     .item dd { white-space:pre-wrap; word-break:break-word; }
@@ -46,7 +47,7 @@
   <div class="card">
     <div class="eyebrow">Khusus Admin</div>
     <h1>Isian Peserta VIP</h1>
-    <p class="muted">Check-in, tugas, dan refleksi akhir dari Form Peserta VIP.</p>
+    <p class="muted">Perkenalan, check-in, tugas, dan refleksi akhir dari Form Peserta VIP.</p>
   </div>
 
   <div class="card" id="login">
@@ -58,12 +59,12 @@
   <div id="app" class="hide">
     <div class="card">
       <h2>Rekap tugas per pekan</h2>
-      <p class="muted">✓ = tugas terkumpul · c = check-in masuk · R = refleksi akhir</p>
+      <p class="muted">P = perkenalan masuk · ✓ = tugas terkumpul · c = check-in masuk · R = refleksi akhir</p>
       <div class="scroll" style="margin-top:10px"><table id="rekap"></table></div>
     </div>
     <div class="card">
       <div class="row">
-        <select id="fType"><option value="">Semua jenis</option><option value="checkin">Check-in</option><option value="tugas">Tugas</option><option value="refleksi">Refleksi</option></select>
+        <select id="fType"><option value="">Semua jenis</option><option value="perkenalan">Perkenalan</option><option value="checkin">Check-in</option><option value="tugas">Tugas</option><option value="refleksi">Refleksi</option></select>
         <select id="fPekan"><option value="">Semua pekan</option><option>Pekan 1</option><option>Pekan 2</option><option>Pekan 3</option><option>Pekan 4</option><option>Pekan 5</option></select>
         <select id="fNama"><option value="">Semua peserta</option></select>
       </div>
@@ -75,11 +76,12 @@
 
 <script>
 var LABEL = {
+  domisili: 'Domisili', kegiatan: 'Pekerjaan/kegiatan', skill: 'Skill utama', jalur: 'Jalur pilihan', target: 'Target 5 minggu', waktu: 'Waktu per minggu', ig: 'Instagram/portofolio', cv: 'CV/LinkedIn',
   selesai: 'Sudah selesai', proses: 'Sedang dikerjakan', sulit: 'Masih sulit', tanya: 'Pertanyaan untuk San Malique',
   link: 'Link hasil kerja', ringkas: 'Ringkasan hasil', belum: 'Belum selesai',
   progress: 'Progress terbesar', aset: 'Aset/hasil', perbaiki: 'Perlu diperbaiki', fokus: 'Fokus 30 hari', aksi: 'Tiga action', kesan: 'Masukan program'
 };
-var JENIS = { checkin: 'Check-in', tugas: 'Tugas', refleksi: 'Refleksi' };
+var JENIS = { perkenalan: 'Perkenalan', checkin: 'Check-in', tugas: 'Tugas', refleksi: 'Refleksi' };
 var rows = [], PIN = '';
 var $ = function (id) { return document.getElementById(id); };
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -101,9 +103,9 @@ function draw() {
   var names = []; rows.forEach(function (r) { if (names.indexOf(r.nama) < 0) names.push(r.nama); }); names.sort();
   var sel = $('fNama').value;
   $('fNama').innerHTML = '<option value="">Semua peserta</option>' + names.map(function (n) { return '<option' + (n === sel ? ' selected' : '') + '>' + esc(n) + '</option>'; }).join('');
-  var h = '<tr><th>Peserta</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th><th>P5</th><th>Akhir</th></tr>';
+  var h = '<tr><th>Peserta</th><th>Kenal</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th><th>P5</th><th>Akhir</th></tr>';
   names.forEach(function (n) {
-    h += '<tr><td>' + esc(n) + '</td>';
+    h += '<tr><td>' + esc(n) + '</td><td class="ok">' + (rows.some(function (r) { return r.nama === n && r.type === 'perkenalan'; }) ? 'P' : '') + '</td>';
     for (var i = 1; i <= 5; i++) {
       var t = rows.some(function (r) { return r.nama === n && r.type === 'tugas' && r.pekan === 'Pekan ' + i; });
       var c = rows.some(function (r) { return r.nama === n && r.type === 'checkin' && r.pekan === 'Pekan ' + i; });
