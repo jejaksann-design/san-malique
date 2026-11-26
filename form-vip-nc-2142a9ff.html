@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Form VIP Mentoring | San Malique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#F5F1EA; --card:#FBF8F3; --green:#1A3F33; --gold:#C8973A; --text:#2B2B2B; --muted:#6B6B6B; --line:#E3D8C6; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; line-height:1.6; padding:32px 16px 48px; }
+    .wrap { max-width:680px; margin:0 auto; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:30px 22px; margin-bottom:18px; }
+    .center { text-align:center; }
+    .rule { width:120px; height:2px; background:var(--gold); margin:0 auto 20px; }
+    .eyebrow { font-size:0.75rem; font-weight:700; letter-spacing:1.5px; color:var(--gold); text-transform:uppercase; }
+    h1 { font-family:'Lora',serif; color:var(--green); font-size:1.8rem; line-height:1.2; margin:10px 0 8px; }
+    .lead { color:var(--muted); font-size:0.95rem; }
+    .tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; background:#EDE6D9; padding:5px; border-radius:14px; margin-bottom:18px; }
+    .tabs button { border:0; background:transparent; font:inherit; font-weight:600; font-size:0.86rem; color:var(--muted); padding:11px 4px; border-radius:10px; cursor:pointer; }
+    .tabs button.on { background:#fff; color:var(--green); box-shadow:0 1px 3px rgba(0,0,0,.08); }
+    label { display:block; font-weight:600; font-size:0.92rem; color:var(--green); margin:16px 0 6px; }
+    label small { display:block; font-weight:400; color:var(--muted); font-size:0.8rem; }
+    input, select, textarea { width:100%; font:inherit; font-size:16px; color:var(--text); background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px; }
+    textarea { min-height:92px; resize:vertical; }
+    input:focus, select:focus, textarea:focus { outline:2px solid var(--gold); outline-offset:0; border-color:transparent; }
+    .req { color:#B4502F; }
+    .btn { display:block; width:100%; border:0; cursor:pointer; background:var(--green); color:#fff; text-decoration:none; font:inherit; font-weight:700; font-size:0.95rem; letter-spacing:0.5px; padding:17px 16px; border-radius:12px; margin:22px 0 0; text-align:center; }
+    .btn.gold { background:var(--gold); margin-top:10px; }
+    .btn:disabled { opacity:.6; }
+    .note { font-size:0.84rem; color:var(--muted); margin-top:12px; text-align:center; }
+    .err { color:#B4502F; font-size:0.88rem; margin-top:12px; text-align:center; display:none; }
+    .hide { display:none; }
+    .done h2 { font-family:'Lora',serif; color:var(--green); font-size:1.4rem; margin:6px 0 8px; }
+    .check { width:54px; height:54px; border-radius:50%; background:var(--green); color:#fff; font-size:28px; line-height:54px; margin:0 auto 10px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card center">
+    <div class="rule"></div>
+    <div class="eyebrow">San Malique · VIP Mentoring</div>
+    <h1>Form Peserta VIP</h1>
+    <p class="lead">Pilih jenis form, isi, lalu tap kirim. Isianmu langsung sampai ke admin.</p>
+  </div>
+
+  <div class="card" id="formCard">
+    <div class="tabs" role="tablist">
+      <button type="button" data-t="checkin" class="on">Check-in</button>
+      <button type="button" data-t="tugas">Kumpulkan Tugas</button>
+      <button type="button" data-t="refleksi">Refleksi Akhir</button>
+    </div>
+    <p class="lead" id="desc"></p>
+
+    <form id="f" novalidate>
+      <label for="nama">Nama <span class="req">*</span></label>
+      <input id="nama" autocomplete="name" maxlength="80">
+      <div id="pekanBox">
+        <label for="pekan">Pekan <span class="req">*</span></label>
+        <select id="pekan">
+          <option value="">Pilih pekan</option>
+          <option>Pekan 1</option><option>Pekan 2</option><option>Pekan 3</option><option>Pekan 4</option><option>Pekan 5</option>
+        </select>
+      </div>
+      <div id="fields"></div>
+      <button class="btn" id="kirim" type="submit">KIRIM</button>
+      <p class="err" id="err"></p>
+    </form>
+  </div>
+
+  <div class="card center done hide" id="doneCard">
+    <div class="check">✓</div>
+    <h2 id="doneTitle">Terkirim, terima kasih!</h2>
+    <p class="lead" id="doneText"></p>
+    <a class="btn gold" id="wa" target="_blank" rel="noopener">BUKA WHATSAPP ADMIN</a>
+    <button class="btn" type="button" id="lagi">ISI FORM LAIN</button>
+  </div>
+</div>
+
+<script>
+var ADMIN = '6282199342740';
+var FORMS = {
+  checkin: {
+    judul: 'Check-in',
+    desc: 'Update singkat di tengah pekan. Ini bukan penilaian, cukup supaya kami tahu progresmu dan bisa bantu sebelum deadline.',
+    q: [
+      ['selesai', 'Yang sudah selesai', '', 1],
+      ['proses', 'Yang sedang dikerjakan', '', 1],
+      ['sulit', 'Bagian yang masih sulit', 'Kosongkan kalau tidak ada', 0],
+      ['tanya', 'Pertanyaan untuk San Malique', 'Tulis yang spesifik supaya jawabannya tepat', 0]
+    ]
+  },
+  tugas: {
+    judul: 'Kumpulkan Tugas',
+    desc: 'Kumpulkan hasil Workbook VIP pekan ini. Yang belum sempurna tetap boleh dikirim.',
+    q: [
+      ['link', 'Link hasil kerja', 'Link Google Drive workbook, tulisan, konten, atau halaman jualan. Set ke "Anyone with the link". Kalau berupa file atau foto, kirim nanti di WhatsApp admin.', 0],
+      ['ringkas', 'Ringkasan hasil pekan ini', 'Apa saja yang sudah kamu kerjakan', 1],
+      ['belum', 'Bagian yang belum selesai', 'Kosongkan kalau semua sudah selesai', 0],
+      ['tanya', 'Pertanyaan untuk San Malique', 'Akan dijawab bersama feedback voice note', 0]
+    ]
+  },
+  refleksi: {
+    judul: 'Refleksi Akhir',
+    desc: 'Diisi di akhir program. Ini jadi peta langkahmu setelah lima minggu pendampingan.',
+    q: [
+      ['progress', 'Progress terbesar selama program', '', 1],
+      ['aset', 'Aset atau hasil yang sudah kamu buat', 'Konten, tulisan, produk, halaman jualan, CV, dan lain-lain', 1],
+      ['perbaiki', 'Yang masih perlu diperbaiki', '', 0],
+      ['fokus', 'Fokus 30 hari ke depan', '', 1],
+      ['aksi', 'Tiga action konkret yang akan kamu lakukan', '', 1],
+      ['kesan', 'Masukan untuk program ini', 'Apa yang paling membantu, apa yang bisa lebih baik', 0]
+    ]
+  }
+};
+var cur = 'checkin';
+var $ = function (id) { return document.getElementById(id); };
+try { $('nama').value = localStorage.getItem('fvip_nama') || ''; } catch (e) {}
+
+function render() {
+  var F = FORMS[cur];
+  $('desc').textContent = F.desc;
+  $('pekanBox').classList.toggle('hide', cur === 'refleksi');
+  $('fields').innerHTML = F.q.map(function (q) {
+    var tag = q[0] === 'link'
+      ? '<input id="q_' + q[0] + '" inputmode="url" placeholder="https://">'
+      : '<textarea id="q_' + q[0] + '"></textarea>';
+    return '<label for="q_' + q[0] + '">' + q[1] + (q[3] ? ' <span class="req">*</span>' : '') +
+      (q[2] ? '<small>' + q[2] + '</small>' : '') + '</label>' + tag;
+  }).join('');
+  document.querySelectorAll('.tabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.t === cur); });
+  $('err').style.display = 'none';
+}
+document.querySelectorAll('.tabs button').forEach(function (b) {
+  b.addEventListener('click', function () { cur = b.dataset.t; render(); });
+});
+
+function waText(F, nama, pekan, f) {
+  var t = 'Assalamu\'alaikum, admin. ' + F.judul + ' VIP Mentoring Nyari Cuan\n' + 'Nama: ' + nama + (pekan ? '\n' + pekan : '') + '\n';
+  F.q.forEach(function (q) { if (f[q[0]]) t += '\n' + q[1] + ':\n' + f[q[0]] + '\n'; });
+  return 'https://wa.me/' + ADMIN + '?text=' + encodeURIComponent(t);
+}
+
+$('f').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var F = FORMS[cur], nama = $('nama').value.trim(), pekan = cur === 'refleksi' ? '' : $('pekan').value, f = {}, miss = [];
+  if (!nama) miss.push('Nama');
+  if (cur !== 'refleksi' && !pekan) miss.push('Pekan');
+  F.q.forEach(function (q) { var v = $('q_' + q[0]).value.trim(); f[q[0]] = v; if (q[3] && !v) miss.push(q[1]); });
+  if (miss.length) { $('err').textContent = 'Lengkapi dulu: ' + miss.join(', ') + '.'; $('err').style.display = 'block'; return; }
+  try { localStorage.setItem('fvip_nama', nama); } catch (e) {}
+  var btn = $('kirim'); btn.disabled = true; btn.textContent = 'MENGIRIM...';
+  var wa = waText(F, nama, pekan, f);
+  var waShort = 'https://wa.me/' + ADMIN + '?text=' + encodeURIComponent(cur === 'tugas'
+    ? 'Assalamu\'alaikum, admin. Ini file tugas ' + pekan + ' VIP Mentoring dari ' + nama + '.' : 'Assalamu\'alaikum, admin. ');
+  var ctrl = window.AbortController ? new AbortController() : null;
+  var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+  fetch('/api/form-vip', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: cur, nama: nama, pekan: pekan, f: f }),
+    signal: ctrl ? ctrl.signal : undefined
+  }).then(function (r) { return r.json(); }).then(function (j) { done(!!j.ok, j.ok ? waShort : wa); })
+    .catch(function () { done(false, wa); })
+    .then(function () { clearTimeout(timer); btn.disabled = false; btn.textContent = 'KIRIM'; });
+});
+
+function done(saved, wa) {
+  $('wa').href = wa;
+  if (saved) {
+    $('doneTitle').textContent = 'Terkirim, terima kasih!';
+    $('doneText').textContent = cur === 'tugas'
+      ? 'Tugasmu sudah tercatat. Kalau ada file atau foto hasil kerja, kirim lewat WhatsApp admin, ya.'
+      : 'Isianmu sudah tercatat. Admin akan menindaklanjuti kalau ada yang perlu diteruskan ke San Malique.';
+    $('wa').textContent = cur === 'tugas' ? 'KIRIM FILE KE WHATSAPP ADMIN' : 'CHAT ADMIN';
+  } else {
+    $('doneTitle').textContent = 'Satu langkah lagi';
+    $('doneText').textContent = 'Koneksi sedang bermasalah. Tap tombol di bawah, lalu tap Send di WhatsApp supaya isianmu sampai ke admin.';
+    $('wa').textContent = 'KIRIM LEWAT WHATSAPP';
+  }
+  $('formCard').classList.add('hide'); $('doneCard').classList.remove('hide');
+  window.scrollTo(0, 0);
+}
+$('lagi').addEventListener('click', function () {
+  $('doneCard').classList.add('hide'); $('formCard').classList.remove('hide'); render();
+});
+render();
+</script>
+</body>
+</html>

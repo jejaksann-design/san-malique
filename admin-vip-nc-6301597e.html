@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin VIP Mentoring | San Malique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#F5F1EA; --card:#FBF8F3; --green:#1A3F33; --gold:#C8973A; --text:#2B2B2B; --muted:#6B6B6B; --line:#E3D8C6; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; line-height:1.55; padding:28px 16px 48px; }
+    .wrap { max-width:860px; margin:0 auto; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px 18px; margin-bottom:16px; }
+    .eyebrow { font-size:0.72rem; font-weight:700; letter-spacing:1.5px; color:var(--gold); text-transform:uppercase; }
+    h1 { font-family:'Lora',serif; color:var(--green); font-size:1.6rem; margin:6px 0 4px; }
+    h2 { font-family:'Lora',serif; color:var(--green); font-size:1.15rem; margin-bottom:10px; }
+    .muted { color:var(--muted); font-size:0.88rem; }
+    input, select { font:inherit; font-size:16px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
+    .btn { border:0; cursor:pointer; background:var(--green); color:#fff; font:inherit; font-weight:700; font-size:0.9rem; padding:11px 16px; border-radius:10px; }
+    .btn.ghost { background:#fff; color:var(--green); border:1px solid var(--line); }
+    .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .row > * { flex:1 1 140px; }
+    .hide { display:none; }
+    .err { color:#B4502F; font-size:0.88rem; margin-top:8px; }
+    .scroll { overflow-x:auto; }
+    table { border-collapse:collapse; width:100%; font-size:0.88rem; }
+    th, td { border-bottom:1px solid var(--line); padding:8px 6px; text-align:center; white-space:nowrap; }
+    th:first-child, td:first-child { text-align:left; }
+    th { color:var(--muted); font-weight:600; font-size:0.78rem; }
+    .ok { color:var(--green); font-weight:700; }
+    .item { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; margin-top:10px; }
+    .tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:20px; background:#EDE6D9; color:var(--green); margin-right:6px; }
+    .tag.tugas { background:var(--green); color:#fff; }
+    .tag.refleksi { background:var(--gold); color:#fff; }
+    .item dl { margin-top:8px; font-size:0.9rem; }
+    .item dt { font-weight:600; color:var(--green); margin-top:6px; }
+    .item dd { white-space:pre-wrap; word-break:break-word; }
+    .item a { color:var(--gold); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="eyebrow">Khusus Admin</div>
+    <h1>Isian Peserta VIP</h1>
+    <p class="muted">Check-in, tugas, dan refleksi akhir dari Form Peserta VIP.</p>
+  </div>
+
+  <div class="card" id="login">
+    <h2>Masukkan PIN admin</h2>
+    <div class="row"><input id="pin" autocomplete="off" autocapitalize="characters" placeholder="PIN"><button class="btn" id="masuk">MASUK</button></div>
+    <p class="err hide" id="err"></p>
+  </div>
+
+  <div id="app" class="hide">
+    <div class="card">
+      <h2>Rekap tugas per pekan</h2>
+      <p class="muted">✓ = tugas terkumpul · c = check-in masuk · R = refleksi akhir</p>
+      <div class="scroll" style="margin-top:10px"><table id="rekap"></table></div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <select id="fType"><option value="">Semua jenis</option><option value="checkin">Check-in</option><option value="tugas">Tugas</option><option value="refleksi">Refleksi</option></select>
+        <select id="fPekan"><option value="">Semua pekan</option><option>Pekan 1</option><option>Pekan 2</option><option>Pekan 3</option><option>Pekan 4</option><option>Pekan 5</option></select>
+        <select id="fNama"><option value="">Semua peserta</option></select>
+      </div>
+      <div class="row" style="margin-top:8px"><button class="btn ghost" id="muat">MUAT ULANG</button><button class="btn ghost" id="csv">DOWNLOAD CSV</button></div>
+      <div id="list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var LABEL = {
+  selesai: 'Sudah selesai', proses: 'Sedang dikerjakan', sulit: 'Masih sulit', tanya: 'Pertanyaan untuk San Malique',
+  link: 'Link hasil kerja', ringkas: 'Ringkasan hasil', belum: 'Belum selesai',
+  progress: 'Progress terbesar', aset: 'Aset/hasil', perbaiki: 'Perlu diperbaiki', fokus: 'Fokus 30 hari', aksi: 'Tiga action', kesan: 'Masukan program'
+};
+var JENIS = { checkin: 'Check-in', tugas: 'Tugas', refleksi: 'Refleksi' };
+var rows = [], PIN = '';
+var $ = function (id) { return document.getElementById(id); };
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function tgl(ts) { return new Date(ts).toLocaleString('id-ID', { timeZone: 'Asia/Makassar', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' WITA'; }
+function link(v) { return /^https?:\/\//i.test(v) ? '<a href="' + esc(v) + '" target="_blank" rel="noopener">' + esc(v) + '</a>' : esc(v); }
+
+function load() {
+  $('err').classList.add('hide');
+  fetch('/api/form-vip', { headers: { 'x-pin': PIN } }).then(function (r) { return r.json().then(function (j) { return [r.status, j]; }); })
+    .then(function (x) {
+      if (x[0] === 401) throw 'PIN salah.';
+      if (!x[1].ok) throw 'Database belum tersambung. Hubungi Han.';
+      rows = x[1].rows; try { sessionStorage.setItem('avip', PIN); } catch (e) {}
+      $('login').classList.add('hide'); $('app').classList.remove('hide'); draw();
+    })
+    .catch(function (m) { $('err').textContent = typeof m === 'string' ? m : 'Gagal memuat. Coba lagi.'; $('err').classList.remove('hide'); $('login').classList.remove('hide'); });
+}
+function draw() {
+  var names = []; rows.forEach(function (r) { if (names.indexOf(r.nama) < 0) names.push(r.nama); }); names.sort();
+  var sel = $('fNama').value;
+  $('fNama').innerHTML = '<option value="">Semua peserta</option>' + names.map(function (n) { return '<option' + (n === sel ? ' selected' : '') + '>' + esc(n) + '</option>'; }).join('');
+  var h = '<tr><th>Peserta</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th><th>P5</th><th>Akhir</th></tr>';
+  names.forEach(function (n) {
+    h += '<tr><td>' + esc(n) + '</td>';
+    for (var i = 1; i <= 5; i++) {
+      var t = rows.some(function (r) { return r.nama === n && r.type === 'tugas' && r.pekan === 'Pekan ' + i; });
+      var c = rows.some(function (r) { return r.nama === n && r.type === 'checkin' && r.pekan === 'Pekan ' + i; });
+      h += '<td class="ok">' + (t ? '✓' : '') + (c ? ' c' : '') + '</td>';
+    }
+    h += '<td class="ok">' + (rows.some(function (r) { return r.nama === n && r.type === 'refleksi'; }) ? 'R' : '') + '</td></tr>';
+  });
+  $('rekap').innerHTML = names.length ? h : '<tr><td>Belum ada isian.</td></tr>';
+  var ft = $('fType').value, fp = $('fPekan').value, fn = $('fNama').value;
+  var list = rows.filter(function (r) { return (!ft || r.type === ft) && (!fp || r.pekan === fp) && (!fn || r.nama === fn); });
+  $('list').innerHTML = list.length ? list.map(function (r) {
+    return '<div class="item"><span class="tag ' + r.type + '">' + JENIS[r.type] + '</span><b>' + esc(r.nama) + '</b>' + (r.pekan ? ' · ' + esc(r.pekan) : '') +
+      '<div class="muted">' + tgl(r.ts) + '</div><dl>' + Object.keys(r.f).filter(function (k) { return r.f[k]; }).map(function (k) {
+        return '<dt>' + (LABEL[k] || esc(k)) + '</dt><dd>' + link(r.f[k]) + '</dd>';
+      }).join('') + '</dl></div>';
+  }).join('') : '<p class="muted" style="margin-top:12px">Tidak ada isian untuk filter ini.</p>';
+}
+function csv() {
+  var keys = Object.keys(LABEL), q = function (v) { return '"' + String(v || '').replace(/"/g, '""') + '"'; };
+  var out = [['Waktu', 'Jenis', 'Nama', 'Pekan'].concat(keys.map(function (k) { return LABEL[k]; })).map(q).join(',')];
+  rows.forEach(function (r) { out.push([tgl(r.ts), JENIS[r.type], r.nama, r.pekan].concat(keys.map(function (k) { return r.f[k]; })).map(q).join(',')); });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['﻿' + out.join('\n')], { type: 'text/csv' }));
+  a.download = 'isian-vip-mentoring.csv'; a.click();
+}
+$('masuk').addEventListener('click', function () { PIN = $('pin').value.trim().toUpperCase(); load(); });
+$('pin').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('masuk').click(); });
+$('muat').addEventListener('click', load);
+$('csv').addEventListener('click', csv);
+['fType', 'fPekan', 'fNama'].forEach(function (id) { $(id).addEventListener('change', draw); });
+try { var p = sessionStorage.getItem('avip'); if (p) { PIN = p; load(); } } catch (e) {}
+</script>
+</body>
+</html>
