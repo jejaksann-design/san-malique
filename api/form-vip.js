@@ -3,7 +3,7 @@
 // Repo publik, jadi yang disimpan di sini hanya hash PIN, bukan PIN-nya.
 const kv = require('./_kv');
 const crypto = require('crypto');
-const PIN_HASH = '0ffc6dd089a0416ee416ce3b6c9498fcc29afa65b63de6ce48febdccca337059';
+const PIN_HASH = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
 const KEY = 'sm:fvip';
 const TYPES = ['perkenalan', 'checkin', 'tugas', 'refleksi'];
 
@@ -24,8 +24,16 @@ module.exports = async function (req, res) {
       await kv.pipe([['LPUSH', KEY, JSON.stringify(row)], ['LTRIM', KEY, 0, 1999]]);
       return res.status(200).json({ ok: true });
     }
+    // PIN pendek, jadi tebakan salah dibatasi: 5 kali per 15 menit per IP.
+    const ip = clean(req.headers['x-forwarded-for'] || 'x', 60).split(',')[0].trim();
+    const lk = 'sm:fvip:fail:' + ip;
+    const f = await kv.pipe([['GET', lk]]);
+    if (Number(f[0] || 0) >= 5) return res.status(429).json({ ok: false, locked: true });
     const pin = clean(req.headers['x-pin'], 40).trim().toUpperCase();
-    if (crypto.createHash('sha256').update(pin).digest('hex') !== PIN_HASH) return res.status(401).json({ ok: false });
+    if (crypto.createHash('sha256').update(pin).digest('hex') !== PIN_HASH) {
+      await kv.pipe([['INCR', lk], ['EXPIRE', lk, 900]]);
+      return res.status(401).json({ ok: false });
+    }
     const r = await kv.pipe([['LRANGE', KEY, 0, -1]]);
     const rows = (r[0] || []).map(function (x) { try { return JSON.parse(x); } catch (e) { return null; } }).filter(Boolean);
     return res.status(200).json({ ok: true, rows: rows });

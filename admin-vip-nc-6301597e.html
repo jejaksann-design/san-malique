@@ -52,7 +52,7 @@
 
   <div class="card" id="login">
     <h2>Masukkan PIN admin</h2>
-    <div class="row"><input id="pin" autocomplete="off" autocapitalize="characters" placeholder="PIN"><button class="btn" id="masuk">MASUK</button></div>
+    <div class="row"><input id="pin" autocomplete="off" inputmode="numeric" placeholder="PIN"><button class="btn" id="masuk">MASUK</button></div>
     <p class="err hide" id="err"></p>
   </div>
 
@@ -93,6 +93,7 @@ function load() {
   fetch('/api/form-vip', { headers: { 'x-pin': PIN } }).then(function (r) { return r.json().then(function (j) { return [r.status, j]; }); })
     .then(function (x) {
       if (x[0] === 401) throw 'PIN salah.';
+      if (x[0] === 429) throw 'Terlalu banyak percobaan. Coba lagi 15 menit lagi.';
       if (!x[1].ok) throw 'Database belum tersambung. Hubungi Han.';
       rows = x[1].rows; try { sessionStorage.setItem('avip', PIN); } catch (e) {}
       $('login').classList.add('hide'); $('app').classList.remove('hide'); draw();
